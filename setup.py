@@ -6,7 +6,7 @@ setup(
     author='Gabriel F. Caccaos',
     author_email='gabriel.caccaos@gmail.com',
     packages=['dialogflow_fulfillment'],
-    # url='',
+    url='https://github.com/gcaccaos/dialogflow-fulfillment-python',
     # license='',
     description='Dialogflow Fulfillment Library',
     long_description=open('README.md').read(),
