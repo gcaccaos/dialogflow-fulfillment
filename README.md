@@ -22,12 +22,12 @@ meant to be used only for API v2 responses.
   * Add/set/delete outgoing contexts from Webhook Client
 
 ## Installation
-### For normal usage
+### For Normal Usage
 ```shell
 pip install dialogflow-fulfillment
 ```
 
-### For development
+### For Development
 ```shell
 git clone https://github.com/gcaccaos/dialogflow-fulfillment.git
 cd dialogflow-fulfillment-python
