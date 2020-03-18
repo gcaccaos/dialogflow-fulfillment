@@ -1,5 +1,12 @@
+"""Dialogflow's Context API class module"""
+
+
 class Context:
+    """Dialogflow's Context API class"""
+
     def __init__(self, input_contexts, session):
+        self._index = None
+        self._context_array = None
         self.session = session
         self.input_contexts = self._process_input_contexts(input_contexts)
         self.contexts = self._process_input_contexts(input_contexts)
@@ -43,15 +50,15 @@ class Context:
 
         for context in output_contexts:
             context['name'] = f"{self.session}/contexts/{context['name']}"
-        
+
         return output_contexts
-    
+
     def __iter__(self):
         self._index = 0
         self._context_array = list(self.contexts.values())
 
         return self
-    
+
     def __next__(self):
         if self._index >= len(self._context_array):
             raise StopIteration
