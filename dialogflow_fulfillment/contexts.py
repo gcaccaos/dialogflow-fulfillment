@@ -18,6 +18,7 @@ class Context:
 
         for context in input_contexts:
             name = context['name'].rsplit('/', 1)[-1]
+            context['name'] = name
             contexts[name] = context
 
         return contexts
