@@ -10,6 +10,7 @@ meant to be used only for API v2 responses.
 ### TODO List
 * Add support for all platforms
 * Add support for other rich responses
+* Add unit tests
 
 ## Current Features
 * Webhook Client
@@ -21,6 +22,11 @@ meant to be used only for API v2 responses.
   * Add/set/delete outgoing contexts from Webhook Client
 
 ## Installation
+### For normal usage
+```shell
+pip install dialogflow-fulfillment
+```
+
 ### For development
 ```shell
 git clone https://github.com/gcaccaos/dialogflow-fulfillment-python.git
@@ -131,3 +137,6 @@ def webhook(request):
 
         return JsonResponse(agent.response)
 ```
+
+## License
+See LICENSE.
