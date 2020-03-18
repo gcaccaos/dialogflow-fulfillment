@@ -1,12 +1,12 @@
 from setuptools import setup
 
 setup(
-    name='dialogflow-fulfillment-python',
+    name='dialogflow-fulfillment',
     version='0.0.1',
     author='Gabriel F. Caccáos',
     author_email='gabriel.caccaos@gmail.com',
     packages=['dialogflow_fulfillment'],
-    url='https://github.com/gcaccaos/dialogflow-fulfillment-python',
+    url='https://github.com/gcaccaos/dialogflow-fulfillment',
     license='Apache License 2.0',
     description='A Dialogflow\'s webhook fulfillment API v2 library',
     long_description_content_type='text/markdown',
