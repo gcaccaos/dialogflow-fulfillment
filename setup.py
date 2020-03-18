@@ -2,13 +2,18 @@ from setuptools import setup
 
 setup(
     name='dialogflow-fulfillment-python',
-    version='0.0.1.dev1',
-    author='Gabriel F. Caccaos',
+    version='0.0.1',
+    author='Gabriel F. Caccáos',
     author_email='gabriel.caccaos@gmail.com',
     packages=['dialogflow_fulfillment'],
     url='https://github.com/gcaccaos/dialogflow-fulfillment-python',
-    # license='',
-    description='Dialogflow Fulfillment Library',
+    license='Apache License 2.0',
+    description='A Dialogflow\'s webhook fulfillment API v2 library',
+    long_description_content_type='text/markdown',
     long_description=open('README.md').read(),
     python_requires='>=3',
+    classifiers = [
+        'Programming Language :: Python :: 3',
+        'Intended Audience :: Developers',
+    ],
 )
