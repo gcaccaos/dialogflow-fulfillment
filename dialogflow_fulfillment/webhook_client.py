@@ -1,8 +1,9 @@
+"""Dialogflow's Webhook Client class module"""
 from .contexts import Context
 from .rich_responses import QuickReplies, RichResponse, Text
 
 
-class WebhookClient:
+class WebhookClient: # pylint: disable=too-many-instance-attributes
     """Class for handling Dialogflow's fulfillment webhook API v2 requests"""
 
     def __init__(self, request):
@@ -58,14 +59,14 @@ class WebhookClient:
         self._response_messages.extend(responses)
 
     def set_followup_event(self, event):
+        """Sets the followup event"""
         if isinstance(event, str):
             event = {'name': event}
 
         if 'languageCode' not in event:
             event['languageCode'] = self.locale
-        
-        self._followup_event = event
 
+        self._followup_event = event
 
     def handle_request(self, handler):
         """Handles the request using a handler or map of handlers"""
@@ -96,7 +97,7 @@ class WebhookClient:
 
     def _build_response_messages(self):
         """Builds a list of message objects to send back to Dialogflow"""
-        return list(map(lambda response: response._get_response_object(),
+        return list(map(lambda response: response._get_response_object(), # pylint: disable=protected-access
                         self._response_messages))
 
     @property
