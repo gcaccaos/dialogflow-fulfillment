@@ -17,16 +17,18 @@ meant to be used only for API v2 responses.
 * Rich Responses
   * Text
   * Quick Replies
+* Context API
+  * Add/set/delete outgoing contexts from Webhook Client
 
 ## Installation
 ### For development
 ```shell
+git clone https://github.com/gcaccaos/dialogflow-fulfillment-python.git
 cd dialogflow-fulfillment-python
 pip install -e .
 ```
 
-## Usage
-### General
+## A Simple Example
 ```python
 from dialogflow_fulfillment import WebhookClient
 
@@ -45,6 +47,7 @@ agent.handle_request(handler)
 response = agent.response
 ```
 
+## More Examples
 ### With Flask
 ```python
 # app.py
@@ -87,7 +90,6 @@ def webhook():
 
 if __name__ == '__main__':
     APP.run(debug=True)
-
 ```
 
 ### With Django
@@ -128,5 +130,4 @@ def webhook(request):
         LOG.info(f'Response body: {agent.response}')
 
         return JsonResponse(agent.response)
-
 ```
