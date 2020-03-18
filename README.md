@@ -40,87 +40,8 @@ response = agent.response
 ```
 
 ## More Examples
-### With Flask
-```python
-# app.py
-from logging import DEBUG
-
-from dialogflow_fulfillment import WebhookClient
-from flask import Flask, request
-from flask.logging import create_logger
-
-# Create Flask app and enable info level logging
-APP = Flask(__name__)
-LOG = create_logger(APP)
-LOG.setLevel(DEBUG)
-
-
-def handler(agent):
-    """Custom handler function"""
-
-
-@APP.route('/', methods=['POST'])
-def webhook():
-    """Handles Dialogflow's webhook requests"""
-    # Get request body
-    request_ = request.get_json(force=True)
-
-    # Log request headers and body
-    LOG.info(f'Request headers: {dict(request.headers)}')
-    LOG.info(f'Request body: {request_}')
-
-    # Handle request
-    agent = WebhookClient(request_)
-    agent.handle_request(handler)
-
-    # Log response body
-    LOG.info(f'Response body: {agent.response}')
-
-    return agent.response
-
-
-if __name__ == '__main__':
-    APP.run(debug=True)
-```
-
-### With Django
-```python
-# views.py
-from logging import DEBUG, getLogger
-
-from dialogflow_fulfillment import WebhookClient
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-
-# Create logger and enable info level logging
-LOG = getLogger(__name__)
-LOG.setLevel(DEBUG)
-
-
-def handler(agent):
-    """Custom handler function"""
-
-
-@csrf_exempt
-def webhook(request):
-    """Handles Dialogflow's webhook requests"""
-    if request.method == 'POST':
-        # Get request body
-        request_ = request.POST.dict()
-
-        # Log request headers and body
-        LOG.info(f'Request headers: {dict(request.headers)}')
-        LOG.info(f'Request body: {request_}')
-
-        # Handle request
-        agent = WebhookClient(request_)
-        agent.handle_request(handler)
-
-        # Log response body
-        LOG.info(f'Response body: {agent.response}')
-
-        return JsonResponse(agent.response)
-```
+* [Using `dialogflow_fulfillment` in a Flask application](https://github.com/gcaccaos/dialogflow-fulfillment/blob/master/examples/flask/app.py)
+* [Using `dialogflow_fulfillment` in a Django view](https://github.com/gcaccaos/dialogflow-fulfillment/blob/master/examples/django/views.py)
 
 ## TODO
 * Add support for platforms
