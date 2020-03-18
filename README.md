@@ -59,10 +59,9 @@ response = agent.response
 # app.py
 from logging import DEBUG
 
+from dialogflow_fulfillment import WebhookClient
 from flask import Flask, request
 from flask.logging import create_logger
-
-from dialogflow_fulfillment import WebhookClient
 
 # Create Flask app and enable info level logging
 APP = Flask(__name__)
@@ -103,10 +102,9 @@ if __name__ == '__main__':
 # views.py
 from logging import DEBUG, getLogger
 
+from dialogflow_fulfillment import WebhookClient
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-
-from dialogflow_fulfillment import WebhookClient
 
 # Create logger and enable info level logging
 LOG = getLogger(__name__)
