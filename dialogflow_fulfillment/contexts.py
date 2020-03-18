@@ -38,7 +38,7 @@ class Context:
 
     def get(self, name):
         """Get an context from the Dialogflow webhook request"""
-        return self.contexts[name]
+        return self.contexts.get(name)
 
     def delete(self, name):
         """Delete an context a Dialogflow session (set the lifespan to 0)"""
