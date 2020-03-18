@@ -30,7 +30,7 @@ pip install dialogflow-fulfillment
 ### For Development
 ```shell
 git clone https://github.com/gcaccaos/dialogflow-fulfillment.git
-cd dialogflow-fulfillment-python
+cd dialogflow-fulfillment
 pip install -e .
 ```
 
