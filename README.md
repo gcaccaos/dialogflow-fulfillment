@@ -2,9 +2,7 @@
 [![image](https://img.shields.io/pypi/v/dialogflow-fulfillment.svg)](https://pypi.python.org/pypi/dialogflow-fulfillment)
 ![image](https://img.shields.io/badge/python-3-blue.svg)
 
-## Introduction
-
-A Dialogflow's webhook fulfillment API v2 library for Python.
+A Dialogflows webhook fulfillment API v2 library for Python.
 
 **Note:** This package currently supports only Dialogflow's API V2 type responses for generic platforms
 
