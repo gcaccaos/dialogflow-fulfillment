@@ -7,11 +7,6 @@ A Dialogflow's webhook fulfillment API v2 library for Python.
 Currently, this library handles responses only for generic platforms and is 
 meant to be used only for API v2 responses. 
 
-### TODO List
-* Add support for all platforms
-* Add support for other rich responses
-* Add unit tests
-
 ## Current Features
 * Webhook Client
   * Handle requests using a custom fulfillment function or a map of functions for each intent
@@ -135,6 +130,11 @@ def webhook(request):
 
         return JsonResponse(agent.response)
 ```
+
+## TODO
+* Add support for platforms
+* Add support for other rich responses
+* Add unit tests
 
 ## License
 See LICENSE.
