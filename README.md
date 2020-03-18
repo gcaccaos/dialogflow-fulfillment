@@ -4,8 +4,7 @@
 
 A Dialogflow's webhook fulfillment API v2 library for Python.
 
-Currently, this library handles responses only for generic platforms and is 
-meant to be used only for API v2 responses. 
+**Note:** This package currently supports only Dialogflow's API V2 type responses for generic platforms
 
 ## Current Features
 * Webhook Client
@@ -17,16 +16,8 @@ meant to be used only for API v2 responses.
   * Add/set/delete outgoing contexts from Webhook Client
 
 ## Installation
-### For Normal Usage
 ```shell
 pip install dialogflow-fulfillment
-```
-
-### For Development
-```shell
-git clone https://github.com/gcaccaos/dialogflow-fulfillment.git
-cd dialogflow-fulfillment
-pip install -e .
 ```
 
 ## A Simple Example
