@@ -1,9 +1,8 @@
 from logging import DEBUG, getLogger
 
+from dialogflow_fulfillment import WebhookClient
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-
-from dialogflow_fulfillment import WebhookClient
 
 # Create logger and enable info level logging
 LOG = getLogger(__name__)

@@ -1,9 +1,8 @@
 from logging import DEBUG
 
+from dialogflow_fulfillment import WebhookClient
 from flask import Flask, request
 from flask.logging import create_logger
-
-from dialogflow_fulfillment import WebhookClient
 
 # Create Flask app and enable info level logging
 APP = Flask(__name__)
