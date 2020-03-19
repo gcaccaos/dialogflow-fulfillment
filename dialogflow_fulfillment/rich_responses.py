@@ -36,3 +36,20 @@ class QuickReplies(RichResponse): # pylint: disable=too-few-public-methods
 
     def _get_response_object(self):
         return {'quickReplies': {'quickReplies': self.quick_replies}}
+
+class Payload(RichResponse):
+    """Dialogflow's Payload class"""
+    def __init__(self, payload):
+        super().__init__()
+
+        self.set_payload(payload)
+
+    def set_payload(self, payload):
+        """Sets the payload contents"""
+        if isinstance(payload, dict):
+            self.payload = payload
+        else:
+            raise TypeError('payload argument must be a dictionary')
+
+    def _get_response_object(self):
+        return {'payload': self.payload}
