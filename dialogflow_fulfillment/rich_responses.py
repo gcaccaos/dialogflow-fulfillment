@@ -53,3 +53,19 @@ class Payload(RichResponse):
 
     def _get_response_object(self):
         return {'payload': self.payload}
+
+class Image(RichResponse):
+    """Dialogflow's Image class"""
+    def __init__(self, image_uri):
+        super().__init__()
+
+        self.set_image(image_uri)
+
+    def set_image(self, image_uri):
+        if isinstance(image_uri, str):
+            self.image_uri = image_uri
+        else:
+            raise TypeError('image_uri argument must be a string')
+
+    def _get_response_object(self):
+        return {'image': {'image_uri': self.image_uri}}
