@@ -1,6 +1,6 @@
 """Dialogflow's Webhook Client class module"""
 from .contexts import Context
-from .rich_responses import QuickReplies, RichResponse, Text
+from .rich_responses import Payload, QuickReplies, RichResponse, Text
 
 
 class WebhookClient: # pylint: disable=too-many-instance-attributes
@@ -34,37 +34,50 @@ class WebhookClient: # pylint: disable=too-many-instance-attributes
 
     def _get_console_messages(self):
         """Get messages defined in Dialogflow's console for matched intent"""
-        console_messages = self._request.get('queryResult').get('fulfillmentMessages', [])
+        console_messages = []
 
-        for index, message in enumerate(console_messages):
-            if 'text' in message:
-                console_messages[index] = Text(*message.get('text'))
-
-            elif 'quickReplies' in message:
-                console_messages[index] = QuickReplies(*message.get('quickReplies'))
+        for message in self._request.get('queryResult').get('fulfillmentMessages', []):
+            message = self._convert_message(message)
+            console_messages.append(message)
 
         return console_messages
 
-    def add(self, responses):
-        """Adds a RichResponse or a list of RichResponse messages"""
-        if isinstance(responses, str):
-            responses = Text(responses)
+    def _convert_message(self, message):
+        if 'text' in message:
+            return Text(message.get('text').get('text')[0])
+        elif 'quickReplies' in message:
+            return QuickReplies(message.get('quickReplies').get('quickReplies'))
+        elif 'payload' in message:
+            return Payload(message.get('payload'))
+        else:
+            raise TypeError('unsupported message type')
 
+    def add(self, responses):
+        """Adds a response or list of messages"""
         if not isinstance(responses, list):
             responses = [responses]
 
-        responses = filter(lambda response: isinstance(response, RichResponse),
-                           responses)
+        for response in responses:
+            self._add_response(response)
 
-        self._response_messages.extend(responses)
+    def _add_response(self, response):
+        """Adds a response to be sent"""
+        if isinstance(response, str):
+            response = Text(response)
+        elif isinstance(response, dict):
+            response = self._convert_message(response)
+
+        if not isinstance(response, RichResponse):
+            raise TypeError('response argument must be a RichResponse')
+
+        self._response_messages.append(response)
 
     def set_followup_event(self, event):
         """Sets the followup event"""
         if isinstance(event, str):
             event = {'name': event}
 
-        if 'languageCode' not in event:
-            event['languageCode'] = self.locale
+        event['languageCode'] = event.get('languageCode', self.locale)
 
         self._followup_event = event
 
