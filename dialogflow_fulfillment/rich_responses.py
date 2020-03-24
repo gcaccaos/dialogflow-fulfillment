@@ -24,7 +24,7 @@ class Text(RichResponse): # pylint: disable=too-few-public-methods
 
 
 class QuickReplies(RichResponse): # pylint: disable=too-few-public-methods
-    """Dialogflow's Quick Responses class"""
+    """Dialogflow's Quick Replies class"""
 
     def __init__(self, quick_replies):
         super().__init__()
@@ -36,6 +36,7 @@ class QuickReplies(RichResponse): # pylint: disable=too-few-public-methods
 
     def _get_response_object(self):
         return {'quickReplies': {'quickReplies': self.quick_replies}}
+
 
 class Payload(RichResponse):
     """Dialogflow's Payload class"""
