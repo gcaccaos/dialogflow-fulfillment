@@ -65,11 +65,9 @@ class WebhookClient: # pylint: disable=too-many-instance-attributes
         """Adds a response to be sent"""
         if isinstance(response, str):
             response = Text(response)
-        elif isinstance(response, dict):
-            response = self._convert_message(response)
 
         if not isinstance(response, RichResponse):
-            raise TypeError('response argument must be a RichResponse')
+            raise TypeError('response argument must be a string or a RichResponse')
 
         self._response_messages.append(response)
 
