@@ -37,12 +37,13 @@ class WebhookClient: # pylint: disable=too-many-instance-attributes
         console_messages = []
 
         for message in self._request.get('queryResult').get('fulfillmentMessages', []):
-            message = self._convert_message(message)
+            message = self._convert_message_dictionary(message)
             console_messages.append(message)
 
         return console_messages
 
-    def _convert_message(self, message):
+    def _convert_message_dictionary(self, message):
+        """Converts message dictionary to RichResponse"""
         if 'text' in message:
             return Text(message.get('text').get('text')[0])
         elif 'quickReplies' in message:
