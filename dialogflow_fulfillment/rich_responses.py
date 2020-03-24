@@ -1,4 +1,5 @@
 """Dialogflow's Rich Response classes module"""
+from collections.abc import Sequence
 
 
 class RichResponse: # pylint: disable=too-few-public-methods
@@ -29,8 +30,8 @@ class QuickReplies(RichResponse): # pylint: disable=too-few-public-methods
     def __init__(self, quick_replies):
         super().__init__()
 
-        if not all(isinstance(reply, str) for reply in quick_replies):
-            raise TypeError('quick_replies argument must be a list or tuple of strings')
+        if not (isinstance(quick_replies, list) or isinstance(quick_replies, tuple)):
+            raise TypeError('quick_replies argument must be a list or tuple')
 
         self.quick_replies = quick_replies
 
