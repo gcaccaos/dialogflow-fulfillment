@@ -3,6 +3,7 @@
 [![GitHub license](https://img.shields.io/github/license/gcaccaos/dialogflow-fulfillment)](https://github.com/gcaccaos/dialogflow-fulfillment/blob/master/LICENSE)
 [![image](https://img.shields.io/pypi/v/dialogflow-fulfillment.svg)](https://pypi.python.org/pypi/dialogflow-fulfillment)
 ![image](https://img.shields.io/badge/python-3-blue.svg)
+![image](https://img.shields.io/pypi/dm/dialogflow-fulfillment.svg)
 
 This is an unofficial Dialogflow Fulfillment Package for Python 3.
 
