@@ -45,11 +45,11 @@ class WebhookClient: # pylint: disable=too-many-instance-attributes
     def _convert_message_dictionary(self, message):
         """Converts message dictionary to RichResponse"""
         if 'text' in message:
-            return Text(message.get('text').get('text')[0])
+            return Text(message['text']['text'][0])
         elif 'quickReplies' in message:
-            return QuickReplies(message.get('quickReplies').get('quickReplies'))
+            return QuickReplies(message['quickReplies']['quickReplies'])
         elif 'payload' in message:
-            return Payload(message.get('payload'))
+            return Payload(message['payload'])
         else:
             raise TypeError('unsupported message type')
 
