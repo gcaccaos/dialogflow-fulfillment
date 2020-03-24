@@ -69,6 +69,7 @@ response = agent.response
 * Add support for platforms
 * Add support for other rich responses
 * Add unit tests
+* Add documentation
 
 ## License
 
