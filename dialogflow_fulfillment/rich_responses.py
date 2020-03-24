@@ -2,14 +2,14 @@
 from collections.abc import Sequence
 
 
-class RichResponse: # pylint: disable=too-few-public-methods
+class RichResponse:  # pylint: disable=too-few-public-methods
     """Dialogflow's Rich Response class"""
 
     def _get_response_object(self):
         """Gets the v2 response object"""
 
 
-class Text(RichResponse): # pylint: disable=too-few-public-methods
+class Text(RichResponse):  # pylint: disable=too-few-public-methods
     """Dialogflow's Text class"""
 
     def __init__(self, text):
@@ -24,7 +24,7 @@ class Text(RichResponse): # pylint: disable=too-few-public-methods
         return {'text': {'text': [self.text]}}
 
 
-class QuickReplies(RichResponse): # pylint: disable=too-few-public-methods
+class QuickReplies(RichResponse):  # pylint: disable=too-few-public-methods
     """Dialogflow's Quick Replies class"""
 
     def __init__(self, quick_replies):
@@ -41,6 +41,7 @@ class QuickReplies(RichResponse): # pylint: disable=too-few-public-methods
 
 class Payload(RichResponse):
     """Dialogflow's Payload class"""
+
     def __init__(self, payload):
         super().__init__()
 
@@ -56,8 +57,10 @@ class Payload(RichResponse):
     def _get_response_object(self):
         return {'payload': self.payload}
 
+
 class Image(RichResponse):
     """Dialogflow's Image class"""
+
     def __init__(self, image_uri):
         super().__init__()
 
@@ -72,3 +75,22 @@ class Image(RichResponse):
 
     def _get_response_object(self):
         return {'image': {'imageUri': self.image_url}}
+
+
+class Card(RichResponse):
+    """Dialogflow's Card class"""
+
+    def __init__(self, title):
+        super().__init__()
+
+        if not isinstance(title, str):
+            raise TypeError('title argument must be a string')
+
+        self.set_title(title)
+
+    def set_title(self, title):
+        """Sets the card title"""
+        self.title = title
+
+    def _get_response_object(self):
+        return {'card': {'title': self.title}}

@@ -19,6 +19,7 @@ This is an unofficial Dialogflow Fulfillment Package for Python 3.
 * Rich Responses
   * Text
   * Image
+  * Card
   * Quick Replies
   * Payload
 * Context API
