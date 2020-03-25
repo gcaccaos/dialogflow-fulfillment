@@ -79,6 +79,21 @@ response = agent.response
 * [Dialogflow's WebhookClient class documentation](https://dialogflow.com/docs/reference/fulfillment-library/webhook-client)
 * [Dialogflow's RichResponse classes documentation](https://dialogflow.com/docs/reference/fulfillment-library/rich-responses)
 
+## Testing
+
+Tests for this package are written with `unittest` and managed by `tox`.
+
+The `tox.ini` file at the project's root directory is used for configuring the tests.
+
+To run the tests, clone this repository, install `tox` via `pip` and run `tox` command from the project's root directory:
+
+```shell
+git clone https://github.com/gcaccaos/dialogflow-fulfillment.git
+pip install tox
+cd dialogflow-fulfillment
+tox
+```
+
 ## Limitations
 
 * Currently supports responses only for generic platforms
@@ -93,3 +108,7 @@ response = agent.response
 ## License
 
 See LICENSE.
+
+## Acknowledgments
+
+* Dialogflow team
