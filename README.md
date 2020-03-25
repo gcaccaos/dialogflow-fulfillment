@@ -39,14 +39,29 @@ This package can be used to manipulate or create messages, output contexts and f
 pip install dialogflow-fulfillment
 ```
 
-### From source (for development)
+### From source
 
-To install `dialogflow-fulfillment` from source, clone this repository and run `setup.py install` in __editable mode__ from the project's root directory:
+To install `dialogflow-fulfillment` from source, clone this repository and run `setup.py install` from the project's root directory:
 
 ```shell
 git clone https://github.com/gcaccaos/dialogflow-fulfillment.git
 cd dialogflow-fulfillment
-python setup.py install -e .
+python setup.py install
+```
+
+### For development
+
+The package can be installed from source with `pip` in __editable mode__ or with `setup.py` in __development mode__, which means that there's no need to install from source after every change in the code.
+
+```shell
+git clone https://github.com/gcaccaos/dialogflow-fulfillment.git
+cd dialogflow-fulfillment
+
+pip install -e .
+
+# or
+
+python setup.py develop
 ```
 
 ## Quick start
