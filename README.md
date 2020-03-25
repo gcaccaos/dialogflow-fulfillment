@@ -1,18 +1,22 @@
 # Dialogflow Fulfillment Library
 
+---
+
 ![PyPI](https://img.shields.io/pypi/v/dialogflow-fulfillment)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/dialogflow-fulfillment?label=pypi%20downloads)
 [![GitHub license](https://img.shields.io/github/license/gcaccaos/dialogflow-fulfillment)](https://github.com/gcaccaos/dialogflow-fulfillment/blob/master/LICENSE)
 
-This is an unofficial Dialogflow Fulfillment Package for Python 3.
+This is an unofficial Dialogflow Fulfillment package for Python 3+.
+
+This package can be used to manipulate or create messages, output contexts and followup events for a matched intent.
 
 > When an intent with fulfillment enabled is matched, Dialogflow sends a request to your webhook service with information about the matched intent. Your system can perform any required actions and respond to Dialogflow with information for how to proceed.
 >
 > -- [*Dialogflow's documentation*](https://cloud.google.com/dialogflow/docs/fulfillment-overview)
 
-**Please notice:** This package currently supports only responses for generic platforms
+**Please notice:** this package currently supports only responses for generic platforms
 
-## Current Features
+## Features
 
 * Webhook Client
   * Handle requests using a custom handler function or a map of handlers for each intent
