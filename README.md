@@ -39,7 +39,7 @@ This package can be used to manipulate or create messages, output contexts and f
 pip install dialogflow-fulfillment
 ```
 
-### From source
+### From source (for development)
 
 To install `dialogflow-fulfillment` from source, clone this repository and run `setup.py install` in __editable mode__ from the project's root directory:
 
