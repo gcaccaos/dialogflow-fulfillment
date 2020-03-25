@@ -29,10 +29,24 @@ This package can be used to manipulate or create messages, output contexts and f
 * Context API
   * Add/set/delete outgoing contexts from Webhook Client
 
-## Installation
+## Installing
+
+### Via `pip`
+
+`dialogflow-fulfillment` is available for download from PyPI via `pip`:
 
 ```shell
 pip install dialogflow-fulfillment
+```
+
+### From source
+
+To install `dialogflow-fulfillment` from source, clone this repository and run `setup.py install` in __editable mode__ from the project's root directory:
+
+```shell
+git clone https://github.com/gcaccaos/dialogflow-fulfillment.git
+cd dialogflow-fulfillment
+python setup.py install -e .
 ```
 
 ## Quick start
