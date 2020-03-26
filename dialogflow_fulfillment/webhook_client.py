@@ -97,8 +97,12 @@ class WebhookClient: # pylint: disable=too-many-instance-attributes
 
         self._response_messages.append(response)
 
-    def set_followup_event(self, event):
-        """Sets the followup event"""
+        """
+        Sets the followup event
+        
+        Args:
+            event: Event to be invoked
+        """
         if isinstance(event, str):
             event = {'name': event}
 
