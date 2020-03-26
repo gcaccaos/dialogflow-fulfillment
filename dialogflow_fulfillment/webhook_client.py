@@ -110,8 +110,19 @@ class WebhookClient: # pylint: disable=too-many-instance-attributes
 
         self._followup_event = event
 
-    def handle_request(self, handler):
-        """Handles the request using a handler or map of handlers"""
+        """
+        Handles the request using a handler or map of handlers and returns output
+        from handler function
+        
+        Args:
+            handler: Handler or map of handlers
+
+        Returns:
+            Optional[Any]: Output from handler function
+
+        Raises:
+            TypeError: Handler argument must be a function or a map of functions
+        """
         if callable(handler):
             result = handler(self)
         elif isinstance(handler, dict):
