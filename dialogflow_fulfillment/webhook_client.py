@@ -4,9 +4,30 @@ from .rich_responses import Payload, QuickReplies, RichResponse, Text
 
 
 class WebhookClient: # pylint: disable=too-many-instance-attributes
-    """Class for handling Dialogflow's fulfillment webhook API v2 requests"""
+    """
+    Class for handling Dialogflow's fulfillment webhook API v2 requests
 
-    def __init__(self, request):
+    Parameters:
+        request: Dialogflow's request
+    
+    Attributes:
+        query (str): Original user query
+        intent (str): Intent name in request
+        action (str): Action name in request
+        context (:class:`.Context`): Context API for contexts included in request
+        contexts (List[Dict]): Contexts included in request
+        parameters (Dict): Parameters included in request
+        console_messages (List[:class:`.RichResponse`]): Messages defined in
+            Dialogflow's console for the matched intent
+        original_request (str): Original request object from detectIntent/query
+        request_source (str): Source included in the request
+        locale (str): Original request language code or locale
+        session (str): Session included in request
+        alternative_query_results (List[Dict]): Alternative query results from
+            other intents or Knowledge Connectors
+    """
+
+    def __init__(self, request: Dict):
         self._request = request
         self._response = {}
         self._response_messages = []
