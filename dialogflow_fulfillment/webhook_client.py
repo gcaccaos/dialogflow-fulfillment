@@ -80,8 +80,7 @@ class WebhookClient: # pylint: disable=too-many-instance-attributes
         """
         Adds a single response message or list of response messages
         
-        
-        Args:
+        Parameters:
             responses: Single message or list of messages
         """
         if not isinstance(responses, list):
@@ -119,7 +118,7 @@ class WebhookClient: # pylint: disable=too-many-instance-attributes
         Handles the request using a handler or map of handlers and returns output
         from handler function
         
-        Args:
+        Parameters:
             handler: Handler or map of handlers
 
         Returns:
