@@ -27,6 +27,9 @@ class WebhookClient: # pylint: disable=too-many-instance-attributes
         session (str): Session included in request
         alternative_query_results (List[Dict]): Alternative query results from
             other intents or Knowledge Connectors
+
+    Raises:
+        TypeError: Request argument must be a dictionary
     """
 
     def __init__(self, request: Dict):
