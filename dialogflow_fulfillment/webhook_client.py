@@ -30,6 +30,9 @@ class WebhookClient: # pylint: disable=too-many-instance-attributes
     """
 
     def __init__(self, request: Dict):
+        if not isinstance(request, dict):
+            raise TypeError('request argument must be a dictionary')
+
         self._request = request
         self._response = {}
         self._response_messages = []
