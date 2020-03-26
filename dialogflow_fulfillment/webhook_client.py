@@ -74,8 +74,13 @@ class WebhookClient: # pylint: disable=too-many-instance-attributes
         else:
             raise TypeError('unsupported message type')
 
-    def add(self, responses):
-        """Adds a response or list of messages"""
+        """
+        Adds a single response message or list of response messages
+        
+        
+        Args:
+            responses: Single message or list of messages
+        """
         if not isinstance(responses, list):
             responses = [responses]
 
