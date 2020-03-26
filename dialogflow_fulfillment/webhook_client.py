@@ -1,4 +1,6 @@
 """Dialogflow's Webhook Client class module"""
+from typing import Any, Callable, Dict, List, Optional, Union
+
 from .contexts import Context
 from .rich_responses import Payload, QuickReplies, RichResponse, Text
 
@@ -74,6 +76,7 @@ class WebhookClient: # pylint: disable=too-many-instance-attributes
         else:
             raise TypeError('unsupported message type')
 
+    def add(self, responses: Union[str, List[Union[str, RichResponse]]]):
         """
         Adds a single response message or list of response messages
         
@@ -97,6 +100,7 @@ class WebhookClient: # pylint: disable=too-many-instance-attributes
 
         self._response_messages.append(response)
 
+    def set_followup_event(self, event: Union[str, dict]):
         """
         Sets the followup event
         
@@ -110,6 +114,7 @@ class WebhookClient: # pylint: disable=too-many-instance-attributes
 
         self._followup_event = event
 
+    def handle_request(self, handler: Union[Callable, Dict]) -> Optional[Any]:
         """
         Handles the request using a handler or map of handlers and returns output
         from handler function
@@ -154,7 +159,7 @@ class WebhookClient: # pylint: disable=too-many-instance-attributes
                         self._response_messages))
 
     @property
-    def response(self):
+    def response(self) -> Dict:
         """
         Returns the Dialogflow's fulfillment webhook response
         
