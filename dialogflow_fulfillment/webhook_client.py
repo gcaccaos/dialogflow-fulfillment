@@ -155,5 +155,10 @@ class WebhookClient: # pylint: disable=too-many-instance-attributes
 
     @property
     def response(self):
-        """Returns the Dialogflow's fulfillment webhook response"""
+        """
+        Returns the Dialogflow's fulfillment webhook response
+        
+        Returns:
+            Dict: Dialogflow's fulfillment webhook response
+        """
         return self._response
