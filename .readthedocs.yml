@@ -1,0 +1,13 @@
+version: 2
+
+sphinx:
+  builder: dirhtml
+  configuration: docs/conf.py
+
+formats: all
+
+python:
+  version: 3.8.2
+  install:
+    - requirements: docs/requirements.txt
+    - packages: git+https://github.com/pandas-dev/pydata-sphinx-theme.git@master
