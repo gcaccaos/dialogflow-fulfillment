@@ -90,7 +90,7 @@ response = agent.response
 * [Using `dialogflow-fulfillment` in a Flask application](https://github.com/gcaccaos/dialogflow-fulfillment/blob/master/samples/flask/app.py)
 * [Using `dialogflow-fulfillment` in a Django view](https://github.com/gcaccaos/dialogflow-fulfillment/blob/master/samples/django/views.py)
 
-## References
+## Documentation
 
 * [`dialogflow-fulfillment` documentation](https://dialogflow-fulfillment.readthedocs.io)
 
