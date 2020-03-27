@@ -74,8 +74,12 @@ class Context:
             name (str): Name of the context
         """
 
-    def get_output_contexts_array(self):
-        """Get array of context objects"""
+        """
+        Gets the list of context objects
+
+        Returns:
+            List[Dict]: Output contexts
+        """
         output_contexts = [*self]
 
         for context in output_contexts:
