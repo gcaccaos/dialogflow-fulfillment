@@ -1,4 +1,5 @@
 """Dialogflow's Context API class module"""
+from typing import Dict, List, Optional
 
 
 class Context:
@@ -15,6 +16,7 @@ class Context:
         contexts (Dict[str, Dict]): mapping of context names to context dictionaries
     """
 
+    def __init__(self, input_contexts: List[Dict], session: str):
         self._index = None
         self._context_array = None
         self.input_contexts = self._process_input_contexts(input_contexts)
@@ -33,6 +35,7 @@ class Context:
 
         return contexts
 
+    def set(self, name: str, lifespan_count: Optional[int] = None, parameters: Optional[Dict] = None):
         """
         Sets a new Dialogflow outgoing context
 
@@ -56,6 +59,7 @@ class Context:
         if parameters is not None:
             self.contexts[name]['parameters'] = parameters
 
+    def get(self, name: str) -> Optional[Dict]:
         """
         Gets a context from the Dialogflow webhook request
 
@@ -67,13 +71,16 @@ class Context:
         """
         return self.contexts.get(name)
 
+    def delete(self, name: str):
         """
         Deletes a context a Dialogflow session (set the lifespan to 0)
 
         Parameters:
             name (str): Name of the context
         """
+        self.set(name, lifespan_count=0)
 
+    def get_output_contexts_array(self) -> List[Dict]:
         """
         Gets the list of context objects
 
