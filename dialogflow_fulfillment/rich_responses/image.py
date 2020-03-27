@@ -3,7 +3,15 @@ from .rich_response import RichResponse
 
 
 class Image(RichResponse):
-    """Dialogflow's Image class"""
+    """
+    Dialogflows' image response
+
+    Parameters:
+        image_url (str): The image's URL
+
+    Attributes:
+        image_url (str): The image's URL
+    """
 
     def __init__(self, image_uri):
         super().__init__()
