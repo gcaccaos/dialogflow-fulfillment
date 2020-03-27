@@ -10,4 +10,5 @@ python:
   version: 3.8
   install:
     - requirements: docs/requirements.txt
-    - packages: git+https://github.com/pandas-dev/pydata-sphinx-theme.git@master
+    - method: pip
+      path: git+https://github.com/pandas-dev/pydata-sphinx-theme.git@master
