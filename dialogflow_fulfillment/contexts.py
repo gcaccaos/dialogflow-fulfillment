@@ -56,8 +56,15 @@ class Context:
         if parameters is not None:
             self.contexts[name]['parameters'] = parameters
 
-    def get(self, name):
-        """Get an context from the Dialogflow webhook request"""
+        """
+        Gets a context from the Dialogflow webhook request
+
+        Parameters:
+            name (str): Name of the context
+
+        Returns:
+            Optional[Dict]: Context's dictionary
+        """
         return self.contexts.get(name)
 
     def delete(self, name):
