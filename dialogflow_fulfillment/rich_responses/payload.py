@@ -3,15 +3,30 @@ from .rich_response import RichResponse
 
 
 class Payload(RichResponse):
-    """Dialogflow's Payload class"""
+    """
+    Dialogflow's payload response
 
-    def __init__(self, payload):
+    Parameters:
+        payload (Dict): The custom payload content
+
+    Attributes:
+        payload (Dict): The custom payload content
+    """
+
         super().__init__()
 
         self.set_payload(payload)
 
     def set_payload(self, payload):
-        """Sets the payload content"""
+        """
+        Sets the payload content
+
+        Parameters:
+            payload (Dict): The custom payload content
+
+        Raises:
+            TypeError: `payload` argument must be a dictionary
+        """
         if not isinstance(payload, dict):
             raise TypeError('payload argument must be a dictionary')
 
