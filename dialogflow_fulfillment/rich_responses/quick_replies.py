@@ -21,7 +21,8 @@ class QuickReplies(RichResponse):  # pylint: disable=too-few-public-methods
     def __init__(self, quick_replies: Union[List[str], Tuple[str]]):
         super().__init__()
 
-        if not (isinstance(quick_replies, list) or isinstance(quick_replies, tuple)):
+        if not (isinstance(quick_replies, list) or \
+                isinstance(quick_replies, tuple)):
             raise TypeError('quick_replies argument must be a list or tuple')
 
         self.quick_replies = quick_replies
