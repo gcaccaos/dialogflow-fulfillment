@@ -67,9 +67,12 @@ class Context:
         """
         return self.contexts.get(name)
 
-    def delete(self, name):
-        """Delete an context a Dialogflow session (set the lifespan to 0)"""
-        self.set_(name, lifespan_count=0)
+        """
+        Deletes a context a Dialogflow session (set the lifespan to 0)
+
+        Parameters:
+            name (str): Name of the context
+        """
 
     def get_output_contexts_array(self):
         """Get array of context objects"""
