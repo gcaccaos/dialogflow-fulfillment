@@ -17,8 +17,8 @@ class Context:
 
         self._index = None
         self._context_array = None
-        self.session = session
         self.input_contexts = self._process_input_contexts(input_contexts)
+        self.session = session
         self.contexts = self._process_input_contexts(input_contexts)
 
     @staticmethod
