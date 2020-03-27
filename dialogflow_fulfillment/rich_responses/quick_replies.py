@@ -1,4 +1,6 @@
 """Module for QuickReplies rich response"""
+from typing import List, Tuple, Union
+
 from .rich_response import RichResponse
 
 
@@ -16,7 +18,7 @@ class QuickReplies(RichResponse):  # pylint: disable=too-few-public-methods
         TypeError: `quick_replies` argument must be a list or tuple
     """
 
-    def __init__(self, quick_replies):
+    def __init__(self, quick_replies: Union[List[str], Tuple[str]]):
         super().__init__()
 
         if not (isinstance(quick_replies, list) or isinstance(quick_replies, tuple)):
