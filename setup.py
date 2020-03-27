@@ -12,6 +12,14 @@ setup(
     long_description_content_type='text/markdown',
     long_description=open('README.md').read(),
     python_requires='>=3',
+    keywords=[
+        'dialogflow',
+        'fulfillment',
+        'webhook',
+        'api',
+        'dialogflow-fulfillment',
+        'python',
+    ],
     classifiers = [
         'Programming Language :: Python :: 3',
         'Intended Audience :: Developers',
