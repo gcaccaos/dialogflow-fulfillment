@@ -11,7 +11,7 @@ class WebhookClient:  # pylint: disable=too-many-instance-attributes
 
     Parameters:
         request (Dict): Dialogflow's request
-    
+
     Attributes:
         query (str): Original user query
         intent (str): Intent name in request
@@ -85,7 +85,7 @@ class WebhookClient:  # pylint: disable=too-many-instance-attributes
     def add(self, responses: Union[str, List[Union[str, RichResponse]]]):
         """
         Adds a single response message or list of response messages
-        
+
         Parameters:
             responses: Single message or list of messages
         """
@@ -108,7 +108,7 @@ class WebhookClient:  # pylint: disable=too-many-instance-attributes
     def set_followup_event(self, event: Union[str, dict]):
         """
         Sets the followup event
-        
+
         Args:
             event: Event to be invoked
         """
@@ -123,7 +123,7 @@ class WebhookClient:  # pylint: disable=too-many-instance-attributes
         """
         Handles the request using a handler or map of handlers and returns output
         from handler function
-        
+
         Parameters:
             handler: Handler or map of handlers
 
@@ -160,14 +160,14 @@ class WebhookClient:  # pylint: disable=too-many-instance-attributes
 
     def _build_response_messages(self):
         """Builds a list of message objects to send back to Dialogflow"""
-        return list(map(lambda response: response._get_response_object(), # pylint: disable=protected-access
+        return list(map(lambda response: response._get_response_object(),  # pylint: disable=protected-access
                         self._response_messages))
 
     @property
     def response(self) -> Dict:
         """
         Returns the Dialogflow's fulfillment webhook response
-        
+
         Returns:
             Dict: Dialogflow's fulfillment webhook response
         """
