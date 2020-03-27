@@ -13,7 +13,7 @@ class Text(RichResponse):  # pylint: disable=too-few-public-methods
         text (str): The text content
     """
 
-    def __init__(self, text):
+    def __init__(self, text: str):
         super().__init__()
 
         if not isinstance(text, str):
