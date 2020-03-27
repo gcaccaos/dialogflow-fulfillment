@@ -13,9 +13,12 @@ class Card(RichResponse):
         title (str): The card's title
     """
 
-    def __init__(self, title):
+    def __init__(self, title: str):
         super().__init__()
 
+        self.set_title(title)
+
+    def set_title(self, title: str):
         """
         Sets the card title
 
