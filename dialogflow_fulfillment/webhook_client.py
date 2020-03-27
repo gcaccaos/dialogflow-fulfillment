@@ -5,12 +5,12 @@ from .contexts import Context
 from .rich_responses import Payload, QuickReplies, RichResponse, Text
 
 
-class WebhookClient: # pylint: disable=too-many-instance-attributes
+class WebhookClient:  # pylint: disable=too-many-instance-attributes
     """
     Class for handling Dialogflow's fulfillment webhook API v2 requests
 
     Parameters:
-        request: Dialogflow's request
+        request (Dict): Dialogflow's request
     
     Attributes:
         query (str): Original user query
@@ -29,7 +29,7 @@ class WebhookClient: # pylint: disable=too-many-instance-attributes
             other intents or Knowledge Connectors
 
     Raises:
-        TypeError: Request argument must be a dictionary
+        TypeError: `request` argument must be a dictionary
     """
 
     def __init__(self, request: Dict):
@@ -131,7 +131,7 @@ class WebhookClient: # pylint: disable=too-many-instance-attributes
             Optional[Any]: Output from handler function
 
         Raises:
-            TypeError: Handler argument must be a function or a map of functions
+            TypeError: `handler` argument must be a function or a map of functions
         """
         if callable(handler):
             result = handler(self)
