@@ -69,7 +69,7 @@ add_module_names = False
 
 autodoc_default_options = {
     'show-inheritance': True,
-    'members': True,
+    'members': None,
     'inherited-members': True,
     'undoc-members': True,
 }
