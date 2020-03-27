@@ -74,3 +74,7 @@ autodoc_default_options = {
     'undoc-members': True,
 }
 
+
+# Other configs
+
+master_doc = 'index'
