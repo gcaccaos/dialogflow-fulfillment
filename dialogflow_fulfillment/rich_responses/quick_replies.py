@@ -3,7 +3,18 @@ from .rich_response import RichResponse
 
 
 class QuickReplies(RichResponse):  # pylint: disable=too-few-public-methods
-    """Dialogflow's Quick Replies class"""
+    """
+    Dialogflow's quick replies response
+
+    Parameters:
+        quick_replies (Union[List[str], Tuple[str]]): Quick reply strings
+
+    Attributes:
+        quick_replies (Union[List[str], Tuple[str]]): Quick reply strings
+
+    Raises:
+        TypeError: `quick_replies` argument must be a list or tuple
+    """
 
     def __init__(self, quick_replies):
         super().__init__()
