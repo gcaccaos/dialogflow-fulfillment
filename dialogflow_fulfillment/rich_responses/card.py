@@ -3,7 +3,15 @@ from .rich_response import RichResponse
 
 
 class Card(RichResponse):
-    """Dialogflow's Card class"""
+    """
+    Dialogflow's card response
+
+    Parameters:
+        title (str): The card's title
+
+    Attributes:
+        title (str): The card's title
+    """
 
     def __init__(self, title):
         super().__init__()
