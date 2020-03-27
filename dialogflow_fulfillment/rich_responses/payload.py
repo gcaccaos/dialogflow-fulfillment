@@ -1,4 +1,6 @@
 """Module for Payload rich response"""
+from typing import Dict
+
 from .rich_response import RichResponse
 
 
@@ -13,6 +15,7 @@ class Payload(RichResponse):
         payload (Dict): The custom payload content
     """
 
+    def __init__(self, payload: Dict):
         super().__init__()
 
         self.set_payload(payload)
