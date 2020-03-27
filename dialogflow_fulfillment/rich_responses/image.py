@@ -13,9 +13,12 @@ class Image(RichResponse):
         image_url (str): The image's URL
     """
 
-    def __init__(self, image_uri):
+    def __init__(self, image_url: str):
         super().__init__()
 
+        self.set_image(image_url)
+
+    def set_image(self, image_url: str):
         """
         Sets the image URL
 
