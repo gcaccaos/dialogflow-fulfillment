@@ -16,13 +16,18 @@ class Card(RichResponse):
     def __init__(self, title):
         super().__init__()
 
+        """
+        Sets the card title
+
+        Args:
+            title (str): The title of the card
+
+        Raises:
+            TypeError: `title` argument must be a string
+        """
         if not isinstance(title, str):
             raise TypeError('title argument must be a string')
 
-        self.set_title(title)
-
-    def set_title(self, title):
-        """Sets the card title"""
         self.title = title
 
     def _get_response_object(self):
