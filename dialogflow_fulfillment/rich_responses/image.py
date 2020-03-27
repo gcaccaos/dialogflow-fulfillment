@@ -16,10 +16,15 @@ class Image(RichResponse):
     def __init__(self, image_uri):
         super().__init__()
 
-        self.set_image(image_uri)
+        """
+        Sets the image URL
 
-    def set_image(self, image_url):
-        """Sets the image URI"""
+        Parameters:
+            image_url (str): The image's URL
+
+        Raises:
+            TypeError: `image_url` argument must be a string
+        """
         if not isinstance(image_url, str):
             raise TypeError('image_url argument must be a string')
 
