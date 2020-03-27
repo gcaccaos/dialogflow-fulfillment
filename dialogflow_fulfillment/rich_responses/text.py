@@ -3,7 +3,15 @@ from .rich_response import RichResponse
 
 
 class Text(RichResponse):  # pylint: disable=too-few-public-methods
-    """Dialogflow's Text class"""
+    """
+    Dialogflow's text response
+    
+    Parameters:
+        text (str): The text content
+
+    Attributes:
+        text (str): The text content
+    """
 
     def __init__(self, text):
         super().__init__()
