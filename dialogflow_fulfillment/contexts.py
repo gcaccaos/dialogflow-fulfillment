@@ -2,9 +2,19 @@
 
 
 class Context:
-    """Dialogflow's Context API class"""
+    """
+    Dialogflow's Context API class
 
-    def __init__(self, input_contexts, session):
+    Parameters:
+        input_contexts (List[Dict]): Active contexts during intent detection
+        session (str): Request's session id
+
+    Attributes:
+        input_contexts (List[Dict]): Active contexts during intent detection
+        session (str): Request's session id
+        contexts (Dict[str, Dict]): mapping of context names to context dictionaries
+    """
+
         self._index = None
         self._context_array = None
         self.session = session
