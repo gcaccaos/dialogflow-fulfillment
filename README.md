@@ -92,8 +92,7 @@ response = agent.response
 
 ## References
 
-* [Dialogflow's WebhookClient class documentation](https://dialogflow.com/docs/reference/fulfillment-library/webhook-client)
-* [Dialogflow's RichResponse classes documentation](https://dialogflow.com/docs/reference/fulfillment-library/rich-responses)
+* [`dialogflow-fulfillment` documentation](https://dialogflow-fulfillment.readthedocs.io)
 
 ## Testing
 
