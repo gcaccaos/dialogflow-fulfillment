@@ -5,7 +5,10 @@ setup(
     version='0.1.0',
     author='Gabriel F. Caccaos',
     author_email='gabriel.caccaos@gmail.com',
-    packages=['dialogflow_fulfillment'],
+    packages=[
+        'dialogflow_fulfillment',
+        'dialogflow_fulfillment.rich_responses'
+        ],
     url='https://github.com/gcaccaos/dialogflow-fulfillment',
     license='Apache License 2.0',
     description='A Dialogflow\'s webhook fulfillment API v2 library',
