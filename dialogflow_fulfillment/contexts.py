@@ -33,8 +33,17 @@ class Context:
 
         return contexts
 
-    def set_(self, name, lifespan_count=None, parameters=None):
-        """Set a new Dialogflow outgoing context"""
+        """
+        Sets a new Dialogflow outgoing context
+
+        Parameters:
+            name (str): Context's name
+            lifespan_count (Optional[int]): Context's lifespan duration in minutes
+            parameters (Optional[Dict]): Context's parameters
+
+        Raises:
+            TypeError: `name` argument must be a string
+        """
         if not isinstance(name, str):
             raise TypeError('name argument must be a string')
 
