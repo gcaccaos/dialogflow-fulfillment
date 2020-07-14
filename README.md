@@ -1,9 +1,8 @@
-# Dialogflow Fulfillment Library
+# dialogflow-fulfillment
 
 ---
 
 ![PyPI](https://img.shields.io/pypi/v/dialogflow-fulfillment)
-![PyPI - Downloads](https://img.shields.io/pypi/dm/dialogflow-fulfillment?label=pypi%20downloads)
 [![Documentation Status](https://readthedocs.org/projects/dialogflow-fulfillment/badge/?version=latest)](https://dialogflow-fulfillment.readthedocs.io/en/latest/?badge=latest)
 [![GitHub license](https://img.shields.io/github/license/gcaccaos/dialogflow-fulfillment)](https://github.com/gcaccaos/dialogflow-fulfillment/blob/master/LICENSE)
 
