@@ -1,7 +1,13 @@
-.vscode
+# Hidden directories
+.vscode/
+.tox/
+
+# Artifact directories
+dialogflow_fulfillment.egg-info/
+build/
+dist/
+docs/build/
 __pycache__
-*.pyc
-*.egg-info
-build
-dist
-.tox
+
+# By file extension
+*.py[doc]
