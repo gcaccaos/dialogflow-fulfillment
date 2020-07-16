@@ -1,12 +1,7 @@
-Webhook Client
+Webhook client
 ==============
 
-.. currentmodule:: dialogflow_fulfillment.webhook_client
-
-.. autoclass:: dialogflow_fulfillment.webhook_client.WebhookClient
+.. automodule:: dialogflow_fulfillment.webhook_client
    :members:
-
-.. autosummary::
-   :nosignatures:
-
-   dialogflow_fulfillment.webhook_client.WebhookClient
+   :undoc-members:
+   :show-inheritance:

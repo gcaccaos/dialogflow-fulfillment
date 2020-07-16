@@ -1,7 +1,7 @@
-Context
+Contexts
 ========
 
-.. currentmodule:: dialogflow_fulfillment.contexts
-
-.. autoclass:: dialogflow_fulfillment.contexts.Context
+.. automodule:: dialogflow_fulfillment.contexts
    :members:
+   :undoc-members:
+   :show-inheritance:

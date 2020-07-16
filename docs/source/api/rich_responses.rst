@@ -1,26 +1,55 @@
-Rich Responses
+Rich responses
 ==============
 
-.. currentmodule:: dialogflow_fulfillment.rich_responses
+.. automodule:: dialogflow_fulfillment.rich_responses
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
-.. autoclass:: dialogflow_fulfillment.rich_responses.Card
+Card
+----
 
-~~~~
+.. automodule:: dialogflow_fulfillment.rich_responses.card
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
-.. autoclass:: dialogflow_fulfillment.rich_responses.Image
+Image
+-----
 
-~~~~
+.. automodule:: dialogflow_fulfillment.rich_responses.image
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
-.. autoclass:: dialogflow_fulfillment.rich_responses.Payload
+Payload
+-------
 
-~~~~
+.. automodule:: dialogflow_fulfillment.rich_responses.payload
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
-.. autoclass:: dialogflow_fulfillment.rich_responses.QuickReplies
+Quick Replies
+-------------
 
-~~~~
+.. automodule:: dialogflow_fulfillment.rich_responses.quick_replies
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
-.. autoclass:: dialogflow_fulfillment.rich_responses.Text
+Rich Response
+-------------
 
-~~~~
+.. automodule:: dialogflow_fulfillment.rich_responses.rich_response
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
-.. autoclass:: dialogflow_fulfillment.rich_responses.RichResponse
+Text
+----
+
+.. automodule:: dialogflow_fulfillment.rich_responses.text
+   :members:
+   :undoc-members:
+   :show-inheritance:
