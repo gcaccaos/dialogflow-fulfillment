@@ -37,7 +37,7 @@ agent.handle_request(handler)
 response = agent.response
 ```
 
-## Installing
+## Installation
 
 The preferred way to install *dialogflow-fulfillment* is from
 [PyPI](https://pypi.org/project/dialogflow-fulfillment/) with
