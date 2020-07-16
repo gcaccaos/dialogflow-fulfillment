@@ -1,4 +1,3 @@
-"""Module for Payload rich response"""
 from typing import Dict
 
 from .rich_response import RichResponse

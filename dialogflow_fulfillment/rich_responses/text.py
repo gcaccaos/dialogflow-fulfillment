@@ -1,11 +1,10 @@
-"""Module for Text rich response"""
 from .rich_response import RichResponse
 
 
 class Text(RichResponse):  # pylint: disable=too-few-public-methods
     """
     Dialogflow's text response
-    
+
     Parameters:
         text (str): The text content
 

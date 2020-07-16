@@ -1,5 +1,3 @@
-"""Module for base rich response"""
-
 class RichResponse:  # pylint: disable=too-few-public-methods
     """Dialogflow's rich response"""
 

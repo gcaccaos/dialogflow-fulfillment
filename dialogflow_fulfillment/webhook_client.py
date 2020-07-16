@@ -1,4 +1,3 @@
-"""Dialogflow's Webhook Client class module"""
 from typing import Any, Callable, Dict, List, Optional, Union
 
 from .contexts import Context

@@ -1,4 +1,3 @@
-"""Module for QuickReplies rich response"""
 from typing import List, Tuple, Union
 
 from .rich_response import RichResponse

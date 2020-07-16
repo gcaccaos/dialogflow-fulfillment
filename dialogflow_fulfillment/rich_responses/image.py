@@ -1,4 +1,3 @@
-"""Module for Image rich response"""
 from .rich_response import RichResponse
 
 

@@ -1,4 +1,3 @@
-"""Dialogflow's Context API class module"""
 from typing import Dict, List, Optional
 
 

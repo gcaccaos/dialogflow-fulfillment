@@ -1,4 +1,3 @@
-"""Module for Card rich response"""
 from .rich_response import RichResponse
 
 
