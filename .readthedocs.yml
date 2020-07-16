@@ -1,12 +1,21 @@
+# Read the Docs settings
+# RTD version
 version: 2
 
-sphinx:
-  builder: dirhtml
-  configuration: docs/source/conf.py
-
+# Output formats for the documentation
 formats: all
 
+# Python environment settings
 python:
   version: 3.8
   install:
     - requirements: docs/requirements.txt
+    - method: pip
+      path: .
+      extra_requirements:
+        - docs
+
+# Sphinx settings
+sphinx:
+  builder: dirhtml
+  configuration: docs/source/conf.py
