@@ -4,7 +4,7 @@ Overview
 .. toctree::
    :hidden:
 
-   examples/index
+   getting-started/index
    api/index
 What is this package for?
 -------------------------
