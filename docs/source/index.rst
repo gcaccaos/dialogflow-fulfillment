@@ -65,6 +65,10 @@ The preferred way to install *dialogflow-fulfillment* is from
 .. _PyPI: https://pypi.org/project/dialogflow-fulfillment/
 .. _pip: https://pip.pypa.io/
 
+.. seealso::
+
+   For further details about the installation, see :ref:`installation`.
+
 Features
 --------
 
