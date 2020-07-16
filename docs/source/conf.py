@@ -18,8 +18,8 @@ sys.path.insert(0, os.path.abspath('../..'))
 # -- Project information -----------------------------------------------------
 
 project = 'dialogflow-fulfillment'
-copyright = '2020, Gabriel F. Caccaos'
-author = 'Gabriel F. Caccaos'
+copyright = '2020, Gabriel Farias Caccáos'
+author = 'Gabriel Farias Caccáos'
 
 
 # -- General configuration ---------------------------------------------------
