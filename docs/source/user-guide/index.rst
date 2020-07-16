@@ -3,3 +3,6 @@
 User guide
 ==========
 
+.. toctree::
+
+    fulfillment-overview
