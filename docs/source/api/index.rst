@@ -1,9 +1,9 @@
-API Reference
+API reference
 =============
 
 .. toctree::
    :maxdepth: 2
 
-   rich_responses
    webhook_client
+   rich_responses
    contexts
