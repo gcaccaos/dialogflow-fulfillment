@@ -5,6 +5,7 @@ Overview
    :hidden:
 
    getting-started/index
+   user-guide/index
    api/index
 What is this package for?
 -------------------------
@@ -87,6 +88,10 @@ Features
   * Card
   * Quick Replies
   * Payload
+
+.. seealso::
+
+   For more information, see :ref:`user-guide` and :ref:`api-reference`.
 
 Limitations
 -----------
