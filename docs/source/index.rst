@@ -65,8 +65,8 @@ The preferred way to install *dialogflow-fulfillment* is from
 .. _PyPI: https://pypi.org/project/dialogflow-fulfillment/
 .. _pip: https://pip.pypa.io/
 
-Features and limitations
-------------------------
+Features
+--------
 
 *dialogflow-fulfillment*'s key features are:
 
@@ -84,8 +84,11 @@ Features and limitations
   * Quick Replies
   * Payload
 
-Currently, *dialogflow-fulfillment* has some drawbacks, which will be
-addressed in the future:
+Limitations
+-----------
+
+Currently, *dialogflow-fulfillment* has some drawbacks, which will be addressed
+in the future:
 
 * No support for platform-specific responses
 * Partial code coverage
