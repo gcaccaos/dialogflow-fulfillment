@@ -4,7 +4,7 @@ from dialogflow_fulfillment import QuickReplies, WebhookClient
 # Define a custom handler function
 def handler(agent: WebhookClient) -> None:
     """
-    This handler sends a text message along with a quick replies 
+    This handler sends a text message along with a quick replies
     message back to Dialogflow, which uses the messages to build
     the final response to the user.
     """
