@@ -60,12 +60,9 @@ html_theme_options = {
 html_static_path = ['_static']
 
 
-#
+# -- Other settings ----------------------------------------------------------
 
 add_module_names = False
-
-
-# Autodoc configs
 
 autodoc_default_options = {
     'show-inheritance': True,
@@ -73,8 +70,5 @@ autodoc_default_options = {
     'inherited-members': True,
     'undoc-members': True,
 }
-
-
-# Other configs
 
 master_doc = 'index'
