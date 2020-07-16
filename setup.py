@@ -15,6 +15,9 @@ setup(
     long_description_content_type='text/markdown',
     long_description=open('README.md').read(),
     python_requires='>=3',
+    extras_require={
+        'docs': ['sphinx>=3.1', 'sphinx-autobuild>=0.7']
+    },
     keywords=[
         'dialogflow',
         'fulfillment',
