@@ -65,8 +65,8 @@ pip install dialogflow-fulfillment
 
 ## More examples
 
-* [Dialogflow fulfillment webhook server with **Flask**](https://dialogflow-fulfillment.readthedocs.io/en/latest/examples/flask/)
-* [Dialogflow fulfillment webhook server with **Django**](https://dialogflow-fulfillment.readthedocs.io/en/latest/examples/django/)
+* [Dialogflow fulfillment webhook server with **Flask**](https://dialogflow-fulfillment.readthedocs.io/en/latest/getting-started/examples/flask/)
+* [Dialogflow fulfillment webhook server with **Django**](https://dialogflow-fulfillment.readthedocs.io/en/latest/getting-started/examples/django/)
 
 ## Documentation
 
