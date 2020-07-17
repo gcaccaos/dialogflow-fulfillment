@@ -4,7 +4,7 @@ from .contexts import Context
 from .rich_responses import Payload, QuickReplies, RichResponse, Text
 
 
-class WebhookClient:  # pylint: disable=too-many-instance-attributes
+class WebhookClient:
     """
     Class for handling Dialogflow's fulfillment webhook API v2 requests
 
@@ -31,7 +31,7 @@ class WebhookClient:  # pylint: disable=too-many-instance-attributes
         TypeError: `request` argument must be a dictionary
     """
 
-    def __init__(self, request: Dict):
+    def __init__(self, request: Dict) -> None:
         if not isinstance(request, dict):
             raise TypeError('request argument must be a dictionary')
 
@@ -42,7 +42,7 @@ class WebhookClient:  # pylint: disable=too-many-instance-attributes
 
         self._process_request()
 
-    def _process_request(self):
+    def _process_request(self) -> None:
         """
         Processes a Dialogflow's fulfillment webhook request and sets instance
         variables
@@ -60,7 +60,7 @@ class WebhookClient:  # pylint: disable=too-many-instance-attributes
         self.console_messages = self._get_console_messages()
         self.alternative_query_results = self._request.get('alternativeQueryResults')
 
-    def _get_console_messages(self):
+    def _get_console_messages(self) -> List[RichResponse]:
         """Get messages defined in Dialogflow's console for matched intent"""
         console_messages = []
 
@@ -70,7 +70,7 @@ class WebhookClient:  # pylint: disable=too-many-instance-attributes
 
         return console_messages
 
-    def _convert_message_dictionary(self, message):
+    def _convert_message_dictionary(self, message) -> None:
         """Converts message dictionary to RichResponse"""
         if 'text' in message:
             return Text(message['text']['text'][0])
@@ -81,7 +81,7 @@ class WebhookClient:  # pylint: disable=too-many-instance-attributes
         else:
             raise TypeError('unsupported message type')
 
-    def add(self, responses: Union[str, List[Union[str, RichResponse]]]):
+    def add(self, responses: Union[str, List[Union[str, RichResponse]]]) -> None:
         """
         Adds a single response message or list of response messages
 
@@ -94,7 +94,7 @@ class WebhookClient:  # pylint: disable=too-many-instance-attributes
         for response in responses:
             self._add_response(response)
 
-    def _add_response(self, response):
+    def _add_response(self, response) -> None:
         """Adds a response to be sent"""
         if isinstance(response, str):
             response = Text(response)
@@ -104,7 +104,7 @@ class WebhookClient:  # pylint: disable=too-many-instance-attributes
 
         self._response_messages.append(response)
 
-    def set_followup_event(self, event: Union[str, dict]):
+    def set_followup_event(self, event: Union[str, dict]) -> None:
         """
         Sets the followup event
 
@@ -118,7 +118,7 @@ class WebhookClient:  # pylint: disable=too-many-instance-attributes
 
         self._followup_event = event
 
-    def handle_request(self, handler: Union[Callable, Dict]) -> Optional[Any]:
+    def handle_request(self, handler: Union[Callable, Dict[str, Callable]]) -> Optional[Any]:
         """
         Handles the request using a handler or map of handlers and returns output
         from handler function
@@ -143,7 +143,7 @@ class WebhookClient:  # pylint: disable=too-many-instance-attributes
 
         return result
 
-    def _send_responses(self):
+    def _send_responses(self) -> None:
         """Adds and sends response to Dialogflow fulfillment webhook request"""
         if self._response_messages:
             self._response['fulfillmentMessages'] = self._build_response_messages()
@@ -157,9 +157,9 @@ class WebhookClient:  # pylint: disable=too-many-instance-attributes
         if self.request_source is not None:
             self._response['source'] = self.request_source
 
-    def _build_response_messages(self):
+    def _build_response_messages(self) -> List[Dict]:
         """Builds a list of message objects to send back to Dialogflow"""
-        return list(map(lambda response: response._get_response_object(),  # pylint: disable=protected-access
+        return list(map(lambda response: response._get_response_object(),
                         self._response_messages))
 
     @property
