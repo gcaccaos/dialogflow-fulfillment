@@ -15,7 +15,7 @@ class Context:
         contexts (Dict[str, Dict]): mapping of context names to context dictionaries
     """
 
-    def __init__(self, input_contexts: List[Dict], session: str):
+    def __init__(self, input_contexts: List[Dict], session: str) -> None:
         self._index = None
         self._context_array = None
         self.input_contexts = self._process_input_contexts(input_contexts)
@@ -23,7 +23,7 @@ class Context:
         self.contexts = self._process_input_contexts(input_contexts)
 
     @staticmethod
-    def _process_input_contexts(input_contexts):
+    def _process_input_contexts(input_contexts) -> Dict[str, Dict]:
         """Processes a list of Dialogflow input contexts"""
         contexts = {}
 
@@ -34,7 +34,7 @@ class Context:
 
         return contexts
 
-    def set(self, name: str, lifespan_count: Optional[int] = None, parameters: Optional[Dict] = None):
+    def set(self, name: str, lifespan_count: Optional[int] = None, parameters: Optional[Dict] = None) -> None:
         """
         Sets a new Dialogflow outgoing context
 
@@ -70,7 +70,7 @@ class Context:
         """
         return self.contexts.get(name)
 
-    def delete(self, name: str):
+    def delete(self, name: str) -> None:
         """
         Deletes a context a Dialogflow session (set the lifespan to 0)
 
@@ -93,13 +93,13 @@ class Context:
 
         return output_contexts
 
-    def __iter__(self):
+    def __iter__(self) -> 'Context':
         self._index = 0
         self._context_array = list(self.contexts.values())
 
         return self
 
-    def __next__(self):
+    def __next__(self) -> Dict:
         if self._index >= len(self._context_array):
             raise StopIteration
 
