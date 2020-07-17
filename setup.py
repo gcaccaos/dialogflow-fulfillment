@@ -15,7 +15,7 @@ setup(
     extras_require={
         'dev': ['tox>=3.14'],
         'docs': ['sphinx>=3.1', 'sphinx-autobuild>=0.7'],
-        'tests': ['coverage>=5.1']
+        'tests': ['coverage>=5.1', 'flake8>=3.8', 'isort>=4.3']
     },
     keywords=[
         'dialogflow',
