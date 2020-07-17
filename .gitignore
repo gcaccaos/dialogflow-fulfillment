@@ -9,5 +9,8 @@ dist/
 docs/build/
 __pycache__
 
+# Artifact files
+.coverage
+
 # By file extension
 *.py[doc]
