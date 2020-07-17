@@ -47,24 +47,24 @@ class WebhookClient:
         Processes a Dialogflow's fulfillment webhook request and sets instance
         variables
         """
-        self.intent = self._request.get('queryResult').get('intent').get('displayName')
-        self.action = self._request.get('queryResult').get('action')
-        self.parameters = self._request.get('queryResult').get('parameters', {})
-        self.contexts = self._request.get('queryResult').get('outputContexts', [])
-        self.original_request = self._request.get('originalDetectIntentRequest')
-        self.request_source = self.original_request.get('source')
-        self.query = self._request.get('queryResult').get('queryText')
-        self.locale = self._request.get('queryResult').get('languageCode')
-        self.session = self._request.get('session')
+        self.intent = self._request['queryResult']['intent']['displayName']
+        self.action = self._request['queryResult']['action']
+        self.parameters = self._request['queryResult'].get('parameters', {})
+        self.contexts = self._request['queryResult'].get('outputContexts', [])
+        self.original_request = self._request['originalDetectIntentRequest']
+        self.request_source = self._request['originalDetectIntentRequest']['source']
+        self.query = self._request['queryResult']['queryText']
+        self.locale = self._request['queryResult']['languageCode']
+        self.session = self._request['session']
         self.context = Context(self.contexts, self.session)
         self.console_messages = self._get_console_messages()
-        self.alternative_query_results = self._request.get('alternativeQueryResults')
+        self.alternative_query_results = self._request.get('alternativeQueryResults', {})
 
     def _get_console_messages(self) -> List[RichResponse]:
         """Get messages defined in Dialogflow's console for matched intent"""
         console_messages = []
 
-        for message in self._request.get('queryResult').get('fulfillmentMessages', []):
+        for message in self._request['queryResult'].get('fulfillmentMessages', []):
             message = self._convert_message_dictionary(message)
             console_messages.append(message)
 
