@@ -5,10 +5,7 @@ setup(
     version='0.1.2',
     author='Gabriel Farias Caccáos',
     author_email='gabriel.caccaos@gmail.com',
-    packages=[
-        'dialogflow_fulfillment',
-        'dialogflow_fulfillment.rich_responses'
-        ],
+    packages=['dialogflow_fulfillment'],
     url='https://github.com/gcaccaos/dialogflow-fulfillment',
     license='Apache License 2.0',
     description='Create fulfillment webhook services for Dialogflow using Python',
