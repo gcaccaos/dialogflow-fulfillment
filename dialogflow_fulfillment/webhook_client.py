@@ -48,11 +48,11 @@ class WebhookClient:
         variables
         """
         self.intent = self._request['queryResult']['intent']['displayName']
-        self.action = self._request['queryResult']['action']
+        self.action = self._request['queryResult'].get('action')
         self.parameters = self._request['queryResult'].get('parameters', {})
         self.contexts = self._request['queryResult'].get('outputContexts', [])
         self.original_request = self._request['originalDetectIntentRequest']
-        self.request_source = self._request['originalDetectIntentRequest']['source']
+        self.request_source = self._request['originalDetectIntentRequest'].get('source')
         self.query = self._request['queryResult']['queryText']
         self.locale = self._request['queryResult']['languageCode']
         self.session = self._request['session']
