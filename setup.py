@@ -21,7 +21,6 @@ setup(
         'fulfillment',
         'webhook',
         'api',
-        'dialogflow-fulfillment',
         'python',
     ],
     classifiers=[
