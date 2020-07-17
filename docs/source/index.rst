@@ -7,8 +7,6 @@ Overview
    getting-started/index
    user-guide/index
    api/index
-What is this package for?
--------------------------
 
 *dialogflow-fulfillment* is a package for Python that helps developers to
 create fulfillment webhook services for Dialogflow.
@@ -29,7 +27,7 @@ from Dialogflow (a.k.a. `WebhookRequest`) to a :class:`~.WebhookClient` and
 calling it's :meth:`~.WebhookClient.handle_request` method on a handler
 function (or a mapping of functions for each intent):
 
-.. literalinclude:: ../../samples/simple_example.py
+.. literalinclude:: ../../examples/simple_example.py
    :language: python
    :caption: simple_example.py
 
