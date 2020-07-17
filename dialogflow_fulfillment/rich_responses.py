@@ -1,7 +1,7 @@
 from typing import Dict, List, Tuple, Union
 
 
-class RichResponse:  # pylint: disable=too-few-public-methods
+class RichResponse:
     """Dialogflow's rich response"""
 
     def _get_response_object(self):
@@ -19,12 +19,12 @@ class Card(RichResponse):
         title (str): The card's title
     """
 
-    def __init__(self, title: str):
+    def __init__(self, title: str) -> None:
         super().__init__()
 
         self.set_title(title)
 
-    def set_title(self, title: str):
+    def set_title(self, title: str) -> None:
         """
         Sets the card title
 
@@ -39,7 +39,7 @@ class Card(RichResponse):
 
         self.title = title
 
-    def _get_response_object(self):
+    def _get_response_object(self) -> Dict:
         return {'card': {'title': self.title}}
 
 
@@ -54,12 +54,12 @@ class Image(RichResponse):
         image_url (str): The image's URL
     """
 
-    def __init__(self, image_url: str):
+    def __init__(self, image_url: str) -> None:
         super().__init__()
 
         self.set_image(image_url)
 
-    def set_image(self, image_url: str):
+    def set_image(self, image_url: str) -> None:
         """
         Sets the image URL
 
@@ -74,7 +74,7 @@ class Image(RichResponse):
 
         self.image_url = image_url
 
-    def _get_response_object(self):
+    def _get_response_object(self) -> Dict:
         return {'image': {'imageUri': self.image_url}}
 
 
@@ -89,12 +89,12 @@ class Payload(RichResponse):
         payload (Dict): The custom payload content
     """
 
-    def __init__(self, payload: Dict):
+    def __init__(self, payload: Dict) -> None:
         super().__init__()
 
         self.set_payload(payload)
 
-    def set_payload(self, payload):
+    def set_payload(self, payload) -> None:
         """
         Sets the payload content
 
@@ -109,11 +109,11 @@ class Payload(RichResponse):
 
         self.payload = payload
 
-    def _get_response_object(self):
+    def _get_response_object(self) -> Dict:
         return {'payload': self.payload}
 
 
-class QuickReplies(RichResponse):  # pylint: disable=too-few-public-methods
+class QuickReplies(RichResponse):
     """
     Dialogflow's quick replies response
 
@@ -127,7 +127,7 @@ class QuickReplies(RichResponse):  # pylint: disable=too-few-public-methods
         TypeError: `quick_replies` argument must be a list or tuple
     """
 
-    def __init__(self, quick_replies: Union[List[str], Tuple[str]]):
+    def __init__(self, quick_replies: Union[List[str], Tuple[str]]) -> None:
         super().__init__()
 
         if not isinstance(quick_replies, (list, tuple)):
@@ -135,11 +135,11 @@ class QuickReplies(RichResponse):  # pylint: disable=too-few-public-methods
 
         self.quick_replies = quick_replies
 
-    def _get_response_object(self):
+    def _get_response_object(self) -> Dict:
         return {'quickReplies': {'quickReplies': self.quick_replies}}
 
 
-class Text(RichResponse):  # pylint: disable=too-few-public-methods
+class Text(RichResponse):
     """
     Dialogflow's text response
 
@@ -150,7 +150,7 @@ class Text(RichResponse):  # pylint: disable=too-few-public-methods
         text (str): The text content
     """
 
-    def __init__(self, text: str):
+    def __init__(self, text: str) -> None:
         super().__init__()
 
         if not isinstance(text, str):
@@ -158,5 +158,5 @@ class Text(RichResponse):  # pylint: disable=too-few-public-methods
 
         self.text = text
 
-    def _get_response_object(self):
+    def _get_response_object(self) -> Dict:
         return {'text': {'text': [self.text]}}
