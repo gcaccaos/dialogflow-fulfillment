@@ -1,6 +1,7 @@
 # Hidden directories
 .vscode/
 .tox/
+.pytest_cache/
 
 # Artifact directories
 dialogflow_fulfillment.egg-info/
