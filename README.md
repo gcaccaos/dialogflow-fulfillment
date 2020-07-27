@@ -78,7 +78,7 @@ For more information about the package, guides and examples of usage, see the
 All kinds of contributions are welcome!
 
 For an overview about how to contribute to *dialogflow-fulfillment*, see the
-[contributing guide](CONTRIBUTING.md).
+[contributing guide](CONTRIBUTING.rst).
 
 ## License
 
