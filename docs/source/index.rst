@@ -61,7 +61,8 @@ function (or a mapping of functions for each intent):
    :language: python
    :caption: simple_example.py
 
-The above code produces the resulting response object (a.k.a. `WebhookResponse`):
+The above code produces the resulting response object (a.k.a.
+`WebhookResponse`):
 
 .. code-block:: python
 
@@ -122,7 +123,7 @@ Features
   * Quick Replies
   * Payload
 
-.. seealso::
+.. note::
 
    For more information, see :ref:`user-guide` and :ref:`api-reference`.
 
@@ -133,4 +134,3 @@ Currently, *dialogflow-fulfillment* has some drawbacks, which will be addressed
 in the future:
 
 * No support for platform-specific responses
-* Partial code coverage
