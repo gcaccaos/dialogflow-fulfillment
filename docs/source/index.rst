@@ -26,9 +26,17 @@ Overview
    api/contexts
    api/rich_responses
 
-   getting-started/index
-   user-guide/index
-   api/index
+.. toctree::
+   :hidden:
+   :caption: Development
+
+   contributing-guide/index
+
+.. toctree::
+   :hidden:
+   :caption: Release notes
+   
+   change-log/index
 
 *dialogflow-fulfillment* is a package for Python that helps developers to
 create fulfillment webhook services for Dialogflow.
