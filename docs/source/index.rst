@@ -3,6 +3,28 @@ Overview
 
 .. toctree::
    :hidden:
+   :caption: Overview
+
+.. toctree::
+   :hidden:
+   :caption: Getting started
+
+   getting-started/installation
+   getting-started/examples/index
+
+.. toctree::
+   :hidden:
+   :caption: User guide
+
+   user-guide/fulfillment-overview
+
+.. toctree::
+   :hidden:
+   :caption: API reference
+
+   api/webhook_client
+   api/contexts
+   api/rich_responses
 
    getting-started/index
    user-guide/index
