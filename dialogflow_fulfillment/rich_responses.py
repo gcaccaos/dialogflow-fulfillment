@@ -12,13 +12,13 @@ class RichResponse(ABC):
 
 class Card(RichResponse):
     """
-    Dialogflow's card response
+    Sends a card response to the end-user.
 
     Parameters:
-        title (str): The card's title
+        title (str): The title of the card response.
 
     Attributes:
-        title (str): The card's title
+        title (str): The title of the card response.
     """
 
     def __init__(self, title: str) -> None:
@@ -28,10 +28,10 @@ class Card(RichResponse):
 
     def set_title(self, title: str) -> None:
         """
-        Sets the card title
+        Sets the title of the card response.
 
-        Args:
-            title (str): The title of the card
+        Parameters:
+            title (str): The title of the card response.
 
         Raises:
             TypeError: `title` argument must be a string
@@ -47,13 +47,13 @@ class Card(RichResponse):
 
 class Image(RichResponse):
     """
-    Dialogflows' image response
+    Sends an image response to the end-user.
 
     Parameters:
-        image_url (str): The image's URL
+        image_url (str): The URL of the image response.
 
     Attributes:
-        image_url (str): The image's URL
+        image_url (str): The URL of the image response.
     """
 
     def __init__(self, image_url: str) -> None:
@@ -63,10 +63,10 @@ class Image(RichResponse):
 
     def set_image(self, image_url: str) -> None:
         """
-        Sets the image URL
+        Sets the URL of the image response.
 
         Parameters:
-            image_url (str): The image's URL
+            image_url (str): The URL of the image response.
 
         Raises:
             TypeError: `image_url` argument must be a string
@@ -82,13 +82,15 @@ class Image(RichResponse):
 
 class Payload(RichResponse):
     """
-    Dialogflow's payload response
+    Sends a custom payload response to the end-user.
+
+    This type of response allows to handle advanced (custom) responses.
 
     Parameters:
-        payload (Dict): The custom payload content
+        payload (Dict): The content of the custom payload response.
 
     Attributes:
-        payload (Dict): The custom payload content
+        payload (Dict): The content of the custom payload response.
     """
 
     def __init__(self, payload: Dict) -> None:
@@ -96,12 +98,12 @@ class Payload(RichResponse):
 
         self.set_payload(payload)
 
-    def set_payload(self, payload) -> None:
+    def set_payload(self, payload: Dict) -> None:
         """
-        Sets the payload content
+        Sets the content of the custom payload response.
 
         Parameters:
-            payload (Dict): The custom payload content
+            payload (Dict): The content of the custom payload response.
 
         Raises:
             TypeError: `payload` argument must be a dictionary
@@ -117,13 +119,17 @@ class Payload(RichResponse):
 
 class QuickReplies(RichResponse):
     """
-    Dialogflow's quick replies response
+    Sends quick reply buttons to the end-user.
+
+    When clicked, the button sends the reply text to Dialogflow.
 
     Parameters:
-        quick_replies (Union[List[str], Tuple[str]]): Quick reply strings
+        quick_replies (Union[List[str], Tuple[str]]): The texts for the quick
+            reply buttons.
 
     Attributes:
-        quick_replies (Union[List[str], Tuple[str]]): Quick reply strings
+        quick_replies (Union[List[str], Tuple[str]]): The texts for the quick
+            reply buttons.
 
     Raises:
         TypeError: `quick_replies` argument must be a list or tuple
@@ -143,13 +149,13 @@ class QuickReplies(RichResponse):
 
 class Text(RichResponse):
     """
-    Dialogflow's text response
+    Sends a basic (static) text response to the end-user.
 
     Parameters:
-        text (str): The text content
+        text (str): The content of the text response.
 
     Attributes:
-        text (str): The text content
+        text (str): The content of the text response.
     """
 
     def __init__(self, text: str) -> None:
