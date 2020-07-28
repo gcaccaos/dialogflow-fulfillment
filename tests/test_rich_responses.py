@@ -1,6 +1,7 @@
 import pytest
 
-from dialogflow_fulfillment import Card, Image, Payload, QuickReplies, Text
+from dialogflow_fulfillment import (Card, Image, Payload, QuickReplies,
+                                    RichResponse, Text)
 
 
 # Tests for Text response
@@ -116,3 +117,9 @@ def test_card_as_dict(title):
     card_obj = Card(title)
 
     assert card_obj._get_response_object() == {'card': {'title': title}}
+
+
+# Tests for the base RichResponse class
+def test_base_rich_response_instantiation():
+    with pytest.raises(TypeError):
+        RichResponse()
