@@ -1,11 +1,13 @@
+from abc import ABC, abstractmethod
 from typing import Dict, List, Tuple, Union
 
 
-class RichResponse:
-    """Dialogflow's rich response"""
+class RichResponse(ABC):
+    """The base (abstract) class for the different types of rich responses."""
 
+    @abstractmethod
     def _get_response_object(self):
-        """Gets the v2 response object"""
+        """Returns the response object as a dictionary."""
 
 
 class Card(RichResponse):
