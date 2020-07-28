@@ -3,21 +3,27 @@ from typing import Dict, List, Optional
 
 class Context:
     """
-    Dialogflow's Context API class
+    An API class for handling input and output contexts.
+
+    This class allows to create, edit or delete contexts during conversations.
 
     Parameters:
-        input_contexts (List[Dict]): Active contexts during intent detection
-        session (str): Request's session id
+        input_contexts (List[Dict]): The contexts that were active in the
+            conversation when the intent was triggered by Dialogflow.
+        session (str): The session of the conversation.
 
     Attributes:
-        input_contexts (List[Dict]): Active contexts during intent detection
-        session (str): Request's session id
-        contexts (Dict[str, Dict]): mapping of context names to context dictionaries
+        input_contexts (List[Dict]): The contexts that were active in the
+            conversation when the intent was triggered by Dialogflow.
+        session (str): The session of the conversation.
+        contexts (Dict[str, Dict]): A mapping of context names to context
+            objects (dictionaries).
     """
 
     def __init__(self, input_contexts: List[Dict], session: str) -> None:
         self._index = None
         self._context_array = None
+
         self.input_contexts = self._process_input_contexts(input_contexts)
         self.session = session
         self.contexts = self._process_input_contexts(input_contexts)
@@ -36,12 +42,14 @@ class Context:
 
     def set(self, name: str, lifespan_count: Optional[int] = None, parameters: Optional[Dict] = None) -> None:
         """
-        Sets a new Dialogflow outgoing context
+        Sets the lifepan and parameters of a context (if the context exists) or
+        creates a new output context (if the context doesn't exist).
 
         Parameters:
-            name (str): Context's name
-            lifespan_count (Optional[int]): Context's lifespan duration in minutes
-            parameters (Optional[Dict]): Context's parameters
+            name (str): The name of the context.
+            lifespan_count (Optional[int]): The lifespan duration of the
+                context (in minutes).
+            parameters (Optional[Dict]): The parameters of the context.
 
         Raises:
             TypeError: `name` argument must be a string
@@ -60,31 +68,31 @@ class Context:
 
     def get(self, name: str) -> Optional[Dict]:
         """
-        Gets a context from the Dialogflow webhook request
+        Finds a context object (dictionary) if exists.
 
         Parameters:
-            name (str): Name of the context
+            name (str): The name of the context.
 
         Returns:
-            Optional[Dict]: Context's dictionary
+            Optional[Dict]: The context object (dictionary) if exists.
         """
         return self.contexts.get(name)
 
     def delete(self, name: str) -> None:
         """
-        Deletes a context a Dialogflow session (set the lifespan to 0)
+        Deletes a context by setting its lifespan to 0.
 
         Parameters:
-            name (str): Name of the context
+            name (str): The name of the context.
         """
         self.set(name, lifespan_count=0)
 
     def get_output_contexts_array(self) -> List[Dict]:
         """
-        Gets the list of context objects
+        Returns the output contexts as an array.
 
         Returns:
-            List[Dict]: Output contexts
+            List[Dict]: The output contexts (dictionaries).
         """
         output_contexts = [*self]
 
