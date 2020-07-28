@@ -161,6 +161,15 @@ class Text(RichResponse):
     def __init__(self, text: str) -> None:
         super().__init__()
 
+        self.set_text(text)
+
+    def set_text(self, text: str) -> None:
+        """
+        Sets the content of the text response.
+
+        Parameters:
+            text (str): The content of the text response.
+        """
         if not isinstance(text, str):
             raise TypeError('text argument must be a string')
 
