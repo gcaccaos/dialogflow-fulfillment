@@ -10,12 +10,6 @@ def text():
     return 'this is a text'
 
 
-def test_text_attr(text):
-    text_obj = Text(text)
-
-    assert text_obj.text == text
-
-
 def test_text_non_string(text):
     with pytest.raises(TypeError):
         Text({'this': ['is not a text']})
@@ -31,12 +25,6 @@ def test_text_as_dict(text):
 @pytest.fixture
 def quick_replies():
     return ['reply 1', 'reply 2', 'reply 3']
-
-
-def test_quick_replies_attr(quick_replies):
-    quick_replies_obj = QuickReplies(quick_replies)
-
-    assert quick_replies_obj.quick_replies == quick_replies
 
 
 def test_quick_replies_non_sequence():
@@ -56,12 +44,6 @@ def payload():
     return {'test key 1': 'test value 1', 'test key 2': 'test value 2'}
 
 
-def test_payload_attr(payload):
-    payload_obj = Payload(payload)
-
-    assert payload_obj.payload == payload
-
-
 def test_payload_non_dict():
     with pytest.raises(TypeError):
         Payload('this is not a dict')
@@ -79,12 +61,6 @@ def image_url():
     return 'https://test.url/image.jpg'
 
 
-def test_image_url_attr(image_url):
-    image_obj = Image(image_url)
-
-    assert image_obj.image_url == image_url
-
-
 def test_image_url_non_string():
     with pytest.raises(TypeError):
         Image({'this': ['is not a string']})
@@ -100,12 +76,6 @@ def test_image_as_dict(image_url):
 @pytest.fixture
 def title():
     return 'this is a title'
-
-
-def test_title_attr(title):
-    card_obj = Card(title)
-
-    assert card_obj.title == title
 
 
 def test_title_non_string():
