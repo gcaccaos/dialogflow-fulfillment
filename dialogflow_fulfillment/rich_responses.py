@@ -255,10 +255,6 @@ class QuickReplies(RichResponse):
         title (Optional[str]): The title of the quick reply buttons.
         quick_replies (Optional[Union[List[str], Tuple[str]]]): The texts for
             the quick reply buttons.
-
-    Raises:
-        TypeError: :attr:`title` argument must be a string.
-        TypeError: :attr:`quick_replies` argument must be a list or tuple.
     """
 
     def __init__(
@@ -268,14 +264,40 @@ class QuickReplies(RichResponse):
     ) -> None:
         super().__init__()
 
+        self.set_title(title)
+        self.set_quick_replies(quick_replies)
+
+    def set_title(self, title: Optional[str] = None):
+        """
+        Sets the title of the quick reply buttons.
+
+        Parameters:
+            title (Optional[str]): The title of the quick reply buttons.
+
+        Raises:
+            TypeError: :attr:`title` argument must be a string.
+        """
         if title is not None and not isinstance(title, str):
             raise TypeError('title argument must be a string')
+
+        self.title = title
+
+    def set_quick_replies(self, quick_replies):
+        """
+        Sets the texts for the quick reply buttons.
+
+        Parameters:
+            quick_replies (Optional[Union[List[str], Tuple[str]]]): The texts
+                for the quick reply buttons.
+
+        Raises:
+            TypeError: :attr:`quick_replies` argument must be a list or tuple.
+        """
 
         if quick_replies is not None and not isinstance(quick_replies,
                                                         (list, tuple)):
             raise TypeError('quick_replies argument must be a list or tuple')
 
-        self.title = title
         self.quick_replies = quick_replies
 
     def _get_response_object(self) -> Dict:
