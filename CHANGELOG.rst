@@ -9,6 +9,32 @@ The format is based on `Keep a Changelog`_ and this project adheres to
 .. _Keep a Changelog: https://keepachangelog.com/en/1.0.0
 .. _Semantic Versioning: https://semver.org/spec/v2.0.0.html
 
+0.3.0 - 2020-07-29
+------------------
+
+Added
+~~~~~
+
+* Docs: Add change log and contributing guide.
+* Small improvements to the classes and methods docstrings.
+* set_text() method for the Text response.
+* set_subtitle(), set_image() and set_buttons() methods for the Card response.
+* set_title() and set_quick_replies() to the QuickReplies response.
+
+Bug fixes
+~~~~~~~~~
+
+* Fix Card and QuickReply missing fields.
+* Fix optional parameters for all rich responses.
+* Fix WebhookClient's parsing of Image and Card responses.
+* Fix RichResponse instantiation (shouldn't be able to instantiate an abstract
+  base class).
+
+Changed
+~~~~~~~
+
+* Docs: Change theme to Read the Docs' theme.
+
 0.2.0 - 2020-07-17
 ------------------
 
