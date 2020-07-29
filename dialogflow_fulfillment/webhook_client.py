@@ -81,9 +81,17 @@ class WebhookClient:
         elif 'image' in message:
             return Image(message['image'].get('imageUri', ''))
         elif 'card' in message:
-            return Card(message['card'].get('title', ''))
+            return Card(
+                title=message['card'].get('title'),
+                subtitle=message['card'].get('subtitle'),
+                image_url=message['card'].get('imageUri'),
+                buttons=message['card'].get('buttons'),
+            )
         elif 'quickReplies' in message:
-            return QuickReplies(message['quickReplies'].get('quickReplies', []))
+            return QuickReplies(
+                title=message['quickReplies'].get('title'),
+                quick_replies=message['quickReplies'].get('quickReplies')
+            )
         elif 'payload' in message:
             return Payload(message['payload'])
 

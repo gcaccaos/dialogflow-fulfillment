@@ -34,7 +34,23 @@ def webhook_request():
                 },
                 {
                     'card': {
-                        'title': 'test title'
+                        'title': 'test title',
+                        'subtitle': 'test subtitle',
+                        'imageUri': 'https://image.url/image.jpg',
+                        'buttons': [
+                            {
+                                'text': 'this is a text',
+                                'postback': 'this is a postback text'
+                            },
+                            {
+                                'text': 'this is a text 2',
+                                'postback': 'this is a postback text 2'
+                            },
+                            {
+                                'text': 'this is a text 3',
+                                'postback': 'this is a postback text 3'
+                            }
+                        ]
                     }
                 },
                 {
