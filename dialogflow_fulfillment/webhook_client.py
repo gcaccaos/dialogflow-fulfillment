@@ -1,7 +1,8 @@
 from typing import Any, Callable, Dict, List, Optional, Union
 
 from .contexts import Context
-from .rich_responses import Payload, QuickReplies, RichResponse, Text
+from .rich_responses import (Card, Image, Payload, QuickReplies, RichResponse,
+                             Text)
 
 
 class WebhookClient:
@@ -76,13 +77,17 @@ class WebhookClient:
     def _convert_message_dictionary(self, message) -> None:
         """Converts message dictionary to RichResponse"""
         if 'text' in message:
-            return Text(message['text']['text'][0])
+            return Text(message['text'].get('text', [])[0])
+        elif 'image' in message:
+            return Image(message['image'].get('imageUri', ''))
+        elif 'card' in message:
+            return Card(message['card'].get('title', ''))
         elif 'quickReplies' in message:
-            return QuickReplies(message['quickReplies']['quickReplies'])
+            return QuickReplies(message['quickReplies'].get('quickReplies', []))
         elif 'payload' in message:
             return Payload(message['payload'])
-        else:
-            raise TypeError('unsupported message type')
+
+        raise TypeError('unsupported message type')
 
     def add(self, responses: Union[str, RichResponse, List[Union[str, RichResponse]]]) -> None:
         """

@@ -2,7 +2,7 @@ from uuid import uuid4
 
 import pytest
 
-from dialogflow_fulfillment import WebhookClient
+from dialogflow_fulfillment import WebhookClient, Image
 
 
 @pytest.fixture
@@ -13,18 +13,28 @@ def webhook_request():
     intent_id = str(uuid4())
 
     return {
-        "responseId": response_id,
-        "queryResult": {
-            "queryText": "Hi",
-            "parameters": {},
-            "allRequiredParamsPresent": True,
-            "fulfillmentText": "Hello! How can I help you?",
-            "fulfillmentMessages": [
+        'responseId': response_id,
+        'queryResult': {
+            'queryText': 'Hi',
+            'parameters': {},
+            'allRequiredParamsPresent': True,
+            'fulfillmentText': 'Hello! How can I help you?',
+            'fulfillmentMessages': [
                 {
-                    "text": {
-                        "text": [
-                            "Hello! How can I help you?"
+                    'text': {
+                        'text': [
+                            'Hello! How can I help you?'
                         ]
+                    }
+                },
+                {
+                    'image': {
+                        'imageUri': 'https://image.url/image.jpg'
+                    }
+                },
+                {
+                    'card': {
+                        'title': 'test title'
                     }
                 },
                 {
@@ -43,26 +53,26 @@ def webhook_request():
                     }
                 }
             ],
-            "outputContexts": [
+            'outputContexts': [
                 {
-                    "name": f"projects/{project_id}/agent/sessions/{session}/contexts/__system_counters__",
-                    "parameters": {
-                        "no-input": 0,
-                        "no-match": 0
+                    'name': f'projects/{project_id}/agent/sessions/{session}/contexts/__system_counters__',
+                    'parameters': {
+                        'no-input': 0,
+                        'no-match': 0
                     }
                 }
             ],
-            "intent": {
-                "name": f"projects/{project_id}/agent/intents/{intent_id}",
-                "displayName": "Default Welcome Intent"
+            'intent': {
+                'name': f'projects/{project_id}/agent/intents/{intent_id}',
+                'displayName': 'Default Welcome Intent'
             },
-            "intentDetectionConfidence": 1,
-            "languageCode": "en"
+            'intentDetectionConfidence': 1,
+            'languageCode': 'en'
         },
-        "originalDetectIntentRequest": {
-            "payload": {},
+        'originalDetectIntentRequest': {
+            'payload': {},
         },
-        "session": f"projects/{project_id}/agent/sessions/{session}"
+        'session': f'projects/{project_id}/agent/sessions/{session}'
     }
 
 
