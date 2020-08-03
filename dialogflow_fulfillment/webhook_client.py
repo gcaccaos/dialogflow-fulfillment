@@ -14,7 +14,7 @@ class WebhookClient:
     back to the end-user).
 
     Parameters:
-        request (Dict): The request object (WebhookRequest) from Dialogflow.
+        request (dict): The request object (WebhookRequest) from Dialogflow.
 
     Attributes:
         query (str): The original query sent by the end-user.
@@ -22,9 +22,9 @@ class WebhookClient:
         action (str): The action defined for the intent.
         context (:class:`.Context`): An API class for handling input and output
             contexts.
-        contexts (List[Dict]): The array of input contexts.
-        parameters (Dict): The intent parameters extracted by Dialogflow.
-        console_messages (List[:class:`.RichResponse`]): The response messages
+        contexts (list(dict)): The array of input contexts.
+        parameters (dict): The intent parameters extracted by Dialogflow.
+        console_messages (list(:class:`.RichResponse`)): The response messages
             defined for the intent.
         original_request (str): The original request object from
             `detectIntent/query`.
@@ -97,13 +97,16 @@ class WebhookClient:
 
         raise TypeError('unsupported message type')
 
-    def add(self, responses: Union[str, RichResponse, List[Union[str, RichResponse]]]) -> None:
+    def add(
+        self,
+        responses: Union[str, RichResponse, List[Union[str, RichResponse]]]
+    ) -> None:
         """
         Adds response messages to be sent back to Dialogflow (which will send
         the messages to the end-user).
 
         Parameters:
-            responses (Union[str, RichResponse, List[Union[str, RichResponse]]]):
+            responses (str, RichResponse or list(str or RichResponse)):
                 A single response message or a list of response messages.
         """
         if not isinstance(responses, list):
@@ -127,7 +130,7 @@ class WebhookClient:
         Sets the followup event to be triggered by Dialogflow.
 
         Parameters:
-            event (Union[str, Dict]): The event to be triggered by Dialogflow.
+            event (str or dict): The event to be triggered by Dialogflow.
         """
         if isinstance(event, str):
             event = {'name': event}
@@ -136,17 +139,20 @@ class WebhookClient:
 
         self._followup_event = event
 
-    def handle_request(self, handler: Union[Callable, Dict[str, Callable]]) -> Optional[Any]:
+    def handle_request(
+        self,
+        handler: Union[Callable, Dict[str, Callable]]
+    ) -> Optional[Any]:
         """
         Handles the webhook request using a handler function or a mapping of
         intents to handler functions and returns the handler's output (if any).
 
         Parameters:
-            handler (Union[Callable, Dict[str, Callable]]): The handler
-                function or a mapping of intents to handler functions.
+            handler (callable or dict(str, callable)): The handler function or
+                a mapping of intents to handler functions.
 
         Returns:
-            Optional[Any]: The output from the handler function (if any).
+            any, optional: The output from the handler function (if any).
 
         Raises:
             TypeError: `handler` argument must be a function or a map of
@@ -189,6 +195,6 @@ class WebhookClient:
         to Dialogflow.
 
         Returns:
-            Dict: The generated response object (WebhookResponse).
+            dict: The generated response object (WebhookResponse).
         """
         return self._response

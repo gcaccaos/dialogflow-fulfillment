@@ -11,7 +11,7 @@ LOG = create_logger(APP)
 LOG.setLevel(DEBUG)
 
 
-def handler(agent):
+def handler(agent: WebhookClient):
     """Custom handler function"""
 
 

@@ -6,7 +6,7 @@ class RichResponse(ABC):
     """The base (abstract) class for the different types of rich responses."""
 
     @abstractmethod
-    def _get_response_object(self):
+    def _get_response_object(self) -> Dict:
         """Returns the response object as a dictionary."""
 
 
@@ -15,17 +15,17 @@ class Card(RichResponse):
     Sends a card response to the end-user.
 
     Parameters:
-        title (Optional[str]): The title of the card response.
-        subtitle (Optional[str]): The subtitle of the card response.
-        image_url (Optional[str]): The URL of the card response's image.
-        buttons (Optional[List[Dict[str, str]]]): The buttons of the card
+        title (str, optional): The title of the card response.
+        subtitle (str, optional): The subtitle of the card response. Defaults
+        image_url (str, optional): The URL of the card response's image.
+        buttons (list(dict(str, str)), optional): The buttons of the card
             response.
 
     Attributes:
-        title (Optional[str]): The title of the card response.
-        subtitle (Optional[str]): The subtitle of the card response.
-        image_url (Optional[str]): The URL of the card response's image.
-        buttons (Optional[List[Dict[str, str]]]): The buttons of the card
+        title (str, optional): The title of the card response.
+        subtitle (str, optional): The subtitle of the card response.
+        image_url (str, optional): The URL of the card response's image.
+        buttons (list(dict(str, str)), optional): The buttons of the card
             response.
     """
 
@@ -48,7 +48,7 @@ class Card(RichResponse):
         Sets the title of the card response.
 
         Parameters:
-            title (Optional[str]): The title of the card response.
+            title (str, optional): The title of the card response.
 
         Raises:
             TypeError: :attr:`title` argument must be a string.
@@ -63,7 +63,7 @@ class Card(RichResponse):
         Sets the subtitle of the card response.
 
         Parameters:
-            subtitle (Optional[str]): The subtitle of the card response.
+            subtitle (str, optional): The subtitle of the card response.
 
         Raises:
             TypeError: :attr:`subtitle` argument must be a string.
@@ -78,7 +78,7 @@ class Card(RichResponse):
         Sets the URL of the card response's image.
 
         Parameters:
-            image_url (Optional[str]): The URL of the card response's image.
+            image_url (str, optional): The URL of the card response's image.
 
         Raises:
             TypeError: :attr:`image_url` argument must be a string.
@@ -96,7 +96,7 @@ class Card(RichResponse):
         Sets the buttons of the card response.
 
         Parameters:
-            buttons (Optional[List[Dict[str, str]]]): The buttons of the card
+            buttons (list(dict(str, str)), optional): The buttons of the card
                 response.
 
         Raises:
@@ -162,10 +162,10 @@ class Image(RichResponse):
     Sends an image response to the end-user.
 
     Parameters:
-        image_url (Optional[str]): The URL of the image response.
+        image_url (str, optional): The URL of the image response.
 
     Attributes:
-        image_url (Optional[str]): The URL of the image response.
+        image_url (str, optional): The URL of the image response.
     """
 
     def __init__(self, image_url: Optional[str] = None) -> None:
@@ -178,7 +178,7 @@ class Image(RichResponse):
         Sets the URL of the image response.
 
         Parameters:
-            image_url (Optional[str]): The URL of the image response.
+            image_url (str, optional): The URL of the image response.
 
         Raises:
             TypeError: :attr:`image_url` argument must be a string.
@@ -204,10 +204,10 @@ class Payload(RichResponse):
     This type of response allows to handle advanced (custom) responses.
 
     Parameters:
-        payload (Optional[Dict]): The content of the custom payload response.
+        payload (dict, optional): The content of the custom payload response.
 
     Attributes:
-        payload (Optional[Dict]): The content of the custom payload response.
+        payload (dict, optional): The content of the custom payload response.
     """
 
     def __init__(self, payload: Optional[Dict] = None) -> None:
@@ -220,7 +220,7 @@ class Payload(RichResponse):
         Sets the content of the custom payload response.
 
         Parameters:
-            payload (Optional[Dict]): The content of the custom payload
+            payload (dict, optional): The content of the custom payload
                 response.
 
         Raises:
@@ -247,13 +247,13 @@ class QuickReplies(RichResponse):
     When clicked, the button sends the reply text to Dialogflow.
 
     Parameters:
-        title (Optional[str]): The title of the quick reply buttons.
-        quick_replies (Optional[Union[List[str], Tuple[str]]]): The texts for
+        title (str, optional): The title of the quick reply buttons.
+        quick_replies (list(str) or tuple(str), optional): The texts for
             the quick reply buttons.
 
     Attributes:
-        title (Optional[str]): The title of the quick reply buttons.
-        quick_replies (Optional[Union[List[str], Tuple[str]]]): The texts for
+        title (str, optional): The title of the quick reply buttons.
+        quick_replies (list(str) or tuple(str), optional): The texts for
             the quick reply buttons.
     """
 
@@ -272,7 +272,7 @@ class QuickReplies(RichResponse):
         Sets the title of the quick reply buttons.
 
         Parameters:
-            title (Optional[str]): The title of the quick reply buttons.
+            title (str, optional): The title of the quick reply buttons.
 
         Raises:
             TypeError: :attr:`title` argument must be a string.
@@ -282,13 +282,16 @@ class QuickReplies(RichResponse):
 
         self.title = title
 
-    def set_quick_replies(self, quick_replies):
+    def set_quick_replies(
+        self,
+        quick_replies: Optional[Union[List[str], Tuple[str]]] = None
+    ) -> None:
         """
         Sets the texts for the quick reply buttons.
 
         Parameters:
-            quick_replies (Optional[Union[List[str], Tuple[str]]]): The texts
-                for the quick reply buttons.
+            quick_replies (list(str) or tuple(str), optional): The texts for
+                the quick reply buttons.
 
         Raises:
             TypeError: :attr:`quick_replies` argument must be a list or tuple.
@@ -317,7 +320,7 @@ class Text(RichResponse):
     Sends a basic (static) text response to the end-user.
 
     Parameters:
-        text (Optional[str]): The content of the text response.
+        text (:obj:`str`, optional): The content of the text response.
 
     Attributes:
         text (Optional[str]): The content of the text response.
@@ -333,7 +336,7 @@ class Text(RichResponse):
         Sets the content of the text response.
 
         Parameters:
-            text (Optional[str]): The content of the text response.
+            text (:obj:`str`, optional): The content of the text response.
 
         Raises:
             TypeError: :attr:`text` argument must be a string.

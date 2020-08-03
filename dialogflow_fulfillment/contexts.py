@@ -8,15 +8,15 @@ class Context:
     This class allows to create, edit or delete contexts during conversations.
 
     Parameters:
-        input_contexts (List[Dict]): The contexts that were active in the
+        input_contexts (list(dict)): The contexts that were active in the
             conversation when the intent was triggered by Dialogflow.
         session (str): The session of the conversation.
 
     Attributes:
-        input_contexts (List[Dict]): The contexts that were active in the
+        input_contexts (list(dict)): The contexts that were active in the
             conversation when the intent was triggered by Dialogflow.
         session (str): The session of the conversation.
-        contexts (Dict[str, Dict]): A mapping of context names to context
+        contexts (dict(str, dict)): A mapping of context names to context
             objects (dictionaries).
     """
 
@@ -40,16 +40,21 @@ class Context:
 
         return contexts
 
-    def set(self, name: str, lifespan_count: Optional[int] = None, parameters: Optional[Dict] = None) -> None:
+    def set(
+        self,
+        name: str,
+        lifespan_count: Optional[int] = None,
+        parameters: Optional[Dict] = None
+    ) -> None:
         """
         Sets the lifepan and parameters of a context (if the context exists) or
         creates a new output context (if the context doesn't exist).
 
         Parameters:
             name (str): The name of the context.
-            lifespan_count (Optional[int]): The lifespan duration of the
+            lifespan_count (int, optional): The lifespan duration of the
                 context (in minutes).
-            parameters (Optional[Dict]): The parameters of the context.
+            parameters (dict, optional): The parameters of the context.
 
         Raises:
             TypeError: `name` argument must be a string
@@ -74,7 +79,7 @@ class Context:
             name (str): The name of the context.
 
         Returns:
-            Optional[Dict]: The context object (dictionary) if exists.
+            dict, optional: The context object (dictionary) if exists.
         """
         return self.contexts.get(name)
 
@@ -92,7 +97,7 @@ class Context:
         Returns the output contexts as an array.
 
         Returns:
-            List[Dict]: The output contexts (dictionaries).
+            list(dict): The output contexts (dictionaries).
         """
         output_contexts = [*self]
 

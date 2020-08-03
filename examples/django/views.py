@@ -9,7 +9,7 @@ LOG = getLogger(__name__)
 LOG.setLevel(DEBUG)
 
 
-def handler(agent):
+def handler(agent: WebhookClient):
     """Custom handler function"""
 
 
