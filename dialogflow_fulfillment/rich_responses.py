@@ -6,7 +6,7 @@ class RichResponse(ABC):
     """The base (abstract) class for the different types of rich responses."""
 
     @abstractmethod
-    def _get_response_object(self) -> Dict:
+    def _as_dict(self) -> Dict:
         """Returns the response object as a dictionary."""
 
 
@@ -139,7 +139,7 @@ class Card(RichResponse):
 
         return validated_buttons
 
-    def _get_response_object(self) -> Dict:
+    def _as_dict(self) -> Dict:
         fields = {}
 
         if self.title is not None:
@@ -188,7 +188,7 @@ class Image(RichResponse):
 
         self.image_url = image_url
 
-    def _get_response_object(self) -> Dict:
+    def _as_dict(self) -> Dict:
         fields = {}
 
         if self.image_url is not None:
@@ -231,7 +231,7 @@ class Payload(RichResponse):
 
         self.payload = payload
 
-    def _get_response_object(self) -> Dict:
+    def _as_dict(self) -> Dict:
         fields = {}
 
         if self.payload is not None:
@@ -303,7 +303,7 @@ class QuickReplies(RichResponse):
 
         self.quick_replies = quick_replies
 
-    def _get_response_object(self) -> Dict:
+    def _as_dict(self) -> Dict:
         fields = {}
 
         if self.title is not None:
@@ -346,5 +346,5 @@ class Text(RichResponse):
 
         self.text = text
 
-    def _get_response_object(self) -> Dict:
+    def _as_dict(self) -> Dict:
         return {'text': {'text': [self.text if self.text is not None else '']}}

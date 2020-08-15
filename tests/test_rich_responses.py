@@ -18,7 +18,7 @@ def test_text_non_string(text):
 def test_text_as_dict(text):
     text_obj = Text(text)
 
-    assert text_obj._get_response_object() == {'text': {'text': [text]}}
+    assert text_obj._as_dict() == {'text': {'text': [text]}}
 
 
 # Tests for QuickReplies response
@@ -34,7 +34,7 @@ def quick_replies():
 def test_quick_replies_empty_params():
     quick_replies_obj = QuickReplies()
 
-    assert quick_replies_obj._get_response_object() == {'quickReplies': {}}
+    assert quick_replies_obj._as_dict() == {'quickReplies': {}}
 
 
 def test_quick_replies_non_string():
@@ -50,7 +50,7 @@ def test_quick_replies_non_sequence_replies():
 def test_quick_replies_as_dict(quick_replies_title, quick_replies):
     quick_replies_obj = QuickReplies(quick_replies_title, quick_replies)
 
-    assert quick_replies_obj._get_response_object() == {'quickReplies': {'title': quick_replies_title, 'quickReplies': quick_replies}}
+    assert quick_replies_obj._as_dict() == {'quickReplies': {'title': quick_replies_title, 'quickReplies': quick_replies}}
 
 
 # Tests for Payload response
@@ -62,7 +62,7 @@ def payload():
 def test_payload_empty_params():
     payload_obj = Payload()
 
-    assert payload_obj._get_response_object() == {'payload': {}}
+    assert payload_obj._as_dict() == {'payload': {}}
 
 
 def test_payload_non_dict():
@@ -73,7 +73,7 @@ def test_payload_non_dict():
 def test_payload_as_dict(payload):
     payload_obj = Payload(payload)
 
-    assert payload_obj._get_response_object() == {'payload': payload}
+    assert payload_obj._as_dict() == {'payload': payload}
 
 
 # Tests for Image response
@@ -85,7 +85,7 @@ def image_url():
 def test_image_empty_params():
     image_obj = Image()
 
-    assert image_obj._get_response_object() == {'image': {}}
+    assert image_obj._as_dict() == {'image': {}}
 
 
 def test_image_url_non_string():
@@ -96,7 +96,7 @@ def test_image_url_non_string():
 def test_image_as_dict(image_url):
     image_obj = Image(image_url)
 
-    assert image_obj._get_response_object() == {'image': {'imageUri': image_url}}
+    assert image_obj._as_dict() == {'image': {'imageUri': image_url}}
 
 
 # Tests for Card response
@@ -115,7 +115,7 @@ def buttons():
 def test_card_empty_params():
     card_obj = Card()
 
-    assert card_obj._get_response_object() == {'card': {}}
+    assert card_obj._as_dict() == {'card': {}}
 
 
 def test_title_non_string():
@@ -156,13 +156,13 @@ def test_card_button_postback_non_string():
 def test_card_button_empty_params():
     card_obj = Card(buttons=[{}])
 
-    assert card_obj._get_response_object() == {'card': {'buttons': [{}]}}
+    assert card_obj._as_dict() == {'card': {'buttons': [{}]}}
 
 
 def test_card_as_dict(title, subtitle, image_url, buttons):
     card_obj = Card(title=title, subtitle=subtitle, image_url=image_url, buttons=buttons)
 
-    assert card_obj._get_response_object() == {'card': {'title': title, 'subtitle': subtitle, 'imageUri': image_url, 'buttons': buttons}}
+    assert card_obj._as_dict() == {'card': {'title': title, 'subtitle': subtitle, 'imageUri': image_url, 'buttons': buttons}}
 
 
 # Tests for the base RichResponse class
