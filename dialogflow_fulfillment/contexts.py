@@ -8,12 +8,12 @@ class Context:
     This class allows to create, edit or delete contexts during conversations.
 
     Parameters:
-        input_contexts (list(dict)): The contexts that were active in the
+        input_contexts (list of dict): The contexts that were active in the
             conversation when the intent was triggered by Dialogflow.
         session (str): The session of the conversation.
 
     Attributes:
-        input_contexts (list(dict)): The contexts that were active in the
+        input_contexts (list of dict): The contexts that were active in the
             conversation when the intent was triggered by Dialogflow.
         session (str): The session of the conversation.
         contexts (dict(str, dict)): A mapping of context names to context
