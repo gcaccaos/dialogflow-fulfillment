@@ -189,10 +189,6 @@ class WebhookClient:
     @property
     def response(self) -> Dict:
         """
-        Returns the generated response object (WebhookResponse) to be sent back
-        to Dialogflow.
-
-        Returns:
-            dict: The generated response object (WebhookResponse).
+        dict: The generated response object (WebhookResponse).
         """
         return self._response
