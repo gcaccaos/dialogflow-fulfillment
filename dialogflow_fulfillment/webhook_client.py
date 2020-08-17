@@ -66,13 +66,8 @@ class WebhookClient:
 
     def _get_console_messages(self) -> List[RichResponse]:
         """Get messages defined in Dialogflow's console for matched intent"""
-        console_messages = []
-
-        for message in self._request['queryResult'].get('fulfillmentMessages', []):
-            message = self._convert_message_dictionary(message)
-            console_messages.append(message)
-
-        return console_messages
+        return [self._convert_message_dictionary(message) for message
+                in self._request['queryResult'].get('fulfillmentMessages', [])]
 
     def _convert_message_dictionary(self, message) -> None:
         """Converts message dictionary to RichResponse"""
