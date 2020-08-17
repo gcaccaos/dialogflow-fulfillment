@@ -183,8 +183,7 @@ class WebhookClient:
 
     def _build_response_messages(self) -> List[Dict]:
         """Builds a list of message objects to send back to Dialogflow"""
-        return list(map(lambda response: response._get_response_object(),
-                        self._response_messages))
+        return [response._as_dict() for response in self._response_messages]
 
     @property
     def response(self) -> Dict:
