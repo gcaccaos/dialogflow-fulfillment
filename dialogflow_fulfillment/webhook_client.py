@@ -161,12 +161,12 @@ class WebhookClient:
             TypeError: `handler` argument must be a function or a map of
                 functions
         """
-        if callable(handler):
-            result = handler(self)
-        elif isinstance(handler, dict):
-            result = handler.get(self.intent)(self)
-        else:
+        handler_function = handler.get(self.intent) if isinstance(handler, dict) else handler
+
+        if not callable(handler_function):
             raise TypeError('handler argument must be a function or a map of functions')
+
+        result = handler_function(self)
 
         self._send_responses()
 
