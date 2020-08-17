@@ -101,7 +101,7 @@ class WebhookClient:
         the messages to the end-user).
 
         Parameters:
-            responses (str, RichResponse or list(str or RichResponse)):
+            responses (str, RichResponse or list of str or RichResponse):
                 A single response message or a list of response messages.
         """
         if not isinstance(responses, list):
