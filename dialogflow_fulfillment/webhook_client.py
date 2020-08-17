@@ -141,7 +141,10 @@ class WebhookClient:
 
     def handle_request(
         self,
-        handler: Union[Callable, Dict[str, Callable]]
+        handler: Union[
+            Callable[['WebhookClient'], Optional[Any]],
+            Dict[str, Callable[['WebhookClient'], Optional[Any]]]
+        ]
     ) -> Optional[Any]:
         """
         Handles the webhook request using a handler function or a mapping of
