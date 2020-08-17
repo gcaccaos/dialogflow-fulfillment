@@ -32,8 +32,8 @@ class WebhookClient:
         original_request (str): The original request object from
             `detectIntent/query`.
         request_source (str): The source of the request.
-        locale (str): The language code or locale for the original request.
-        session (str): The session of the conversation.
+        locale (str): The language code or locale of the original request.
+        session (str): The session id of the conversation.
     """
 
     def __init__(self, request: Dict) -> None:
