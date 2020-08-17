@@ -16,6 +16,9 @@ class WebhookClient:
     Parameters:
         request (dict): The request object (WebhookRequest) from Dialogflow.
 
+    Raises:
+        TypeError: If the request is not a dictionary.
+
     Attributes:
         query (str): The original query sent by the end-user.
         intent (str): The intent triggered by Dialogflow.
@@ -31,9 +34,6 @@ class WebhookClient:
         request_source (str): The source of the request.
         locale (str): The language code or locale for the original request.
         session (str): The session of the conversation.
-
-    Raises:
-        TypeError: `request` argument must be a dictionary
     """
 
     def __init__(self, request: Dict) -> None:
