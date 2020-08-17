@@ -149,12 +149,12 @@ class WebhookClient:
             handler (callable or dict(str, callable)): The handler function or
                 a mapping of intents to handler functions.
 
-        Returns:
-            any, optional: The output from the handler function (if any).
-
         Raises:
             TypeError: `handler` argument must be a function or a map of
                 functions
+
+        Returns:
+            any, optional: The output from the handler function (if any).
         """
         handler_function = handler.get(self.intent) if isinstance(handler, dict) else handler
 
