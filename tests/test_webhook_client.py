@@ -105,10 +105,9 @@ def test_webhook_client_add_text(webhook_request):
 
     agent.handle_request(handler)
 
-    assert agent.response == {
-        'fulfillmentMessages': [{'text': {'text': ['this is a text']}}],
-        'outputContexts': [*webhook_request['queryResult']['outputContexts']]
-    }
+    assert agent.response['fulfillmentMessages'] == [
+        {'text': {'text': ['this is a text']}}
+    ]
 
 
 def test_webhook_client_add_list_of_texts(webhook_request):
@@ -119,17 +118,14 @@ def test_webhook_client_add_list_of_texts(webhook_request):
 
     agent.handle_request(handler)
 
-    assert agent.response == {
-        'fulfillmentMessages': [
-            {'text': {'text': ['this']}},
-            {'text': {'text': ['is']}},
-            {'text': {'text': ['a']}},
-            {'text': {'text': ['list']}},
-            {'text': {'text': ['of']}},
-            {'text': {'text': ['texts']}}
-        ],
-        'outputContexts': [*webhook_request['queryResult']['outputContexts']]
-    }
+    assert agent.response['fulfillmentMessages'] == [
+        {'text': {'text': ['this']}},
+        {'text': {'text': ['is']}},
+        {'text': {'text': ['a']}},
+        {'text': {'text': ['list']}},
+        {'text': {'text': ['of']}},
+        {'text': {'text': ['texts']}}
+    ]
 
 
 def test_webhook_client_add_non_richresponse(webhook_request):
@@ -150,12 +146,10 @@ def test_webhook_client_set_followup_event(webhook_request):
 
     agent.handle_request(handler)
 
-    assert agent.response == {
-        'outputContexts': [*webhook_request['queryResult']['outputContexts']],
-        'followupEventInput': {
-            'name': 'test_event',
-            'languageCode': webhook_request['queryResult']['languageCode']
-        }
+    assert agent.response['followupEventInput'] == {
+        'name': 'test_event',
+        'languageCode': webhook_request['queryResult']['languageCode']
+    }
     }
 
 
@@ -183,10 +177,9 @@ def test_webhook_client_handler_intent_map(webhook_request):
 
     agent.handle_request(handler)
 
-    assert agent.response == {
-        'fulfillmentMessages': [{'text': {'text': ['Hello!']}}],
-        'outputContexts': [*webhook_request['queryResult']['outputContexts']],
-    }
+    assert agent.response['fulfillmentMessages'] == [
+        {'text': {'text': ['Hello!']}}
+    ]
 
 
 def test_webhook_client_non_callable_handler(webhook_request):
