@@ -1,5 +1,7 @@
 from setuptools import setup
 
+description = 'Create fulfillment webhook services for Dialogflow using Python'
+
 setup(
     name='dialogflow-fulfillment',
     version='0.3.0',
@@ -8,14 +10,25 @@ setup(
     packages=['dialogflow_fulfillment'],
     url='https://github.com/gcaccaos/dialogflow-fulfillment',
     license='Apache License 2.0',
-    description='Create fulfillment webhook services for Dialogflow using Python',
+    description=description,
     long_description_content_type='text/markdown',
     long_description=open('README.md').read(),
     python_requires='>=3',
     extras_require={
-        'dev': ['tox>=3.14'],
-        'docs': ['sphinx>=3.1', 'sphinx-autobuild>=0.7', 'sphinx-rtd-theme>=0.5'],
-        'tests': ['pytest>=5.4', 'coverage>=5.1', 'flake8>=3.8', 'isort>=4.3']
+        'dev': [
+            'tox>=3.14'
+        ],
+        'docs': [
+            'sphinx>=3.1',
+            'sphinx-autobuild>=0.7',
+            'sphinx-rtd-theme>=0.5'
+        ],
+        'tests': [
+            'pytest>=5.4',
+            'coverage>=5.1',
+            'flake8>=3.8',
+            'isort>=4.3'
+        ]
     },
     keywords=[
         'dialogflow',
