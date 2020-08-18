@@ -9,6 +9,11 @@ class RichResponse(ABC):
     def _as_dict(self) -> Dict:
         """Returns the response object as a dictionary."""
 
+    @classmethod
+    @abstractmethod
+    def _from_dict(cls, data: Dict) -> 'RichResponse':
+        """Constructs a response object from a dictionary."""
+
 
 class Card(RichResponse):
     """
@@ -139,6 +144,20 @@ class Card(RichResponse):
 
         return validated_buttons
 
+    @classmethod
+    def _from_dict(cls, data: Dict) -> 'Card':
+        title = data['card'].get('title')
+        subtitle = data['card'].get('subtitle')
+        image_url = data['card'].get('imageUri')
+        buttons = data['card'].get('buttons')
+
+        return cls(
+            title=title,
+            subtitle=subtitle,
+            image_url=image_url,
+            buttons=buttons
+        )
+
     def _as_dict(self) -> Dict:
         fields = {}
 
@@ -188,6 +207,12 @@ class Image(RichResponse):
 
         self.image_url = image_url
 
+    @classmethod
+    def _from_dict(cls, data: Dict) -> 'Image':
+        image_url = data['image'].get('imageUri')
+
+        return cls(image_url=image_url)
+
     def _as_dict(self) -> Dict:
         fields = {}
 
@@ -230,6 +255,12 @@ class Payload(RichResponse):
             raise TypeError('payload argument must be a dictionary')
 
         self.payload = payload
+
+    @classmethod
+    def _from_dict(cls, data: Dict) -> 'Payload':
+        payload = data['payload']
+
+        return cls(payload=payload)
 
     def _as_dict(self) -> Dict:
         fields = {}
@@ -303,6 +334,13 @@ class QuickReplies(RichResponse):
 
         self.quick_replies = quick_replies
 
+    @classmethod
+    def _from_dict(cls, data: Dict) -> 'QuickReplies':
+        title = data['quickReplies'].get('title')
+        quick_replies = data['quickReplies'].get('quickReplies')
+
+        return cls(title=title, quick_replies=quick_replies)
+
     def _as_dict(self) -> Dict:
         fields = {}
 
@@ -345,6 +383,13 @@ class Text(RichResponse):
             raise TypeError('text argument must be a string')
 
         self.text = text
+
+    @classmethod
+    def _from_dict(cls, data: Dict) -> 'Text':
+        texts = data['text'].get('text', [])
+        text = texts[0] if texts else None
+
+        return cls(text=text)
 
     def _as_dict(self) -> Dict:
         return {'text': {'text': [self.text if self.text is not None else '']}}

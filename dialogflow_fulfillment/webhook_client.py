@@ -108,23 +108,15 @@ class WebhookClient:
     def _convert_message_dictionary(self, message) -> None:
         """Converts message dictionary to RichResponse"""
         if 'text' in message:
-            return Text(message['text'].get('text', [])[0])
+            return Text._from_dict(message)
         elif 'image' in message:
-            return Image(message['image'].get('imageUri', ''))
+            return Image._from_dict(message)
         elif 'card' in message:
-            return Card(
-                title=message['card'].get('title'),
-                subtitle=message['card'].get('subtitle'),
-                image_url=message['card'].get('imageUri'),
-                buttons=message['card'].get('buttons'),
-            )
+            return Card._from_dict(message)
         elif 'quickReplies' in message:
-            return QuickReplies(
-                title=message['quickReplies'].get('title'),
-                quick_replies=message['quickReplies'].get('quickReplies')
-            )
+            return QuickReplies._from_dict(message)
         elif 'payload' in message:
-            return Payload(message['payload'])
+            return Payload._from_dict(message)
 
         raise TypeError('unsupported message type')
 
