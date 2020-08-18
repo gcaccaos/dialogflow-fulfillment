@@ -1,4 +1,5 @@
 from typing import Any, Callable, Dict, List, Optional, Union
+from warnings import warn
 
 from .contexts import Context
 from .rich_responses import (Card, Image, Payload, QuickReplies, RichResponse,
@@ -64,6 +65,41 @@ class WebhookClient:
         self.context = Context(self.contexts, self.session)
         self.console_messages = self._get_console_messages()
 
+    @property
+    def followup_event(self) -> Optional[Dict]:
+        """
+        dict, optional: The followup event to be triggered by the response.
+
+        Examples:
+            Accessing the :attr:`followup_event` attribute:
+
+                >>> agent.followup_event
+                None
+
+            Assigning an event name to the :attr:`followup_event` attribute:
+
+                >>> agent.followup_event = 'WELCOME'
+                >>> agent.followup_event
+                {'name': 'WELCOME', 'languageCode': 'en-US'}
+
+            Assigning an event dictionary to the :attr:`followup_event`
+            attribute:
+
+                >>> agent.followup_event = {'name': 'GOODBYE', 'languageCode': 'en-US'}
+                >>> agent.followup_event
+                {'name': 'GOODBYE', 'languageCode': 'en-US'}
+        """
+        return self._followup_event
+
+    @followup_event.setter
+    def followup_event(self, event: Union[str, Dict]) -> None:
+        if isinstance(event, str):
+            event = {'name': event}
+
+        event['languageCode'] = event.get('languageCode', self.locale)
+
+        self._followup_event = event
+
     def _get_console_messages(self) -> List[RichResponse]:
         """Get messages defined in Dialogflow's console for matched intent"""
         return [self._convert_message_dictionary(message) for message
@@ -124,15 +160,21 @@ class WebhookClient:
         """
         Sets the followup event to be triggered by Dialogflow.
 
+        Warning:
+            This method is deprecated and will be removed. Assign event (string
+            or dictionary) to the :attr:`followup_event` attribute instead.
+
         Parameters:
             event (str or dict): The event to be triggered by Dialogflow.
+
+        Warns:
+            DeprecationWarning: Assign event to the :attr:`followup_event`
+                attribute instead.
         """
-        if isinstance(event, str):
-            event = {'name': event}
+        warn('set_followup_event() is deprecated; assign event to the followup_event attribute instead',
+             DeprecationWarning)
 
-        event['languageCode'] = event.get('languageCode', self.locale)
-
-        self._followup_event = event
+        self.followup_event = event
 
     def handle_request(
         self,
@@ -172,8 +214,8 @@ class WebhookClient:
         if self._response_messages:
             self._response['fulfillmentMessages'] = self._build_response_messages()
 
-        if self._followup_event is not None:
-            self._response['followupEventInput'] = self._followup_event
+        if self.followup_event is not None:
+            self._response['followupEventInput'] = self.followup_event
 
         if self.contexts:
             self._response['outputContexts'] = self.context.get_output_contexts_array()
