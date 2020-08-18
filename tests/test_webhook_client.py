@@ -2,7 +2,7 @@ from uuid import uuid4
 
 import pytest
 
-from dialogflow_fulfillment import WebhookClient, Image
+from dialogflow_fulfillment import WebhookClient
 
 
 @pytest.fixture
