@@ -168,6 +168,34 @@ def test_webhook_client_set_followup_event_by_dict(webhook_request):
     }
 
 
+def test_webhook_client_assign_followup_event(webhook_request):
+    agent = WebhookClient(webhook_request)
+
+    def handler(agent):
+        agent.followup_event = 'test_event'
+
+    agent.handle_request(handler)
+
+    assert agent.response['followupEventInput'] == {
+        'name': 'test_event',
+        'languageCode': webhook_request['queryResult']['languageCode']
+    }
+
+
+def test_webhook_client_assign_followup_event_by_dict(webhook_request):
+    agent = WebhookClient(webhook_request)
+
+    def handler(agent):
+        agent.followup_event = {'name': 'test_event'}
+
+    agent.handle_request(handler)
+
+    assert agent.response['followupEventInput'] == {
+        'name': 'test_event',
+        'languageCode': webhook_request['queryResult']['languageCode']
+    }
+
+
 def test_webhook_client_handler_intent_map(webhook_request):
     agent = WebhookClient(webhook_request)
 
