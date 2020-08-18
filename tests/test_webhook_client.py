@@ -142,7 +142,8 @@ def test_webhook_client_set_followup_event(webhook_request):
     agent = WebhookClient(webhook_request)
 
     def handler(agent):
-        agent.set_followup_event('test_event')
+        with pytest.warns(DeprecationWarning):
+            agent.set_followup_event('test_event')
 
     agent.handle_request(handler)
 
@@ -150,14 +151,14 @@ def test_webhook_client_set_followup_event(webhook_request):
         'name': 'test_event',
         'languageCode': webhook_request['queryResult']['languageCode']
     }
-    }
 
 
 def test_webhook_client_set_followup_event_by_dict(webhook_request):
     agent = WebhookClient(webhook_request)
 
     def handler(agent):
-        agent.set_followup_event({'name': 'test_event'})
+        with pytest.warns(DeprecationWarning):
+            agent.set_followup_event({'name': 'test_event'})
 
     agent.handle_request(handler)
 
