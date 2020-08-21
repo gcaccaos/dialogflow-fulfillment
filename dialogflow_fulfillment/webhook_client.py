@@ -286,6 +286,12 @@ class WebhookClient:
     @property
     def response(self) -> Dict:
         """
-        dict: The generated response object (WebhookResponse).
+        dict: The generated webhook response object (:obj:`WebhookResponse`).
+
+        See also:
+            For more information about the webhook response object, see the
+            WebhookResponse_ section in Dialogflow's API reference.
+
+        .. _WebhookResponse: https://cloud.google.com/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#webhookresponse
         """
         return self._response
