@@ -204,6 +204,45 @@ class WebhookClient:
         Handles the webhook request using a handler function or a mapping of
         intents to handler functions and returns the handler's output (if any).
 
+        In order to manipulate the conversation programatically, the handler
+        function must receive an instance of :class:`WebhookClient` as a
+        parameter. Then, inside the function, :class:`WebhookClient`'s
+        attributes and methods can be used to access and manipulate the webhook
+        request attributes and generate the webhook response.
+
+        Alternatively, this method can receive a mapping of handler functions
+        for each intent.
+
+        Note:
+            If a mapping of handler functions is provided, the name of the
+            corresponding intent must be written exactly as it is in
+            Dialogflow.
+
+        Finally, once the request has been handled, the generated webhook
+        response can be accessed via the :attr:`response` attribute.
+
+        Examples:
+            Creating a simple handler function that sends a text and a
+            collection of quick reply buttons to the end-user (the response is
+            independent of the triggered intent):
+
+                >>> def handler(agent: WebhookClient) -> None:
+                ...     agent.add('How are you feeling today?')
+                ...     agent.add(QuickReplies(quick_replies=['Happy :)', 'Sad :(']))
+
+            Creating a mapping of handler functions for different intents:
+
+                >>> def welcome_handler(agent):
+                ...     agent.add('Hi!')
+                ...     agent.add('How can I help you?')
+                >>> def fallback_handler(agent):
+                ...     agent.add('Sorry, I missed what you said.')
+                ...     agent.add('Can you say that again?')
+                >>> handler = {
+                ...     'Default Welcome Intent': welcome_handler,
+                ...     'Default Fallback Intent': fallback_handler,
+                ... }
+
         Parameters:
             handler (callable or dict(str, callable)): The handler function or
                 a mapping of intents to handler functions.
