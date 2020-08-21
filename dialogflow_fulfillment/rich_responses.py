@@ -426,4 +426,6 @@ class Text(RichResponse):
         return cls(text=text)
 
     def _as_dict(self) -> Dict:
-        return {'text': {'text': [self.text if self.text is not None else '']}}
+        text = self.text
+
+        return {'text': {'text': [text if text is not None else '']}}
