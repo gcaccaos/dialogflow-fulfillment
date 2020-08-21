@@ -15,10 +15,15 @@ class WebhookClient:
     back to the end-user).
 
     Parameters:
-        request (dict): The request object (WebhookRequest) from Dialogflow.
+        request (dict): The webhook request object (:obj:`WebhookRequest`) from
+            Dialogflow.
 
     Raises:
         TypeError: If the request is not a dictionary.
+
+    See also:
+        For more information about the webhook request object, see the
+        WebhookRequest_ section in Dialogflow's API reference.
 
     Attributes:
         query (str): The original query sent by the end-user.
@@ -28,13 +33,15 @@ class WebhookClient:
             contexts.
         contexts (list(dict)): The array of input contexts.
         parameters (dict): The intent parameters extracted by Dialogflow.
-        console_messages (list(:class:`.RichResponse`)): The response messages
-            defined for the intent.
+        console_messages (list of :class:`.RichResponse`): The response
+            messages defined for the intent.
         original_request (str): The original request object from
             `detectIntent/query`.
         request_source (str): The source of the request.
         locale (str): The language code or locale of the original request.
         session (str): The session id of the conversation.
+
+    .. _WebhookRequest: https://cloud.google.com/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#webhookrequest
     """
 
     def __init__(self, request: Dict) -> None:
