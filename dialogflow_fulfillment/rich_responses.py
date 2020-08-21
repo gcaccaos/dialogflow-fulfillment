@@ -56,6 +56,18 @@ class Card(RichResponse):
         """
         str, optional: The title of the card response.
 
+        Examples:
+            Accessing the :attr:`title` attribute:
+
+                >>> card.title
+                'What is your favorite color?'
+
+            Assigning value to the :attr:`title` attribute:
+
+                >>> card.title = 'Which color do you like?'
+                >>> card.title
+                'Which color do you like?'
+
         Raises:
             TypeError: If the value to be assigned is not a string.
         """
@@ -92,6 +104,18 @@ class Card(RichResponse):
     def subtitle(self) -> Optional[str]:
         """
         str, optional: The subtitle of the card response.
+
+        Examples:
+            Accessing the :attr:`subtitle` attribute:
+
+                >>> card.subtitle
+                'Choose a color'
+
+            Assigning value to the :attr:`subtitle` attribute:
+
+                >>> card.subtitle = 'Select a color below'
+                >>> card.subtitle
+                'Select a color below'
 
         Raises:
             TypeError: If the value to be assigned is not a string.
@@ -130,6 +154,18 @@ class Card(RichResponse):
         """
         str, optional: The URL of the card response's image.
 
+        Examples:
+            Accessing the :attr:`image_url` attribute:
+
+                >>> card.image_url
+                None
+
+            Assigning value to the :attr:`image_url` attribute:
+
+                >>> card.image_url = 'https://picsum.photos/200/300.jpg'
+                >>> card.image_url
+                'https://picsum.photos/200/300.jpg'
+
         Raises:
             TypeError: If the value to be assigned is not a string.
         """
@@ -166,6 +202,18 @@ class Card(RichResponse):
     def buttons(self) -> Optional[List[Dict[str, str]]]:
         """
         list of dict(str, str), optional: The buttons of the card response.
+
+        Examples:
+            Accessing the :attr:`buttons` attribute:
+
+                >>> card.buttons
+                [{'text': 'Red'}, {'text': 'Green'}, {'text': 'Blue'}]
+
+            Assigning value to the :attr:`buttons` attribute:
+
+                >>> card.buttons = [{'text': 'Cyan'}, {'text': 'Magenta'}]
+                >>> card.buttons
+                [{'text': 'Cyan'}, {'text': 'Magenta'}]
 
         Raises:
             TypeError: If the value to be assigned is not a list of buttons.
@@ -292,6 +340,18 @@ class Image(RichResponse):
         """
         str, optional: The URL of the image response.
 
+        Examples:
+            Accessing the :attr:`image_url` attribute:
+
+                >>> image.image_url
+                'https://picsum.photos/200/300.jpg'
+
+            Assigning a value to the :attr:`image_url` attribute:
+
+                >>> image.image_url = 'https://picsum.photos/200/300?blur.jpg'
+                >>> image.image_url
+                'https://picsum.photos/200/300?blur.jpg'
+
         Raises:
             TypeError: If the value to be assigned is not a string.
         """
@@ -368,6 +428,21 @@ class Payload(RichResponse):
     def payload(self) -> Optional[Dict]:
         """
         dict, optional: The content of the custom payload response.
+
+        Examples:
+            Accessing the :attr:`payload` attribute:
+
+                >>> payload.payload
+                {'attachment': 'https://example.com/files/some_file.pdf', 'type': 'application/pdf'}
+
+            Assigning a value to the :attr:`payload` attribute:
+
+                >>> payload.payload = {
+                ...     'attachment': 'https://example.com/files/another_file.zip',
+                ...     'type': 'application/zip'
+                ... }
+                >>> payload.payload
+                {'attachment': 'https://example.com/files/another_file.zip', 'type': 'application/zip'}
 
         Raises:
             TypeError: If the value to be assigned is not a dictionary.
@@ -451,6 +526,18 @@ class QuickReplies(RichResponse):
         """
         str, optional: The title of the quick reply buttons.
 
+        Examples:
+            Accessing the :attr:`title` attribute:
+
+                >>> quick_replies.title
+                'Choose an answer'
+
+            Assigning a value to the :attr:`title` attribute:
+
+                >>> quick_replies.title = 'Select yes or no'
+                >>> quick_replies.title
+                'Select yes or no'
+
         Raises:
             TypeError: If the value to be assigned is not a string.
         """
@@ -487,6 +574,18 @@ class QuickReplies(RichResponse):
     def quick_replies(self) -> Optional[Union[List[str], Tuple[str]]]:
         """
         list or tuple of str, optional: The texts for the quick reply buttons.
+
+        Examples:
+            Accessing the :attr:`quick_replies` attribute:
+
+                >>> quick_replies.quick_replies
+                ['Yes', 'No']
+
+            Assigning a value to the :attr:`quick_replies` attribute:
+
+                >>> quick_replies.quick_replies = ['Yes', 'No', 'Maybe']
+                >>> quick_replies.quick_replies
+                ['Yes', 'No', 'Maybe']
 
         Raises:
             TypeError: if the value to be assigned is not a list or tuple of
@@ -571,6 +670,18 @@ class Text(RichResponse):
     def text(self) -> Optional[str]:
         """
         str, optional: The content of the text response.
+
+        Examples:
+            Accessing the :attr:`text` attribute:
+
+                >>> text.text
+                'this is a text response'
+
+            Assigning a value to the :attr:`text` attribute:
+
+                >>> text.text = 'this is a new text response'
+                >>> text.text
+                'this is a new text response'
 
         Raises:
             TypeError: If the value to be assigned is not a string.
