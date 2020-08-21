@@ -19,11 +19,20 @@ class Card(RichResponse):
     """
     Sends a card response to the end-user.
 
+    Examples:
+        Constructing a :class:`Card` response:
+
+        >>> card = Card(
+            title='What is your favorite color?',
+            subtitle='Choose a color',
+            buttons=[{'text': 'Red'}, {'text': 'Green'}, {'text': 'Blue'}]
+        )
+
     Parameters:
         title (str, optional): The title of the card response.
         subtitle (str, optional): The subtitle of the card response. Defaults
         image_url (str, optional): The URL of the card response's image.
-        buttons (list(dict(str, str)), optional): The buttons of the card
+        buttons (list of dict(str, str), optional): The buttons of the card
             response.
 
     Attributes:
@@ -180,6 +189,11 @@ class Image(RichResponse):
     """
     Sends an image response to the end-user.
 
+    Examples:
+        Constructing an image response:
+
+            >>> image = Image('https://picsum.photos/200/300.jpg')
+
     Parameters:
         image_url (str, optional): The URL of the image response.
 
@@ -226,7 +240,16 @@ class Payload(RichResponse):
     """
     Sends a custom payload response to the end-user.
 
-    This type of response allows to handle advanced (custom) responses.
+    This type of rich response allows to create advanced, custom, responses.
+
+    Examples:
+        Constructing a custom :class:`Payload` response for file attachments:
+
+        >>> payload_data = {
+        ...     'attachment': 'https://example.com/files/some_file.pdf',
+        ...     'type': 'application/pdf'
+        ... }
+        >>> payload = Payload(payload_data)
 
     Parameters:
         payload (dict, optional): The content of the custom payload response.
@@ -273,14 +296,20 @@ class Payload(RichResponse):
 
 class QuickReplies(RichResponse):
     """
-    Sends quick reply buttons to the end-user.
+    Sends a collection of quick replies to the end-user.
 
-    When clicked, the button sends the reply text to Dialogflow.
+    When a quick reply button is clicked, the corresponding reply text is sent
+    back to Dialogflow as if the user had typed it.
+
+    Examples:
+        Constructing a :class:`QuickReplies` response:
+
+            >>> quick_replies = QuickReplies('Choose an answer', ['Yes', 'No'])
 
     Parameters:
         title (str, optional): The title of the quick reply buttons.
-        quick_replies (list(str) or tuple(str), optional): The texts for
-            the quick reply buttons.
+        quick_replies (list or tuple of str, optional): The texts for the quick
+            reply buttons.
 
     Attributes:
         title (str, optional): The title of the quick reply buttons.
@@ -357,8 +386,13 @@ class Text(RichResponse):
     """
     Sends a basic (static) text response to the end-user.
 
+    Examples:
+        Constructing a :class:`Text` response:
+
+            >>> text = Text('this is a text response')
+
     Parameters:
-        text (:obj:`str`, optional): The content of the text response.
+        text (str, optional): The content of the text response.
 
     Attributes:
         text (Optional[str]): The content of the text response.
