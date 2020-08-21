@@ -15,6 +15,14 @@ def test_text_non_string(text):
         Text({'this': ['is not a text']})
 
 
+def test_text_set_text(text):
+    text_obj = Text()
+
+    text_obj.set_text(text)
+
+    assert text_obj.text == text
+
+
 def test_text_as_dict(text):
     text_obj = Text(text)
 
@@ -37,14 +45,30 @@ def test_quick_replies_empty_params():
     assert quick_replies_obj._as_dict() == {'quickReplies': {}}
 
 
-def test_quick_replies_non_string():
+def test_quick_replies_non_string_title():
     with pytest.raises(TypeError):
         QuickReplies(title={'this': ['is not a string']})
+
+
+def test_quick_replies_set_title(quick_replies_title):
+    quick_replies_obj = QuickReplies()
+
+    quick_replies_obj.set_title(quick_replies_title)
+
+    assert quick_replies_obj.title == quick_replies_title
 
 
 def test_quick_replies_non_sequence_replies():
     with pytest.raises(TypeError):
         QuickReplies(quick_replies='this is not a sequence')
+
+
+def test_quick_replies_set_quick_replies(quick_replies):
+    quick_replies_obj = QuickReplies()
+
+    quick_replies_obj.set_quick_replies(quick_replies)
+
+    assert quick_replies_obj.quick_replies == quick_replies
 
 
 def test_quick_replies_as_dict(quick_replies_title, quick_replies):
@@ -70,6 +94,14 @@ def test_payload_non_dict():
         Payload('this is not a dict')
 
 
+def test_payload_set_payload(payload):
+    payload_obj = Payload()
+
+    payload_obj.set_payload(payload)
+
+    assert payload_obj.payload == payload
+
+
 def test_payload_as_dict(payload):
     payload_obj = Payload(payload)
 
@@ -91,6 +123,14 @@ def test_image_empty_params():
 def test_image_url_non_string():
     with pytest.raises(TypeError):
         Image({'this': ['is not a string']})
+
+
+def test_image_set_image(image_url):
+    image_obj = Image()
+
+    image_obj.set_image(image_url)
+
+    assert image_obj.image_url == image_url
 
 
 def test_image_as_dict(image_url):
@@ -123,14 +163,38 @@ def test_title_non_string():
         Card(title={'this': ['is not a string']})
 
 
+def test_card_set_title(title):
+    card_obj = Card()
+
+    card_obj.set_title(title)
+
+    assert card_obj.title == title
+
+
 def test_subtitle_non_string():
     with pytest.raises(TypeError):
         Card(subtitle={'this': ['is not a string']})
 
 
+def test_card_set_subtitle(subtitle):
+    card_obj = Card()
+
+    card_obj.set_subtitle(subtitle)
+
+    assert card_obj.subtitle == subtitle
+
+
 def test_card_image_url_non_string():
     with pytest.raises(TypeError):
         Card(image_url={'this': ['is not a string']})
+
+
+def test_card_set_image(image_url):
+    card_obj = Card()
+
+    card_obj.set_image(image_url)
+
+    assert card_obj.image_url == image_url
 
 
 def test_card_buttons_non_list():
@@ -151,6 +215,14 @@ def test_card_button_text_non_string():
 def test_card_button_postback_non_string():
     with pytest.raises(TypeError):
         Card(buttons=[{'postback': ['this is not a text']}])
+
+
+def test_card_set_buttons(buttons):
+    card_obj = Card()
+
+    card_obj.set_buttons(buttons)
+
+    assert card_obj.buttons == buttons
 
 
 def test_card_button_empty_params():

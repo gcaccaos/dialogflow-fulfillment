@@ -34,13 +34,6 @@ class Card(RichResponse):
         image_url (str, optional): The URL of the card response's image.
         buttons (list of dict(str, str), optional): The buttons of the card
             response.
-
-    Attributes:
-        title (str, optional): The title of the card response.
-        subtitle (str, optional): The subtitle of the card response.
-        image_url (str, optional): The URL of the card response's image.
-        buttons (list(dict(str, str)), optional): The buttons of the card
-            response.
     """
 
     def __init__(
@@ -52,10 +45,27 @@ class Card(RichResponse):
     ) -> None:
         super().__init__()
 
-        self.set_title(title)
-        self.set_subtitle(subtitle)
-        self.set_image(image_url)
-        self.set_buttons(buttons)
+        self.title = title
+        self.subtitle = subtitle
+        self.image_url = image_url
+        self.buttons = buttons
+
+    @property
+    def title(self) -> Optional[str]:
+        """
+        str, optional: The title of the card response.
+
+        Raises:
+            TypeError: If the value to be assigned is not a string.
+        """
+        return self._title
+
+    @title.setter
+    def title(self, title: Optional[str]) -> None:
+        if title is not None and not isinstance(title, str):
+            raise TypeError('title argument must be a string')
+
+        self._title = title
 
     def set_title(self, title: Optional[str] = None) -> None:
         """
@@ -64,13 +74,26 @@ class Card(RichResponse):
         Parameters:
             title (str, optional): The title of the card response.
 
-        Raises:
-            TypeError: :attr:`title` argument must be a string.
         """
-        if title is not None and not isinstance(title, str):
-            raise TypeError('title argument must be a string')
 
         self.title = title
+
+    @property
+    def subtitle(self) -> Optional[str]:
+        """
+        str, optional: The subtitle of the card response.
+
+        Raises:
+            TypeError: If the value to be assigned is not a string.
+        """
+        return self._subtitle
+
+    @subtitle.setter
+    def subtitle(self, subtitle: Optional[str]) -> None:
+        if subtitle is not None and not isinstance(subtitle, str):
+            raise TypeError('subtitle argument must be a string')
+
+        self._subtitle = subtitle
 
     def set_subtitle(self, subtitle: Optional[str] = None) -> None:
         """
@@ -79,13 +102,26 @@ class Card(RichResponse):
         Parameters:
             subtitle (str, optional): The subtitle of the card response.
 
-        Raises:
-            TypeError: :attr:`subtitle` argument must be a string.
         """
-        if subtitle is not None and not isinstance(subtitle, str):
-            raise TypeError('subtitle argument must be a string')
 
         self.subtitle = subtitle
+
+    @property
+    def image_url(self) -> Optional[str]:
+        """
+        str, optional: The URL of the card response's image.
+
+        Raises:
+            TypeError: If the value to be assigned is not a string.
+        """
+        return self._image_url
+
+    @image_url.setter
+    def image_url(self, image_url: Optional[str]) -> None:
+        if image_url is not None and not isinstance(image_url, str):
+            raise TypeError('image_url argument must be a string')
+
+        self._image_url = image_url
 
     def set_image(self, image_url: Optional[str] = None) -> None:
         """
@@ -94,13 +130,26 @@ class Card(RichResponse):
         Parameters:
             image_url (str, optional): The URL of the card response's image.
 
-        Raises:
-            TypeError: :attr:`image_url` argument must be a string.
         """
-        if image_url is not None and not isinstance(image_url, str):
-            raise TypeError('image_url argument must be a string')
 
         self.image_url = image_url
+
+    @property
+    def buttons(self) -> Optional[List[Dict[str, str]]]:
+        """
+        list of dict(str, str), optional: The buttons of the card response.
+
+        Raises:
+            TypeError: If the value to be assigned is not a list of buttons.
+        """
+        return self._buttons
+
+    @buttons.setter
+    def buttons(self, buttons: Optional[List[Dict[str, str]]]) -> None:
+        if buttons is not None and not isinstance(buttons, list):
+            raise TypeError('buttons argument must be a list of buttons')
+
+        self._buttons = self._validate_buttons(buttons)
 
     def set_buttons(
         self,
@@ -110,19 +159,16 @@ class Card(RichResponse):
         Sets the buttons of the card response.
 
         Parameters:
-            buttons (list(dict(str, str)), optional): The buttons of the card
+            buttons (list of dict(str, str), optional): The buttons of the card
                 response.
 
-        Raises:
-            TypeError: :attr:`buttons` argument must be a list of buttons.
         """
-        if buttons is not None and not isinstance(buttons, list):
-            raise TypeError('buttons argument must be a list of buttons')
 
-        self.buttons = self._validate_buttons(buttons)
+        self.buttons = buttons
 
     @staticmethod
     def _validate_buttons(buttons: Optional[List]) -> List[Dict[str, str]]:
+        # TODO: refactor to reduce the cyclomatic complexity
         if buttons is None:
             return None
 
@@ -197,14 +243,29 @@ class Image(RichResponse):
     Parameters:
         image_url (str, optional): The URL of the image response.
 
-    Attributes:
-        image_url (str, optional): The URL of the image response.
     """
 
     def __init__(self, image_url: Optional[str] = None) -> None:
         super().__init__()
 
-        self.set_image(image_url)
+        self.image_url = image_url
+
+    @property
+    def image_url(self) -> Optional[str]:
+        """
+        str, optional: The URL of the image response.
+
+        Raises:
+            TypeError: If the value to be assigned is not a string.
+        """
+        return self._image_url
+
+    @image_url.setter
+    def image_url(self, image_url: Optional[str]) -> None:
+        if image_url is not None and not isinstance(image_url, str):
+            raise TypeError('image_url argument must be a string')
+
+        self._image_url = image_url
 
     def set_image(self, image_url: Optional[str] = None) -> None:
         """
@@ -213,11 +274,7 @@ class Image(RichResponse):
         Parameters:
             image_url (str, optional): The URL of the image response.
 
-        Raises:
-            TypeError: :attr:`image_url` argument must be a string.
         """
-        if image_url is not None and not isinstance(image_url, str):
-            raise TypeError('image_url argument must be a string')
 
         self.image_url = image_url
 
@@ -254,14 +311,29 @@ class Payload(RichResponse):
     Parameters:
         payload (dict, optional): The content of the custom payload response.
 
-    Attributes:
-        payload (dict, optional): The content of the custom payload response.
     """
 
     def __init__(self, payload: Optional[Dict] = None) -> None:
         super().__init__()
 
-        self.set_payload(payload)
+        self.payload = payload
+
+    @property
+    def payload(self) -> Optional[Dict]:
+        """
+        dict, optional: The content of the custom payload response.
+
+        Raises:
+            TypeError: If the value to be assigned is not a dictionary.
+        """
+        return self._payload
+
+    @payload.setter
+    def payload(self, payload: Optional[Dict]) -> None:
+        if payload is not None and not isinstance(payload, dict):
+            raise TypeError('payload argument must be a dictionary')
+
+        self._payload = payload
 
     def set_payload(self, payload: Optional[Dict] = None) -> None:
         """
@@ -271,11 +343,7 @@ class Payload(RichResponse):
             payload (dict, optional): The content of the custom payload
                 response.
 
-        Raises:
-            TypeError: :attr:`payload` argument must be a dictionary.
         """
-        if payload is not None and not isinstance(payload, dict):
-            raise TypeError('payload argument must be a dictionary')
 
         self.payload = payload
 
@@ -311,10 +379,6 @@ class QuickReplies(RichResponse):
         quick_replies (list or tuple of str, optional): The texts for the quick
             reply buttons.
 
-    Attributes:
-        title (str, optional): The title of the quick reply buttons.
-        quick_replies (list(str) or tuple(str), optional): The texts for
-            the quick reply buttons.
     """
 
     def __init__(
@@ -324,8 +388,25 @@ class QuickReplies(RichResponse):
     ) -> None:
         super().__init__()
 
-        self.set_title(title)
-        self.set_quick_replies(quick_replies)
+        self.title = title
+        self.quick_replies = quick_replies
+
+    @property
+    def title(self) -> Optional[str]:
+        """
+        str, optional: The title of the quick reply buttons.
+
+        Raises:
+            TypeError: If the value to be assigned is not a string.
+        """
+        return self._title
+
+    @title.setter
+    def title(self, title: Optional[str]) -> None:
+        if title is not None and not isinstance(title, str):
+            raise TypeError('title argument must be a string')
+
+        self._title = title
 
     def set_title(self, title: Optional[str] = None):
         """
@@ -334,13 +415,31 @@ class QuickReplies(RichResponse):
         Parameters:
             title (str, optional): The title of the quick reply buttons.
 
-        Raises:
-            TypeError: :attr:`title` argument must be a string.
         """
-        if title is not None and not isinstance(title, str):
-            raise TypeError('title argument must be a string')
 
         self.title = title
+
+    @property
+    def quick_replies(self) -> Optional[Union[List[str], Tuple[str]]]:
+        """
+        list or tuple of str, optional: The texts for the quick reply buttons.
+
+        Raises:
+            TypeError: if the value to be assigned is not a list or tuple of
+                strings.
+        """
+        return self._quick_replies
+
+    @quick_replies.setter
+    def quick_replies(
+        self,
+        quick_replies: Optional[Union[List[str], Tuple[str]]]
+    ) -> None:
+        if quick_replies is not None and not isinstance(quick_replies,
+                                                        (list, tuple)):
+            raise TypeError('quick_replies argument must be a list or tuple')
+
+        self._quick_replies = quick_replies
 
     def set_quick_replies(
         self,
@@ -350,16 +449,10 @@ class QuickReplies(RichResponse):
         Sets the texts for the quick reply buttons.
 
         Parameters:
-            quick_replies (list(str) or tuple(str), optional): The texts for
-                the quick reply buttons.
+            quick_replies (list or tuple of str, optional): The texts for the
+                quick reply buttons.
 
-        Raises:
-            TypeError: :attr:`quick_replies` argument must be a list or tuple.
         """
-
-        if quick_replies is not None and not isinstance(quick_replies,
-                                                        (list, tuple)):
-            raise TypeError('quick_replies argument must be a list or tuple')
 
         self.quick_replies = quick_replies
 
@@ -394,27 +487,38 @@ class Text(RichResponse):
     Parameters:
         text (str, optional): The content of the text response.
 
-    Attributes:
-        text (Optional[str]): The content of the text response.
     """
 
     def __init__(self, text: Optional[str] = None) -> None:
         super().__init__()
 
-        self.set_text(text)
+        self.text = text
+
+    @property
+    def text(self) -> Optional[str]:
+        """
+        str, optional: The content of the text response.
+
+        Raises:
+            TypeError: If the value to be assigned is not a string.
+        """
+        return self._text
+
+    @text.setter
+    def text(self, text: Optional[str]) -> None:
+        if text is not None and not isinstance(text, str):
+            raise TypeError('text argument must be a string')
+
+        self._text = text
 
     def set_text(self, text: Optional[str] = None) -> None:
         """
         Sets the content of the text response.
 
         Parameters:
-            text (:obj:`str`, optional): The content of the text response.
+            text (str, optional): The content of the text response.
 
-        Raises:
-            TypeError: :attr:`text` argument must be a string.
         """
-        if text is not None and not isinstance(text, str):
-            raise TypeError('text argument must be a string')
 
         self.text = text
 
