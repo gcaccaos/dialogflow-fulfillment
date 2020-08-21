@@ -178,17 +178,17 @@ class WebhookClient:
         Sets the followup event to be triggered by Dialogflow.
 
         Warning:
-            This method is deprecated and will be removed. Assign event (string
-            or dictionary) to the :attr:`followup_event` attribute instead.
+            This method is deprecated and will be removed. Assign value to the
+            :attr:`followup_event` attribute instead.
 
         Parameters:
             event (str or dict): The event to be triggered by Dialogflow.
 
         Warns:
-            DeprecationWarning: Assign event to the :attr:`followup_event`
+            DeprecationWarning: Assign value to the :attr:`followup_event`
                 attribute instead.
         """
-        warn('set_followup_event() is deprecated; assign event to the followup_event attribute instead',
+        warn('set_followup_event() is deprecated; assign value to the followup_event attribute instead',
              DeprecationWarning)
 
         self.followup_event = event
