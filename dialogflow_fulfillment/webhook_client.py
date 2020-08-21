@@ -135,6 +135,24 @@ class WebhookClient:
         Adds response messages to be sent back to Dialogflow (which will send
         the messages to the end-user).
 
+        Examples:
+            Adding a simple text response as a string:
+
+                >>> agent.add('Hi! How can I help you?')
+
+            Adding multiple rich responses one at a time:
+
+                >>> agent.add(Text('How are you feeling today?'))
+                >>> agent.add(QuickReplies(quick_replies=['Happy :)', 'Sad :(']))
+
+            Adding multiple rich responses at once:
+
+                >>> responses = [
+                ...     Text('How are you feeling today?'),
+                ...     QuickReplies(quick_replies=['Happy :)', 'Sad :('])
+                ... ]
+                >>> agent.add(responses)
+
         Parameters:
             responses (str, RichResponse or list of str or RichResponse):
                 A single response message or a list of response messages.
