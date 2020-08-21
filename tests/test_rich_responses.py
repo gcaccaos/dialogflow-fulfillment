@@ -35,6 +35,7 @@ def test_text_as_dict(text):
 def quick_replies_title():
     return 'this is a title'
 
+
 @pytest.fixture
 def quick_replies():
     return ['reply 1', 'reply 2', 'reply 3']
@@ -79,7 +80,12 @@ def test_quick_replies_set_quick_replies_with_deprecation_warning(
 def test_quick_replies_as_dict(quick_replies_title, quick_replies):
     quick_replies_obj = QuickReplies(quick_replies_title, quick_replies)
 
-    assert quick_replies_obj._as_dict() == {'quickReplies': {'title': quick_replies_title, 'quickReplies': quick_replies}}
+    assert quick_replies_obj._as_dict() == {
+        'quickReplies': {
+            'title': quick_replies_title,
+            'quickReplies': quick_replies
+        }
+    }
 
 
 # Tests for Payload response
@@ -151,13 +157,20 @@ def test_image_as_dict(image_url):
 def title():
     return 'this is a title'
 
+
 @pytest.fixture
 def subtitle():
     return 'this is a subtitle'
 
+
 @pytest.fixture
 def buttons():
-    return [{'text': 'text 1', 'postback': 'postback 1'}, {'text': 'text 2', 'postback': 'postback 2'}]
+    return [
+        {'text': 'text 1', 'postback': 'postback 1'},
+        {'text': 'text 2', 'postback': 'postback 2'},
+        {'text': 'text 3', 'postback': 'postback 3'}
+    ]
+
 
 def test_card_empty_params():
     card_obj = Card()
@@ -243,9 +256,21 @@ def test_card_button_empty_params():
 
 
 def test_card_as_dict(title, subtitle, image_url, buttons):
-    card_obj = Card(title=title, subtitle=subtitle, image_url=image_url, buttons=buttons)
+    card_obj = Card(
+        title=title,
+        subtitle=subtitle,
+        image_url=image_url,
+        buttons=buttons
+    )
 
-    assert card_obj._as_dict() == {'card': {'title': title, 'subtitle': subtitle, 'imageUri': image_url, 'buttons': buttons}}
+    assert card_obj._as_dict() == {
+        'card': {
+            'title': title,
+            'subtitle': subtitle,
+            'imageUri': image_url,
+            'buttons': buttons
+        }
+    }
 
 
 # Tests for the base RichResponse class

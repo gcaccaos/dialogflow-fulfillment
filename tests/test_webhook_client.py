@@ -71,7 +71,7 @@ def webhook_request():
             ],
             'outputContexts': [
                 {
-                    'name': f'projects/{project_id}/agent/sessions/{session}/contexts/__system_counters__',
+                    'name': f'projects/{project_id}/agent/sessions/{session}/contexts/__system_counters__',  # noqa: E501
                     'parameters': {
                         'no-input': 0,
                         'no-match': 0
@@ -201,7 +201,7 @@ def test_webhook_client_handler_intent_map(webhook_request):
 
     handler = {
         'Default Welcome Intent': lambda agent: agent.add('Hello!'),
-        'Default Fallback Intent': lambda agent: agent.add('Sorry, I\'m having trouble to understand you...'),
+        'Default Fallback Intent': lambda agent: agent.add('What was that?'),
     }
 
     agent.handle_request(handler)
@@ -236,7 +236,8 @@ def test_webhook_client_no_contexts(webhook_request):
 
 def test_webhook_client_with_request_source(webhook_request):
     modified_webhook_request = webhook_request
-    modified_webhook_request['originalDetectIntentRequest']['source'] = 'PLATFORM_UNSPECIFIED'
+    modified_webhook_request['originalDetectIntentRequest']['source'] = \
+        'PLATFORM_UNSPECIFIED'
 
     agent = WebhookClient(modified_webhook_request)
 

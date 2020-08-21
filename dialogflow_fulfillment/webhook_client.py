@@ -65,7 +65,8 @@ class WebhookClient:
         self.parameters = self._request['queryResult'].get('parameters', {})
         self.contexts = self._request['queryResult'].get('outputContexts', [])
         self.original_request = self._request['originalDetectIntentRequest']
-        self.request_source = self._request['originalDetectIntentRequest'].get('source')
+        self.request_source = self._request['originalDetectIntentRequest']\
+            .get('source')
         self.query = self._request['queryResult']['queryText']
         self.locale = self._request['queryResult']['languageCode']
         self.session = self._request['session']
@@ -114,6 +115,7 @@ class WebhookClient:
 
     def _convert_message_dictionary(self, message) -> None:
         """Converts message dictionary to RichResponse"""
+        # TODO: refactor to reduce the cyclomatic complexity (use dict instead)
         if 'text' in message:
             return Text._from_dict(message)
         elif 'image' in message:
