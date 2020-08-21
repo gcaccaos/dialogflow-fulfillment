@@ -66,6 +66,7 @@ html_static_path = ['_static']
 
 add_module_names = False
 
+autodoc_typehints = 'description'
 autodoc_default_options = {
     'show-inheritance': True,
     'members': None,
