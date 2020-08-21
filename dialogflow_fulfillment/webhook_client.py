@@ -248,8 +248,7 @@ class WebhookClient:
                 a mapping of intents to handler functions.
 
         Raises:
-            TypeError: `handler` argument must be a function or a map of
-                functions
+            TypeError: If the handler is not a function or a map of functions.
 
         Returns:
             any, optional: The output from the handler function (if any).
