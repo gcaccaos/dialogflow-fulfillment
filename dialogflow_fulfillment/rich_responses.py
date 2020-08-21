@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import Dict, List, Optional, Tuple, Union
+from warnings import warn
 
 
 class RichResponse(ABC):
@@ -71,10 +72,19 @@ class Card(RichResponse):
         """
         Sets the title of the card response.
 
+        Warning:
+            This method is deprecated and will be removed. Assign value to the
+            :attr:`title` attribute instead
+
         Parameters:
             title (str, optional): The title of the card response.
 
+        Warns:
+            DeprecationWarning: Assign value to the :attr:`title` attribute
+                instead.
         """
+        warn('set_title() is deprecated; assign value to the title attribute instead',
+             DeprecationWarning)
 
         self.title = title
 
@@ -99,10 +109,19 @@ class Card(RichResponse):
         """
         Sets the subtitle of the card response.
 
+        Warning:
+            This method is deprecated and will be removed. Assign value to the
+            :attr:`subtitle` attribute instead
+
         Parameters:
             subtitle (str, optional): The subtitle of the card response.
 
+        Warns:
+            DeprecationWarning: Assign value to the :attr:`subtitle` attribute
+                instead.
         """
+        warn('set_subtitle() is deprecated; assign value to the subtitle attribute instead',
+             DeprecationWarning)
 
         self.subtitle = subtitle
 
@@ -127,10 +146,19 @@ class Card(RichResponse):
         """
         Sets the URL of the card response's image.
 
+        Warning:
+            This method is deprecated and will be removed. Assign value to the
+            :attr:`image_url` attribute instead
+
         Parameters:
             image_url (str, optional): The URL of the card response's image.
 
+        Warns:
+            DeprecationWarning: Assign value to the :attr:`image_url` attribute
+                instead.
         """
+        warn('set_image() is deprecated; assign value to the image_url attribute instead',
+             DeprecationWarning)
 
         self.image_url = image_url
 
@@ -158,11 +186,20 @@ class Card(RichResponse):
         """
         Sets the buttons of the card response.
 
+        Warning:
+            This method is deprecated and will be removed. Assign value to the
+            :attr:`buttons` attribute instead
+
         Parameters:
             buttons (list of dict(str, str), optional): The buttons of the card
                 response.
 
+        Warns:
+            DeprecationWarning: Assign value to the :attr:`buttons` attribute
+                instead.
         """
+        warn('set_buttons() is deprecated; assign value to the buttons attribute instead',
+             DeprecationWarning)
 
         self.buttons = buttons
 
@@ -271,10 +308,19 @@ class Image(RichResponse):
         """
         Sets the URL of the image response.
 
+        Warning:
+            This method is deprecated and will be removed. Assign value to the
+            :attr:`image_url` attribute instead
+
         Parameters:
             image_url (str, optional): The URL of the image response.
 
+        Warns:
+            DeprecationWarning: Assign value to the :attr:`image_url` attribute
+                instead.
         """
+        warn('set_image() is deprecated; assign value to the image_url attribute instead',
+             DeprecationWarning)
 
         self.image_url = image_url
 
@@ -339,11 +385,20 @@ class Payload(RichResponse):
         """
         Sets the content of the custom payload response.
 
+        Warning:
+            This method is deprecated and will be removed. Assign value to the
+            :attr:`payload` attribute instead.
+
         Parameters:
             payload (dict, optional): The content of the custom payload
                 response.
 
+        Warns:
+            DeprecationWarning: Assign value to the :attr:`payload` attribute
+                instead.
         """
+        warn('set_payload() is deprecated; assign value to the payload attribute instead',
+             DeprecationWarning)
 
         self.payload = payload
 
@@ -412,10 +467,19 @@ class QuickReplies(RichResponse):
         """
         Sets the title of the quick reply buttons.
 
+        Warning:
+            This method is deprecated and will be removed. Assign value to the
+            :attr:`title` attribute instead.
+
         Parameters:
             title (str, optional): The title of the quick reply buttons.
 
+        Warns:
+            DeprecationWarning: Assign value to the :attr:`title` attribute
+                instead.
         """
+        warn('set_title() is deprecated; assign value to the title attribute instead',
+             DeprecationWarning)
 
         self.title = title
 
@@ -448,11 +512,20 @@ class QuickReplies(RichResponse):
         """
         Sets the texts for the quick reply buttons.
 
+        Warning:
+            This method is deprecated and will be removed. Assign value to the
+            :attr:`quick_replies` attribute instead.
+
         Parameters:
             quick_replies (list or tuple of str, optional): The texts for the
                 quick reply buttons.
 
+        Warns:
+            DeprecationWarning: Assign value to the :attr:`quick_replies`
+                attribute instead.
         """
+        warn('set_quick_replies() is deprecated; assign value to the quick_replies attribute instead',
+             DeprecationWarning)
 
         self.quick_replies = quick_replies
 
@@ -515,10 +588,19 @@ class Text(RichResponse):
         """
         Sets the content of the text response.
 
+        Warning:
+            This method is deprecated and will be removed. Assign value to the
+            :attr:`text` attribute instead.
+
         Parameters:
             text (str, optional): The content of the text response.
 
+        Warns:
+            DeprecationWarning: Assign value to the :attr:`text` attribute
+                instead.
         """
+        warn('set_text() is deprecated; assign value to the text attribute instead',
+             DeprecationWarning)
 
         self.text = text
 

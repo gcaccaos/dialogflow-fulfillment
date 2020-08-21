@@ -15,10 +15,11 @@ def test_text_non_string(text):
         Text({'this': ['is not a text']})
 
 
-def test_text_set_text(text):
+def test_text_set_text_with_deprecation_warning(text):
     text_obj = Text()
 
-    text_obj.set_text(text)
+    with pytest.warns(DeprecationWarning):
+        text_obj.set_text(text)
 
     assert text_obj.text == text
 
@@ -50,10 +51,11 @@ def test_quick_replies_non_string_title():
         QuickReplies(title={'this': ['is not a string']})
 
 
-def test_quick_replies_set_title(quick_replies_title):
+def test_quick_replies_set_title_with_deprecation_warning(quick_replies_title):
     quick_replies_obj = QuickReplies()
 
-    quick_replies_obj.set_title(quick_replies_title)
+    with pytest.warns(DeprecationWarning):
+        quick_replies_obj.set_title(quick_replies_title)
 
     assert quick_replies_obj.title == quick_replies_title
 
@@ -63,10 +65,13 @@ def test_quick_replies_non_sequence_replies():
         QuickReplies(quick_replies='this is not a sequence')
 
 
-def test_quick_replies_set_quick_replies(quick_replies):
+def test_quick_replies_set_quick_replies_with_deprecation_warning(
+    quick_replies
+):
     quick_replies_obj = QuickReplies()
 
-    quick_replies_obj.set_quick_replies(quick_replies)
+    with pytest.warns(DeprecationWarning):
+        quick_replies_obj.set_quick_replies(quick_replies)
 
     assert quick_replies_obj.quick_replies == quick_replies
 
@@ -94,10 +99,11 @@ def test_payload_non_dict():
         Payload('this is not a dict')
 
 
-def test_payload_set_payload(payload):
+def test_payload_set_payload_with_deprecation_warning(payload):
     payload_obj = Payload()
 
-    payload_obj.set_payload(payload)
+    with pytest.warns(DeprecationWarning):
+        payload_obj.set_payload(payload)
 
     assert payload_obj.payload == payload
 
@@ -125,10 +131,11 @@ def test_image_url_non_string():
         Image({'this': ['is not a string']})
 
 
-def test_image_set_image(image_url):
+def test_image_set_image_with_deprecation_warning(image_url):
     image_obj = Image()
 
-    image_obj.set_image(image_url)
+    with pytest.warns(DeprecationWarning):
+        image_obj.set_image(image_url)
 
     assert image_obj.image_url == image_url
 
@@ -163,10 +170,11 @@ def test_title_non_string():
         Card(title={'this': ['is not a string']})
 
 
-def test_card_set_title(title):
+def test_card_set_title_with_deprecation_warning(title):
     card_obj = Card()
 
-    card_obj.set_title(title)
+    with pytest.warns(DeprecationWarning):
+        card_obj.set_title(title)
 
     assert card_obj.title == title
 
@@ -176,10 +184,11 @@ def test_subtitle_non_string():
         Card(subtitle={'this': ['is not a string']})
 
 
-def test_card_set_subtitle(subtitle):
+def test_card_set_subtitle_with_deprecation_warning(subtitle):
     card_obj = Card()
 
-    card_obj.set_subtitle(subtitle)
+    with pytest.warns(DeprecationWarning):
+        card_obj.set_subtitle(subtitle)
 
     assert card_obj.subtitle == subtitle
 
@@ -189,10 +198,11 @@ def test_card_image_url_non_string():
         Card(image_url={'this': ['is not a string']})
 
 
-def test_card_set_image(image_url):
+def test_card_set_image_with_deprecation_warning(image_url):
     card_obj = Card()
 
-    card_obj.set_image(image_url)
+    with pytest.warns(DeprecationWarning):
+        card_obj.set_image(image_url)
 
     assert card_obj.image_url == image_url
 
@@ -217,10 +227,11 @@ def test_card_button_postback_non_string():
         Card(buttons=[{'postback': ['this is not a text']}])
 
 
-def test_card_set_buttons(buttons):
+def test_card_set_buttons_with_deprecation_warning(buttons):
     card_obj = Card()
 
-    card_obj.set_buttons(buttons)
+    with pytest.warns(DeprecationWarning):
+        card_obj.set_buttons(buttons)
 
     assert card_obj.buttons == buttons
 
