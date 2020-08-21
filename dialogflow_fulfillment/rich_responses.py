@@ -4,7 +4,15 @@ from warnings import warn
 
 
 class RichResponse(ABC):
-    """The base (abstract) class for the different types of rich responses."""
+    """
+    The base (abstract) class for the different types of rich responses.
+
+    See also:
+        For more information about the :class:`RichResponse`, see the
+        `Rich response messages`_ section in Dialogflow's documentation.
+
+    .. _Rich response messages: https://cloud.google.com/dialogflow/docs/intents-rich-messages
+    """
 
     @abstractmethod
     def _as_dict(self) -> Dict:
@@ -35,6 +43,12 @@ class Card(RichResponse):
         image_url (str, optional): The URL of the card response's image.
         buttons (list of dict(str, str), optional): The buttons of the card
             response.
+
+    See also:
+        For more information about the :class:`Card` response, see the
+        `Card responses`_ section in Dialogflow's documentation.
+
+    .. _Card responses: https://cloud.google.com/dialogflow/docs/intents-rich-messages#card
     """
 
     def __init__(
@@ -328,6 +342,11 @@ class Image(RichResponse):
     Parameters:
         image_url (str, optional): The URL of the image response.
 
+    See also:
+        For more information about the :class:`Image` response, see the
+        `Image responses`_ section in Dialogflow's documentation.
+
+    .. _Image responses: https://cloud.google.com/dialogflow/docs/intents-rich-messages#image
     """
 
     def __init__(self, image_url: Optional[str] = None) -> None:
@@ -417,6 +436,11 @@ class Payload(RichResponse):
     Parameters:
         payload (dict, optional): The content of the custom payload response.
 
+    See also:
+        For more information about the :class:`Payload` response, see the
+        `Custom payload responses`_ section in Dialogflow's documentation.
+
+    .. _Custom payload responses: https://cloud.google.com/dialogflow/docs/intents-rich-messages#custom
     """
 
     def __init__(self, payload: Optional[Dict] = None) -> None:
@@ -509,6 +533,11 @@ class QuickReplies(RichResponse):
         quick_replies (list or tuple of str, optional): The texts for the quick
             reply buttons.
 
+    See also:
+        For more information about the :class:`QuickReplies` response, see the
+        `Quick reply responses`_ section in Dialogflow's documentation.
+
+    .. _Quick reply responses: https://cloud.google.com/dialogflow/docs/intents-rich-messages#quick
     """
 
     def __init__(
@@ -659,6 +688,11 @@ class Text(RichResponse):
     Parameters:
         text (str, optional): The content of the text response.
 
+    See also:
+        For more information about the :class:`Text` response, see the
+        `Text responses`_ section in Dialogflow's documentation.
+
+    .. _Text responses: https://cloud.google.com/dialogflow/docs/intents-rich-messages#text
     """
 
     def __init__(self, text: Optional[str] = None) -> None:
