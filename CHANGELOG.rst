@@ -21,8 +21,8 @@ Added
 * set_subtitle(), set_image() and set_buttons() methods for the Card response.
 * set_title() and set_quick_replies() to the QuickReplies response.
 
-Bug fixes
-~~~~~~~~~
+Fixed
+~~~~~
 
 * Fix Card and QuickReply missing fields.
 * Fix optional parameters for all rich responses.
@@ -51,8 +51,8 @@ Changed
 0.1.5 - 2020-07-17
 ------------------
 
-Bug fixes
-~~~~~~~~~
+Fixed
+~~~~~
 
 * Fix bug in WebhookClient's key access in _process_request().
 
