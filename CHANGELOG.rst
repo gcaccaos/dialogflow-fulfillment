@@ -9,7 +9,7 @@ The format is based on `Keep a Changelog`_ and this project adheres to
 .. _Keep a Changelog: https://keepachangelog.com/en/1.0.0
 .. _Semantic Versioning: https://semver.org/spec/v2.0.0.html
 
-0.3.0 - 2020-07-29
+0.3.0_ - 2020-07-29
 ------------------
 
 Added
@@ -35,7 +35,7 @@ Changed
 
 * Docs: Change theme to Read the Docs' theme.
 
-0.2.0 - 2020-07-17
+0.2.0_ - 2020-07-17
 ------------------
 
 Added
@@ -48,7 +48,7 @@ Changed
 
 * Refactored tests to use pytest.
 
-0.1.5 - 2020-07-17
+0.1.5_ - 2020-07-17
 ------------------
 
 Fixed
@@ -56,7 +56,7 @@ Fixed
 
 * Fix bug in WebhookClient's key access in _process_request().
 
-0.1.4 - 2020-07-17
+0.1.4_ - 2020-07-17
 ------------------
 
 Added
@@ -71,7 +71,7 @@ Changed
 
 * Refactor WebhookClient's key access in _process_request().
 
-0.1.3 - 2020-07-17
+0.1.3_ - 2020-07-17
 ------------------
 
 Added
@@ -79,7 +79,14 @@ Added
 
 * Package's public API.
 
-0.1.2 - 2020-03-27
+0.1.2_ - 2020-03-27
 ------------------
 
 * First release.
+
+.. _0.3.0: https://github.com/gcaccaos/dialogflow-fulfillment/compare/v0.2.0...v0.3.0
+.. _0.2.0: https://github.com/gcaccaos/dialogflow-fulfillment/compare/v0.1.5...v0.2.0
+.. _0.1.5: https://github.com/gcaccaos/dialogflow-fulfillment/compare/v0.1.4...v0.1.5
+.. _0.1.4: https://github.com/gcaccaos/dialogflow-fulfillment/compare/v0.1.3...v0.1.4
+.. _0.1.3: https://github.com/gcaccaos/dialogflow-fulfillment/compare/v0.1.2...v0.1.3
+.. _0.1.2: https://github.com/gcaccaos/dialogflow-fulfillment/releases/tag/v0.1.2
