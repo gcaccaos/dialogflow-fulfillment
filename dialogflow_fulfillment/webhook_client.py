@@ -49,7 +49,6 @@ class WebhookClient:
             raise TypeError('request argument must be a dictionary')
 
         self._request = request
-        self._response = {}
         self._response_messages = []
         self._followup_event = None
 
@@ -260,28 +259,16 @@ class WebhookClient:
         if not callable(handler_function):
             raise TypeError('handler argument must be a function or a map of functions')
 
-        result = handler_function(self)
-
-        self._send_responses()
-
-        return result
-
-    def _send_responses(self) -> None:
-        """Adds and sends response to Dialogflow fulfillment webhook request"""
-        if self._response_messages:
-            self._response['fulfillmentMessages'] = self._build_response_messages()
-
-        if self.followup_event is not None:
-            self._response['followupEventInput'] = self.followup_event
-
-        if self.contexts:
-            self._response['outputContexts'] = self.context.get_output_contexts_array()
-
-        if self.request_source is not None:
-            self._response['source'] = self.request_source
+        return handler_function(self)
 
     def _build_response_messages(self) -> List[Dict]:
-        """Builds a list of message objects to send back to Dialogflow"""
+        """
+        Converts the RichResponse messages to dictionaries before sending them
+        back to Dialogflow.
+
+        Returns:
+            list of dict: The list of outgoing response message objects.
+        """
         return [response._as_dict() for response in self._response_messages]
 
     @property
@@ -295,4 +282,18 @@ class WebhookClient:
 
         .. _WebhookResponse: https://cloud.google.com/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#webhookresponse
         """
-        return self._response
+        response = {}
+
+        if self._response_messages:
+            response.update({'fulfillmentMessages': self._build_response_messages()})
+
+        if self.followup_event is not None:
+            response.update({'followupEventInput': self.followup_event})
+
+        if self.contexts:
+            response.update({'outputContexts': self.context.get_output_contexts_array()})
+
+        if self.request_source is not None:
+            response.update({'source': self.request_source})
+
+        return response
