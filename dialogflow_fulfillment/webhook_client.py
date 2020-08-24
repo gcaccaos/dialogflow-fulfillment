@@ -48,29 +48,28 @@ class WebhookClient:
         if not isinstance(request, dict):
             raise TypeError('request argument must be a dictionary')
 
-        self._request = request
         self._response_messages = []
         self._followup_event = None
 
-        self._process_request()
+        self._process_request(request)
 
-    def _process_request(self) -> None:
+    def _process_request(self, request) -> None:
         """
         Processes a Dialogflow's fulfillment webhook request and sets instance
         variables
         """
-        self.intent = self._request['queryResult']['intent']['displayName']
-        self.action = self._request['queryResult'].get('action')
-        self.parameters = self._request['queryResult'].get('parameters', {})
-        self.contexts = self._request['queryResult'].get('outputContexts', [])
-        self.original_request = self._request['originalDetectIntentRequest']
-        self.request_source = self._request['originalDetectIntentRequest']\
+        self.intent = request['queryResult']['intent']['displayName']
+        self.action = request['queryResult'].get('action')
+        self.parameters = request['queryResult'].get('parameters', {})
+        self.contexts = request['queryResult'].get('outputContexts', [])
+        self.original_request = request['originalDetectIntentRequest']
+        self.request_source = request['originalDetectIntentRequest']\
             .get('source')
-        self.query = self._request['queryResult']['queryText']
-        self.locale = self._request['queryResult']['languageCode']
-        self.session = self._request['session']
+        self.query = request['queryResult']['queryText']
+        self.locale = request['queryResult']['languageCode']
+        self.session = request['session']
         self.context = Context(self.contexts, self.session)
-        self.console_messages = self._get_console_messages()
+        self.console_messages = self._process_console_messages(request)
 
     @property
     def followup_event(self) -> Optional[Dict]:
@@ -107,10 +106,13 @@ class WebhookClient:
 
         self._followup_event = event
 
-    def _get_console_messages(self) -> List[RichResponse]:
+    def _process_console_messages(self, request) -> List[RichResponse]:
         """Get messages defined in Dialogflow's console for matched intent"""
-        return [self._convert_message_dictionary(message) for message
-                in self._request['queryResult'].get('fulfillmentMessages', [])]
+        fulfillment_messages = request['queryResult']\
+            .get('fulfillmentMessages', [])
+
+        return [self._convert_message_dictionary(message)
+                for message in fulfillment_messages]
 
     def _convert_message_dictionary(self, message) -> None:
         """Converts message dictionary to RichResponse"""
