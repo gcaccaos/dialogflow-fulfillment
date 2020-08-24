@@ -5,7 +5,7 @@ import pytest
 from dialogflow_fulfillment import WebhookClient
 
 
-@pytest.fixture
+@pytest.fixture()
 def webhook_request():
     response_id = str(uuid4())
     session = str(uuid4())

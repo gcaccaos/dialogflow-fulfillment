@@ -5,7 +5,7 @@ from dialogflow_fulfillment import (Card, Image, Payload, QuickReplies,
 
 
 # Tests for Text response
-@pytest.fixture
+@pytest.fixture()
 def text():
     return 'this is a text'
 
@@ -31,12 +31,12 @@ def test_text_as_dict(text):
 
 
 # Tests for QuickReplies response
-@pytest.fixture
+@pytest.fixture()
 def quick_replies_title():
     return 'this is a title'
 
 
-@pytest.fixture
+@pytest.fixture()
 def quick_replies():
     return ['reply 1', 'reply 2', 'reply 3']
 
@@ -89,7 +89,7 @@ def test_quick_replies_as_dict(quick_replies_title, quick_replies):
 
 
 # Tests for Payload response
-@pytest.fixture
+@pytest.fixture()
 def payload():
     return {'test key 1': 'test value 1', 'test key 2': 'test value 2'}
 
@@ -121,7 +121,7 @@ def test_payload_as_dict(payload):
 
 
 # Tests for Image response
-@pytest.fixture
+@pytest.fixture()
 def image_url():
     return 'https://test.url/image.jpg'
 
@@ -153,17 +153,17 @@ def test_image_as_dict(image_url):
 
 
 # Tests for Card response
-@pytest.fixture
+@pytest.fixture()
 def title():
     return 'this is a title'
 
 
-@pytest.fixture
+@pytest.fixture()
 def subtitle():
     return 'this is a subtitle'
 
 
-@pytest.fixture
+@pytest.fixture()
 def buttons():
     return [
         {'text': 'text 1', 'postback': 'postback 1'},

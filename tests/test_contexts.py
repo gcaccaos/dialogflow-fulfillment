@@ -5,7 +5,7 @@ import pytest
 from dialogflow_fulfillment import Context
 
 
-@pytest.fixture
+@pytest.fixture()
 def session():
     return str(uuid4())
 
