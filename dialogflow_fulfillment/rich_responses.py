@@ -7,7 +7,7 @@ class RichResponse(ABC):
     """
     The base (abstract) class for the different types of rich responses.
 
-    See also:
+    See Also:
         For more information about the :class:`RichResponse`, see the
         `Rich response messages`_ section in Dialogflow's documentation.
 
@@ -44,7 +44,7 @@ class Card(RichResponse):
         buttons (list of dict(str, str), optional): The buttons of the card
             response.
 
-    See also:
+    See Also:
         For more information about the :class:`Card` response, see the
         `Card responses`_ section in Dialogflow's documentation.
 
@@ -342,7 +342,7 @@ class Image(RichResponse):
     Parameters:
         image_url (str, optional): The URL of the image response.
 
-    See also:
+    See Also:
         For more information about the :class:`Image` response, see the
         `Image responses`_ section in Dialogflow's documentation.
 
@@ -436,7 +436,7 @@ class Payload(RichResponse):
     Parameters:
         payload (dict, optional): The content of the custom payload response.
 
-    See also:
+    See Also:
         For more information about the :class:`Payload` response, see the
         `Custom payload responses`_ section in Dialogflow's documentation.
 
@@ -533,7 +533,7 @@ class QuickReplies(RichResponse):
         quick_replies (list or tuple of str, optional): The texts for the quick
             reply buttons.
 
-    See also:
+    See Also:
         For more information about the :class:`QuickReplies` response, see the
         `Quick reply responses`_ section in Dialogflow's documentation.
 
@@ -688,7 +688,7 @@ class Text(RichResponse):
     Parameters:
         text (str, optional): The content of the text response.
 
-    See also:
+    See Also:
         For more information about the :class:`Text` response, see the
         `Text responses`_ section in Dialogflow's documentation.
 

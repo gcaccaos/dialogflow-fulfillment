@@ -21,7 +21,7 @@ class WebhookClient:
     Raises:
         TypeError: If the request is not a dictionary.
 
-    See also:
+    See Also:
         For more information about the webhook request object, see the
         WebhookRequest_ section in Dialogflow's API reference.
 
@@ -278,7 +278,7 @@ class WebhookClient:
         """
         dict: The generated webhook response object (:obj:`WebhookResponse`).
 
-        See also:
+        See Also:
             For more information about the webhook response object, see the
             WebhookResponse_ section in Dialogflow's API reference.
 
