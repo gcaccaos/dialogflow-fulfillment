@@ -263,14 +263,9 @@ class WebhookClient:
 
         return handler_function(self)
 
-    def _build_response_messages(self) -> List[Dict]:
-        """
-        Converts the RichResponse messages to dictionaries before sending them
-        back to Dialogflow.
-
-        Returns:
-            list of dict: The list of outgoing response message objects.
-        """
+    @property
+    def _response_messages_as_dict(self):
+        """list of dict: The list of outgoing response message dictionaries."""
         return [response._as_dict() for response in self._response_messages]
 
     @property
@@ -287,7 +282,7 @@ class WebhookClient:
         response = {}
 
         if self._response_messages:
-            response.update({'fulfillmentMessages': self._build_response_messages()})
+            response.update({'fulfillmentMessages': self._response_messages_as_dict})
 
         if self.followup_event is not None:
             response.update({'followupEventInput': self.followup_event})
