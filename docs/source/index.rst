@@ -70,19 +70,19 @@ The above code produces the resulting response object (a.k.a.
    {
       'fulfillmentMessages': [
          {
-               'text': {
-                  'text': [
-                     'How are you feeling today?'
-                  ]
-               }
+            'text': {
+               'text': [
+                  'How are you feeling today?'
+               ]
+            }
          },
          {
-               'quickReplies': {
-                  'quickReplies': [
-                     'Happy :)',
-                     'Sad :('
-                  ]
-               }
+            'quickReplies': {
+               'quickReplies': [
+                  'Happy :)',
+                  'Sad :('
+               ]
+            }
          }
       ]
    }
