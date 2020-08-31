@@ -12,7 +12,7 @@ class RichResponse(ABC):
         `Rich response messages`_ section in Dialogflow's documentation.
 
     .. _Rich response messages: https://cloud.google.com/dialogflow/docs/intents-rich-messages
-    """
+    """  # noqa: E501
 
     @abstractmethod
     def _as_dict(self) -> Dict:
@@ -49,7 +49,7 @@ class Card(RichResponse):
         `Card responses`_ section in Dialogflow's documentation.
 
     .. _Card responses: https://cloud.google.com/dialogflow/docs/intents-rich-messages#card
-    """
+    """  # noqa: E501
 
     def __init__(
         self,
@@ -109,8 +109,11 @@ class Card(RichResponse):
             DeprecationWarning: Assign value to the :attr:`title` attribute
                 instead.
         """
-        warn('set_title() is deprecated; assign value to the title attribute instead',
-             DeprecationWarning)
+        warn(
+            'set_title() is deprecated; '
+            'assign value to the title attribute instead',
+            DeprecationWarning
+        )
 
         self.title = title
 
@@ -158,8 +161,11 @@ class Card(RichResponse):
             DeprecationWarning: Assign value to the :attr:`subtitle` attribute
                 instead.
         """
-        warn('set_subtitle() is deprecated; assign value to the subtitle attribute instead',
-             DeprecationWarning)
+        warn(
+            'set_subtitle() is deprecated; '
+            'assign value to the subtitle attribute instead',
+            DeprecationWarning
+        )
 
         self.subtitle = subtitle
 
@@ -207,8 +213,11 @@ class Card(RichResponse):
             DeprecationWarning: Assign value to the :attr:`image_url` attribute
                 instead.
         """
-        warn('set_image() is deprecated; assign value to the image_url attribute instead',
-             DeprecationWarning)
+        warn(
+            'set_image() is deprecated; '
+            'assign value to the image_url attribute instead',
+            DeprecationWarning
+        )
 
         self.image_url = image_url
 
@@ -260,14 +269,19 @@ class Card(RichResponse):
             DeprecationWarning: Assign value to the :attr:`buttons` attribute
                 instead.
         """
-        warn('set_buttons() is deprecated; assign value to the buttons attribute instead',
-             DeprecationWarning)
+        warn(
+            'set_buttons() is deprecated; '
+            'assign value to the buttons attribute instead',
+            DeprecationWarning
+        )
 
         self.buttons = buttons
 
-    @staticmethod
-    def _validate_buttons(buttons: Optional[List]) -> List[Dict[str, str]]:
-        # TODO: refactor to reduce the cyclomatic complexity
+    @classmethod
+    def _validate_buttons(
+        cls,
+        buttons: Optional[List[Dict[str, str]]]
+    ) -> Optional[List[Dict[str, str]]]:
         if buttons is None:
             return None
 
@@ -347,7 +361,7 @@ class Image(RichResponse):
         `Image responses`_ section in Dialogflow's documentation.
 
     .. _Image responses: https://cloud.google.com/dialogflow/docs/intents-rich-messages#image
-    """
+    """  # noqa: E501
 
     def __init__(self, image_url: Optional[str] = None) -> None:
         super().__init__()
@@ -398,8 +412,11 @@ class Image(RichResponse):
             DeprecationWarning: Assign value to the :attr:`image_url` attribute
                 instead.
         """
-        warn('set_image() is deprecated; assign value to the image_url attribute instead',
-             DeprecationWarning)
+        warn(
+            'set_image() is deprecated; '
+            'assign value to the image_url attribute instead',
+            DeprecationWarning
+        )
 
         self.image_url = image_url
 
@@ -441,7 +458,7 @@ class Payload(RichResponse):
         `Custom payload responses`_ section in Dialogflow's documentation.
 
     .. _Custom payload responses: https://cloud.google.com/dialogflow/docs/intents-rich-messages#custom
-    """
+    """  # noqa: E501
 
     def __init__(self, payload: Optional[Dict] = None) -> None:
         super().__init__()
@@ -470,7 +487,7 @@ class Payload(RichResponse):
 
         Raises:
             TypeError: If the value to be assigned is not a dictionary.
-        """
+        """  # noqa: E501
         return self._payload
 
     @payload.setter
@@ -496,8 +513,11 @@ class Payload(RichResponse):
             DeprecationWarning: Assign value to the :attr:`payload` attribute
                 instead.
         """
-        warn('set_payload() is deprecated; assign value to the payload attribute instead',
-             DeprecationWarning)
+        warn(
+            'set_payload() is deprecated; '
+            'assign value to the payload attribute instead',
+            DeprecationWarning
+        )
 
         self.payload = payload
 
@@ -538,7 +558,7 @@ class QuickReplies(RichResponse):
         `Quick reply responses`_ section in Dialogflow's documentation.
 
     .. _Quick reply responses: https://cloud.google.com/dialogflow/docs/intents-rich-messages#quick
-    """
+    """  # noqa: E501
 
     def __init__(
         self,
@@ -594,8 +614,11 @@ class QuickReplies(RichResponse):
             DeprecationWarning: Assign value to the :attr:`title` attribute
                 instead.
         """
-        warn('set_title() is deprecated; assign value to the title attribute instead',
-             DeprecationWarning)
+        warn(
+            'set_title() is deprecated; '
+            'assign value to the title attribute instead',
+            DeprecationWarning
+        )
 
         self.title = title
 
@@ -652,8 +675,11 @@ class QuickReplies(RichResponse):
             DeprecationWarning: Assign value to the :attr:`quick_replies`
                 attribute instead.
         """
-        warn('set_quick_replies() is deprecated; assign value to the quick_replies attribute instead',
-             DeprecationWarning)
+        warn(
+            'set_quick_replies() is deprecated; '
+            'assign value to the quick_replies attribute instead',
+            DeprecationWarning
+        )
 
         self.quick_replies = quick_replies
 
@@ -693,7 +719,7 @@ class Text(RichResponse):
         `Text responses`_ section in Dialogflow's documentation.
 
     .. _Text responses: https://cloud.google.com/dialogflow/docs/intents-rich-messages#text
-    """
+    """  # noqa: E501
 
     def __init__(self, text: Optional[str] = None) -> None:
         super().__init__()
@@ -744,8 +770,11 @@ class Text(RichResponse):
             DeprecationWarning: Assign value to the :attr:`text` attribute
                 instead.
         """
-        warn('set_text() is deprecated; assign value to the text attribute instead',
-             DeprecationWarning)
+        warn(
+            'set_text() is deprecated; '
+            'assign value to the text attribute instead',
+            DeprecationWarning
+        )
 
         self.text = text
 

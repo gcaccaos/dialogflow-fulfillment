@@ -42,7 +42,7 @@ class WebhookClient:
         session (str): The session id of the conversation.
 
     .. _WebhookRequest: https://cloud.google.com/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#webhookrequest
-    """
+    """  # noqa: E501
 
     def __init__(self, request: Dict) -> None:
         if not isinstance(request, dict):
@@ -94,7 +94,7 @@ class WebhookClient:
                 >>> agent.followup_event = {'name': 'GOODBYE', 'languageCode': 'en-US'}
                 >>> agent.followup_event
                 {'name': 'GOODBYE', 'languageCode': 'en-US'}
-        """
+        """  # noqa: E501
         return self._followup_event
 
     @followup_event.setter
@@ -159,7 +159,7 @@ class WebhookClient:
         Parameters:
             responses (str, RichResponse or list of str or RichResponse):
                 A single response message or a list of response messages.
-        """
+        """  # noqa: E501
         if not isinstance(responses, list):
             responses = [responses]
 
@@ -172,7 +172,9 @@ class WebhookClient:
             response = Text(response)
 
         if not isinstance(response, RichResponse):
-            raise TypeError('response argument must be a string or a RichResponse')
+            raise TypeError(
+                'response argument must be a string or a RichResponse'
+            )
 
         self._response_messages.append(response)
 
@@ -191,8 +193,11 @@ class WebhookClient:
             DeprecationWarning: Assign value to the :attr:`followup_event`
                 attribute instead.
         """
-        warn('set_followup_event() is deprecated; assign value to the followup_event attribute instead',
-             DeprecationWarning)
+        warn(
+            'set_followup_event() is deprecated; '
+            'assign value to the followup_event attribute instead',
+            DeprecationWarning
+        )
 
         self.followup_event = event
 
@@ -255,11 +260,16 @@ class WebhookClient:
 
         Returns:
             any, optional: The output from the handler function (if any).
-        """
-        handler_function = handler.get(self.intent) if isinstance(handler, dict) else handler
+        """  # noqa: E501
+        if isinstance(handler, dict):
+            handler_function = handler.get(self.intent)
+        else:
+            handler_function = handler
 
         if not callable(handler_function):
-            raise TypeError('handler argument must be a function or a map of functions')
+            raise TypeError(
+                'handler argument must be a function or a map of functions'
+            )
 
         return handler_function(self)
 
@@ -278,19 +288,19 @@ class WebhookClient:
             WebhookResponse_ section in Dialogflow's API reference.
 
         .. _WebhookResponse: https://cloud.google.com/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#webhookresponse
-        """
+        """  # noqa: E501
         response = {}
 
         if self._response_messages:
-            response.update({'fulfillmentMessages': self._response_messages_as_dict})
+            response['fulfillmentMessages'] = self._response_messages_as_dicts
 
         if self.followup_event is not None:
-            response.update({'followupEventInput': self.followup_event})
+            response['followupEventInput'] = self.followup_event
 
         if self.contexts:
-            response.update({'outputContexts': self.context.get_output_contexts_array()})
+            response['outputContexts'] = self.context.get_output_contexts_array()
 
         if self.request_source is not None:
-            response.update({'source': self.request_source})
+            response['source'] = self.request_source
 
         return response
