@@ -297,7 +297,7 @@ class WebhookClient:
         if self.followup_event is not None:
             response['followupEventInput'] = self.followup_event
 
-        if self.contexts:
+        if self.context.contexts:
             response['outputContexts'] = self.context.get_output_contexts_array()
 
         if self.request_source is not None:
