@@ -285,32 +285,31 @@ class Card(RichResponse):
         if buttons is None:
             return None
 
-        validated_buttons = []
+        return [cls._validate_button(button) for button in buttons]
 
-        for button in buttons:
-            if not isinstance(button, dict):
-                raise TypeError('button must be a dictionary')
+    @classmethod
+    def _validate_button(cls, button: Dict[str, str]) -> Dict[str, str]:
+        if not isinstance(button, dict):
+            raise TypeError('button must be a dictionary')
 
-            text = button.get('text')
-            postback = button.get('postback')
+        text = button.get('text')
+        postback = button.get('postback')
 
-            if text is not None and not isinstance(text, str):
-                raise TypeError('text argument must be a string')
+        if text is not None and not isinstance(text, str):
+            raise TypeError('text argument must be a string')
 
-            if postback is not None and not isinstance(text, str):
-                raise TypeError('postback argument must be a string')
+        if postback is not None and not isinstance(text, str):
+            raise TypeError('postback argument must be a string')
 
-            validated_button = {}
+        validated_button = {}
 
-            if text is not None:
-                validated_button.update({'text': text})
+        if text is not None:
+            validated_button.update({'text': text})
 
-            if postback is not None:
-                validated_button.update({'postback': postback})
+        if postback is not None:
+            validated_button.update({'postback': postback})
 
-            validated_buttons.append(validated_button)
-
-        return validated_buttons
+        return validated_button
 
     @classmethod
     def _from_dict(cls, data: Dict) -> 'Card':
