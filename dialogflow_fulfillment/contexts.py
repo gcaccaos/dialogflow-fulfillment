@@ -23,7 +23,7 @@ class Context:
     def __init__(self, input_contexts: List[Dict], session: str) -> None:
         self.input_contexts = self._process_input_contexts(input_contexts)
         self.session = session
-        self.contexts = self._process_input_contexts(input_contexts)
+        self.contexts = {**self.input_contexts}
 
     @staticmethod
     def _process_input_contexts(input_contexts) -> Dict[str, Dict]:
