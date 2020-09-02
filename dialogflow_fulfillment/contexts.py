@@ -21,9 +21,6 @@ class Context:
     """
 
     def __init__(self, input_contexts: List[Dict], session: str) -> None:
-        self._index = None
-        self._context_array = None
-
         self.input_contexts = self._process_input_contexts(input_contexts)
         self.session = session
         self.contexts = self._process_input_contexts(input_contexts)
