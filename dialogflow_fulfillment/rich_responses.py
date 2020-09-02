@@ -32,10 +32,10 @@ class Card(RichResponse):
         Constructing a :class:`Card` response:
 
         >>> card = Card(
-            title='What is your favorite color?',
-            subtitle='Choose a color',
-            buttons=[{'text': 'Red'}, {'text': 'Green'}, {'text': 'Blue'}]
-        )
+        ...     title='What is your favorite color?',
+        ...     subtitle='Choose a color',
+        ...     buttons=[{'text': 'Red'}, {'text': 'Green'}, {'text': 'Blue'}]
+        ... )
 
     Parameters:
         title (str, optional): The title of the card response.
