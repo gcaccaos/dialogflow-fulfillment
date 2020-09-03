@@ -1,9 +1,9 @@
-from abc import ABC, abstractmethod
+from abc import ABCMeta, abstractmethod
 from typing import Dict, List, Optional, Tuple, Union
 from warnings import warn
 
 
-class RichResponse(ABC):
+class RichResponse(metaclass=ABCMeta):
     """
     The base (abstract) class for the different types of rich responses.
 
@@ -20,8 +20,49 @@ class RichResponse(ABC):
 
     @classmethod
     @abstractmethod
-    def _from_dict(cls, data: Dict) -> 'RichResponse':
-        """Constructs a response object from a dictionary."""
+    def _from_dict(cls, message: Dict) -> 'RichResponse':
+        """
+        Convert a response message object to a type of :class:`RichResponse`.
+
+        Parameters:
+            message (dict): The response message object from Dialogflow.
+
+        Returns:
+            :class:`RichResponse`: A subclass of :class:`RichResponse` that
+            corresponds to the message field in the message object (e.g.: it
+            creates an instance of a :class:`QuickReplies` if the response
+            message object has a :obj:`quickReplies` field).
+
+        Raises:
+            TypeError: If the response message object doesn't have exactly one
+                field for a supported type of message.
+        """
+        message_fields_to_classes = {
+            cls._upper_camel_to_lower_camel(subclass.__name__): subclass
+            for subclass in cls.__subclasses__()
+        }
+
+        fields_intersection = message.keys() & message_fields_to_classes.keys()
+
+        if not len(fields_intersection) == 1:
+            raise TypeError('unsupported type of message')
+
+        message_field = fields_intersection.pop()
+
+        return message_fields_to_classes[message_field]._from_dict(message)
+
+    @classmethod
+    def _upper_camel_to_lower_camel(cls, name: str) -> str:
+        """
+        Convert a UpperCamelCase name to lowerCamelCase.
+
+        Parameters:
+            name (str): A UpperCamelCase string.
+
+        Returns:
+            str: The input string in lowerCamelCase.
+        """
+        return name[0].lower() + name[1:]
 
 
 class Card(RichResponse):
@@ -312,11 +353,11 @@ class Card(RichResponse):
         return validated_button
 
     @classmethod
-    def _from_dict(cls, data: Dict) -> 'Card':
-        title = data['card'].get('title')
-        subtitle = data['card'].get('subtitle')
-        image_url = data['card'].get('imageUri')
-        buttons = data['card'].get('buttons')
+    def _from_dict(cls, message: Dict) -> 'Card':
+        title = message['card'].get('title')
+        subtitle = message['card'].get('subtitle')
+        image_url = message['card'].get('imageUri')
+        buttons = message['card'].get('buttons')
 
         return cls(
             title=title,
@@ -420,8 +461,8 @@ class Image(RichResponse):
         self.image_url = image_url
 
     @classmethod
-    def _from_dict(cls, data: Dict) -> 'Image':
-        image_url = data['image'].get('imageUri')
+    def _from_dict(cls, message: Dict) -> 'Image':
+        image_url = message['image'].get('imageUri')
 
         return cls(image_url=image_url)
 
@@ -521,8 +562,8 @@ class Payload(RichResponse):
         self.payload = payload
 
     @classmethod
-    def _from_dict(cls, data: Dict) -> 'Payload':
-        payload = data['payload']
+    def _from_dict(cls, message: Dict) -> 'Payload':
+        payload = message['payload']
 
         return cls(payload=payload)
 
@@ -683,9 +724,9 @@ class QuickReplies(RichResponse):
         self.quick_replies = quick_replies
 
     @classmethod
-    def _from_dict(cls, data: Dict) -> 'QuickReplies':
-        title = data['quickReplies'].get('title')
-        quick_replies = data['quickReplies'].get('quickReplies')
+    def _from_dict(cls, message: Dict) -> 'QuickReplies':
+        title = message['quickReplies'].get('title')
+        quick_replies = message['quickReplies'].get('quickReplies')
 
         return cls(title=title, quick_replies=quick_replies)
 
@@ -778,8 +819,8 @@ class Text(RichResponse):
         self.text = text
 
     @classmethod
-    def _from_dict(cls, data: Dict) -> 'Text':
-        texts = data['text'].get('text', [])
+    def _from_dict(cls, message: Dict) -> 'Text':
+        texts = message['text'].get('text', [])
         text = texts[0] if texts else None
 
         return cls(text=text)

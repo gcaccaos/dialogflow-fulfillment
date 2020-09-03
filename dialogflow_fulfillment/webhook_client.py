@@ -2,8 +2,7 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from warnings import warn
 
 from .contexts import Context
-from .rich_responses import (Card, Image, Payload, QuickReplies, RichResponse,
-                             Text)
+from .rich_responses import RichResponse, Text
 
 
 class WebhookClient:
@@ -108,29 +107,16 @@ class WebhookClient:
 
         self._followup_event = event
 
-    def _process_console_messages(self, request) -> List[RichResponse]:
-        """Get messages defined in Dialogflow's console for matched intent"""
-        fulfillment_messages = request['queryResult']\
-            .get('fulfillmentMessages', [])
+    @classmethod
+    def _process_console_messages(cls, request: Dict) -> List[RichResponse]:
+        """Get messages defined in Dialogflow's console for matched intent."""
+        fulfillment_messages = request['queryResult'].get(
+            'fulfillmentMessages',
+            []
+        )
 
-        return [self._convert_message_dictionary(message)
+        return [RichResponse._from_dict(message)
                 for message in fulfillment_messages]
-
-    def _convert_message_dictionary(self, message) -> None:
-        """Converts message dictionary to RichResponse"""
-        # TODO: refactor to reduce the cyclomatic complexity (use dict instead)
-        if 'text' in message:
-            return Text._from_dict(message)
-        elif 'image' in message:
-            return Image._from_dict(message)
-        elif 'card' in message:
-            return Card._from_dict(message)
-        elif 'quickReplies' in message:
-            return QuickReplies._from_dict(message)
-        elif 'payload' in message:
-            return Payload._from_dict(message)
-
-        raise TypeError('unsupported message type')
 
     def add(
         self,
