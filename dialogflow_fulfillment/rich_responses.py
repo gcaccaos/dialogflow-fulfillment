@@ -370,16 +370,16 @@ class Card(RichResponse):
         fields = {}
 
         if self.title is not None:
-            fields.update({'title': self.title})
+            fields['title'] = self.title
 
         if self.subtitle is not None:
-            fields.update({'subtitle': self.subtitle})
+            fields['subtitle'] = self.subtitle
 
         if self.image_url is not None:
-            fields.update({'imageUri': self.image_url})
+            fields['imageUri'] = self.image_url
 
         if self.buttons is not None:
-            fields.update({'buttons': self.buttons})
+            fields['buttons'] = self.buttons
 
         return {'card': fields}
 
@@ -470,7 +470,7 @@ class Image(RichResponse):
         fields = {}
 
         if self.image_url is not None:
-            fields.update({'imageUri': self.image_url})
+            fields['imageUri'] = self.image_url
 
         return {'image': fields}
 
@@ -734,10 +734,10 @@ class QuickReplies(RichResponse):
         fields = {}
 
         if self.title is not None:
-            fields.update({'title': self.title})
+            fields['title'] = self.title
 
         if self.quick_replies is not None:
-            fields.update({'quickReplies': self.quick_replies})
+            fields['quickReplies'] = self.quick_replies
 
         return {'quickReplies': fields}
 
