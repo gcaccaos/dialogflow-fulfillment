@@ -48,12 +48,12 @@ class WebhookClient:
         if not isinstance(request, dict):
             raise TypeError('request argument must be a dictionary')
 
-        self._response_messages = []
-        self._followup_event = None
+        self._response_messages: List[RichResponse] = []
+        self._followup_event: Optional[Dict] = None
 
         self._process_request(request)
 
-    def _process_request(self, request) -> None:
+    def _process_request(self, request: Dict) -> None:
         """
         Set instance attributes from the webhook request.
 
@@ -167,7 +167,7 @@ class WebhookClient:
         for response in responses:
             self._add_response(response)
 
-    def _add_response(self, response) -> None:
+    def _add_response(self, response: Union[str, RichResponse]) -> None:
         """Add a single response to be sent back to Dialogflow."""
         if isinstance(response, str):
             response = Text(response)
@@ -276,7 +276,7 @@ class WebhookClient:
         return handler_function(self)
 
     @property
-    def _response_messages_as_dict(self):
+    def _response_messages_as_dicts(self) -> List[Dict[str, Any]]:
         """list of dict: The list of outgoing response message dictionaries."""
         return [response._as_dict() for response in self._response_messages]
 

@@ -27,7 +27,9 @@ class Context:
         self.contexts = {**self.input_contexts}
 
     @staticmethod
-    def _process_input_contexts(input_contexts) -> Dict[str, Dict]:
+    def _process_input_contexts(
+        input_contexts: List[Dict]
+    ) -> Dict[str, Dict]:
         """Process a list of input contexts."""
         contexts = {}
 

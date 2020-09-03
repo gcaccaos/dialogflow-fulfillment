@@ -598,7 +598,7 @@ class QuickReplies(RichResponse):
 
         self._title = title
 
-    def set_title(self, title: Optional[str] = None):
+    def set_title(self, title: Optional[str] = None) -> None:
         """
         Set the title of the quick reply buttons.
 
