@@ -26,6 +26,7 @@ A detailed example
 .. mermaid::
    :caption: A representation of how data flows in a conversation between a
       user and a Dialogflow agent.
+   :align: center
 
    sequenceDiagram
       autonumber
