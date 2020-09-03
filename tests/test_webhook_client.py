@@ -261,3 +261,10 @@ def test_webhook_client_with_unknown_message(webhook_request):
 
     with pytest.raises(TypeError):
         WebhookClient(modified_webhook_request)
+
+
+def test_webhook_client_set_followup_event_non_string_or_dict(webhook_request):
+    agent = WebhookClient(webhook_request)
+
+    with pytest.raises(TypeError):
+        agent.followup_event = ['this', 'is', 'not', 'an', 'event']

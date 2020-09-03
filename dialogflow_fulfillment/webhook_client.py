@@ -96,6 +96,9 @@ class WebhookClient:
                 >>> agent.followup_event = {'name': 'GOODBYE', 'languageCode': 'en-US'}
                 >>> agent.followup_event
                 {'name': 'GOODBYE', 'languageCode': 'en-US'}
+
+        Raises:
+            TypeError: If the event is not a string or a dictionary.
         """  # noqa: E501
         return self._followup_event
 
@@ -103,6 +106,9 @@ class WebhookClient:
     def followup_event(self, event: Union[str, Dict]) -> None:
         if isinstance(event, str):
             event = {'name': event}
+
+        if not isinstance(event, dict):
+            raise TypeError('event argument must be a string or a dictionary')
 
         event['languageCode'] = event.get('languageCode', self.locale)
 
