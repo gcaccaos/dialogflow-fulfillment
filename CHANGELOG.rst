@@ -15,8 +15,7 @@ The format is based on `Keep a Changelog`_ and this project adheres to
 Added
 ~~~~~
 
-* Docs: Add change log and contributing guide.
-* Small improvements to the classes and methods docstrings.
+* Docs: Change log and contributing guide pages.
 * set_text() method for the Text response.
 * set_subtitle(), set_image() and set_buttons() methods for the Card response.
 * set_title() and set_quick_replies() to the QuickReplies response.
@@ -24,11 +23,15 @@ Added
 Fixed
 ~~~~~
 
-* Fix Card and QuickReply missing fields.
+* Fix missing fields in Card and QuickReply responses.
 * Fix optional parameters for all rich responses.
-* Fix WebhookClient's parsing of Image and Card responses.
+* Fix parsing of Image and Card responses from requests.
 * Fix RichResponse instantiation (shouldn't be able to instantiate an abstract
   base class).
+
+Improved
+~~~~~~~~
+* Docs: improve classes and methods docstrings.
 
 Changed
 ~~~~~~~
@@ -46,7 +49,7 @@ Added
 Changed
 ~~~~~~~
 
-* Refactored tests to use pytest.
+* Rewrite tests using pytest.
 
 0.1.5_ - 2020-07-17
 ------------------
@@ -54,7 +57,7 @@ Changed
 Fixed
 ~~~~~
 
-* Fix bug in WebhookClient's key access in _process_request().
+* Fix a key access error in WebhookClient's request processing.
 
 0.1.4_ - 2020-07-17
 ------------------
@@ -66,23 +69,18 @@ Added
 * Type hints for Context methods.
 * Type hints for RichResponse methods.
 
-Changed
-~~~~~~~
-
-* Refactor WebhookClient's key access in _process_request().
-
 0.1.3_ - 2020-07-17
 ------------------
 
 Added
 ~~~~~
 
-* Package's public API.
+* Public API of the package.
 
 0.1.2_ - 2020-03-27
 ------------------
 
-* First release.
+* Initial release.
 
 .. _0.3.0: https://github.com/gcaccaos/dialogflow-fulfillment/compare/v0.2.0...v0.3.0
 .. _0.2.0: https://github.com/gcaccaos/dialogflow-fulfillment/compare/v0.1.5...v0.2.0
