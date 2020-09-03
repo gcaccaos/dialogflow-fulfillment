@@ -3,9 +3,10 @@ from typing import Dict, List, Optional
 
 class Context:
     """
-    An API class for handling input and output contexts.
+    A client class for accessing and manipulating input and output contexts.
 
-    This class allows to create, edit or delete contexts during conversations.
+    This class provides an API that allows to create, edit or delete contexts
+        during conversations.
 
     Parameters:
         input_contexts (list of dict): The contexts that were active in the
@@ -27,7 +28,7 @@ class Context:
 
     @staticmethod
     def _process_input_contexts(input_contexts) -> Dict[str, Dict]:
-        """Processes a list of Dialogflow input contexts"""
+        """Process a list of input contexts."""
         contexts = {}
 
         for context in input_contexts:
@@ -44,6 +45,8 @@ class Context:
         parameters: Optional[Dict] = None
     ) -> None:
         """
+        Set a new context or update an existing context.
+
         Sets the lifepan and parameters of a context (if the context exists) or
         creates a new output context (if the context doesn't exist).
 
@@ -54,7 +57,7 @@ class Context:
             parameters (dict, optional): The parameters of the context.
 
         Raises:
-            TypeError: `name` argument must be a string
+            TypeError: If the name is not a string.
         """
         if not isinstance(name, str):
             raise TypeError('name argument must be a string')
@@ -82,7 +85,7 @@ class Context:
 
     def delete(self, name: str) -> None:
         """
-        Deletes a context by setting its lifespan to 0.
+        Deactivate an output context by setting its lifespan to 0.
 
         Parameters:
             name (str): The name of the context.
@@ -104,12 +107,14 @@ class Context:
         return output_contexts
 
     def __iter__(self) -> 'Context':
+        """Implement iter(self)."""
         self._index = 0
         self._context_array = list(self.contexts.values())
 
         return self
 
     def __next__(self) -> Dict:
+        """Implement next(self)."""
         if self._index >= len(self._context_array):
             raise StopIteration
 

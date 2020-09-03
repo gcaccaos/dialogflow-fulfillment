@@ -16,7 +16,7 @@ class RichResponse(ABC):
 
     @abstractmethod
     def _as_dict(self) -> Dict:
-        """Returns the response object as a dictionary."""
+        """Convert the rich response object to a dictionary."""
 
     @classmethod
     @abstractmethod
@@ -26,7 +26,7 @@ class RichResponse(ABC):
 
 class Card(RichResponse):
     """
-    Sends a card response to the end-user.
+    Send a card response to the end-user.
 
     Examples:
         Constructing a :class:`Card` response:
@@ -96,7 +96,7 @@ class Card(RichResponse):
 
     def set_title(self, title: Optional[str] = None) -> None:
         """
-        Sets the title of the card response.
+        Set the title of the card response.
 
         Warning:
             This method is deprecated and will be removed. Assign value to the
@@ -148,7 +148,7 @@ class Card(RichResponse):
 
     def set_subtitle(self, subtitle: Optional[str] = None) -> None:
         """
-        Sets the subtitle of the card response.
+        Set the subtitle of the card response.
 
         Warning:
             This method is deprecated and will be removed. Assign value to the
@@ -200,7 +200,7 @@ class Card(RichResponse):
 
     def set_image(self, image_url: Optional[str] = None) -> None:
         """
-        Sets the URL of the card response's image.
+        Set the URL of the card response's image.
 
         Warning:
             This method is deprecated and will be removed. Assign value to the
@@ -255,7 +255,7 @@ class Card(RichResponse):
         buttons: Optional[List[Dict[str, str]]] = None
     ) -> None:
         """
-        Sets the buttons of the card response.
+        Set the buttons of the card response.
 
         Warning:
             This method is deprecated and will be removed. Assign value to the
@@ -345,7 +345,7 @@ class Card(RichResponse):
 
 class Image(RichResponse):
     """
-    Sends an image response to the end-user.
+    Send an image response to the end-user.
 
     Examples:
         Constructing an image response:
@@ -398,7 +398,7 @@ class Image(RichResponse):
 
     def set_image(self, image_url: Optional[str] = None) -> None:
         """
-        Sets the URL of the image response.
+        Set the URL of the image response.
 
         Warning:
             This method is deprecated and will be removed. Assign value to the
@@ -436,7 +436,7 @@ class Image(RichResponse):
 
 class Payload(RichResponse):
     """
-    Sends a custom payload response to the end-user.
+    Send a custom payload response to the end-user.
 
     This type of rich response allows to create advanced, custom, responses.
 
@@ -498,7 +498,7 @@ class Payload(RichResponse):
 
     def set_payload(self, payload: Optional[Dict] = None) -> None:
         """
-        Sets the content of the custom payload response.
+        Set the content of the custom payload response.
 
         Warning:
             This method is deprecated and will be removed. Assign value to the
@@ -537,7 +537,7 @@ class Payload(RichResponse):
 
 class QuickReplies(RichResponse):
     """
-    Sends a collection of quick replies to the end-user.
+    Send a collection of quick replies to the end-user.
 
     When a quick reply button is clicked, the corresponding reply text is sent
     back to Dialogflow as if the user had typed it.
@@ -600,7 +600,7 @@ class QuickReplies(RichResponse):
 
     def set_title(self, title: Optional[str] = None):
         """
-        Sets the title of the quick reply buttons.
+        Set the title of the quick reply buttons.
 
         Warning:
             This method is deprecated and will be removed. Assign value to the
@@ -660,7 +660,7 @@ class QuickReplies(RichResponse):
         quick_replies: Optional[Union[List[str], Tuple[str]]] = None
     ) -> None:
         """
-        Sets the texts for the quick reply buttons.
+        Set the texts for the quick reply buttons.
 
         Warning:
             This method is deprecated and will be removed. Assign value to the
@@ -703,7 +703,7 @@ class QuickReplies(RichResponse):
 
 class Text(RichResponse):
     """
-    Sends a basic (static) text response to the end-user.
+    Send a basic (static) text response to the end-user.
 
     Examples:
         Constructing a :class:`Text` response:
@@ -756,7 +756,7 @@ class Text(RichResponse):
 
     def set_text(self, text: Optional[str] = None) -> None:
         """
-        Sets the content of the text response.
+        Set the content of the text response.
 
         Warning:
             This method is deprecated and will be removed. Assign value to the

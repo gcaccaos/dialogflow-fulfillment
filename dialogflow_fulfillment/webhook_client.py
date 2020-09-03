@@ -31,7 +31,7 @@ class WebhookClient:
         action (str): The action defined for the intent.
         context (:class:`.Context`): An API class for handling input and output
             contexts.
-        contexts (list(dict)): The array of input contexts.
+        contexts (list of dict): The array of input contexts.
         parameters (dict): The intent parameters extracted by Dialogflow.
         console_messages (list of :class:`.RichResponse`): The response
             messages defined for the intent.
@@ -55,8 +55,10 @@ class WebhookClient:
 
     def _process_request(self, request) -> None:
         """
-        Processes a Dialogflow's fulfillment webhook request and sets instance
-        variables
+        Set instance attributes from the webhook request.
+
+        Parameters:
+            request (dict): The webhook request object from Dialogflow.
         """
         self.intent = request['queryResult']['intent']['displayName']
         self.action = request['queryResult'].get('action')
@@ -135,8 +137,7 @@ class WebhookClient:
         responses: Union[str, RichResponse, List[Union[str, RichResponse]]]
     ) -> None:
         """
-        Adds response messages to be sent back to Dialogflow (which will send
-        the messages to the end-user).
+        Add response messages to be sent back to Dialogflow.
 
         Examples:
             Adding a simple text response as a string:
@@ -167,7 +168,7 @@ class WebhookClient:
             self._add_response(response)
 
     def _add_response(self, response) -> None:
-        """Adds a response to be sent"""
+        """Add a single response to be sent back to Dialogflow."""
         if isinstance(response, str):
             response = Text(response)
 
@@ -180,7 +181,7 @@ class WebhookClient:
 
     def set_followup_event(self, event: Union[str, Dict]) -> None:
         """
-        Sets the followup event to be triggered by Dialogflow.
+        Set the followup event to be triggered by Dialogflow.
 
         Warning:
             This method is deprecated and will be removed. Assign value to the
@@ -209,8 +210,7 @@ class WebhookClient:
         ]
     ) -> Optional[Any]:
         """
-        Handles the webhook request using a handler function or a mapping of
-        intents to handler functions and returns the handler's output (if any).
+        Handle the webhook request using a handler or a mapping of handlers.
 
         In order to manipulate the conversation programatically, the handler
         function must receive an instance of :class:`WebhookClient` as a
@@ -243,9 +243,11 @@ class WebhookClient:
                 >>> def welcome_handler(agent):
                 ...     agent.add('Hi!')
                 ...     agent.add('How can I help you?')
+                ...
                 >>> def fallback_handler(agent):
                 ...     agent.add('Sorry, I missed what you said.')
                 ...     agent.add('Can you say that again?')
+                ...
                 >>> handler = {
                 ...     'Default Welcome Intent': welcome_handler,
                 ...     'Default Fallback Intent': fallback_handler,
