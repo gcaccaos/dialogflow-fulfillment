@@ -64,8 +64,9 @@ class WebhookClient:
         self.parameters = request['queryResult'].get('parameters', {})
         self.contexts = request['queryResult'].get('outputContexts', [])
         self.original_request = request['originalDetectIntentRequest']
-        self.request_source = request['originalDetectIntentRequest']\
-            .get('source')
+        self.request_source = request['originalDetectIntentRequest'].get(
+            'source'
+        )
         self.query = request['queryResult']['queryText']
         self.locale = request['queryResult']['languageCode']
         self.session = request['session']
