@@ -16,7 +16,15 @@ class RichResponse(metaclass=ABCMeta):
 
     @abstractmethod
     def _as_dict(self) -> Dict[str, Any]:
-        """Convert the rich response object to a dictionary."""
+        """
+        Convert the rich response object to a dictionary.
+
+        See Also:
+            For more information about the fields for the different types of
+            messages, see the Message_ section in Dialogflow's documentation.
+
+        .. _Message: https://cloud.google.com/dialogflow/es/docs/reference/rest/v2/projects.agent.intents#message
+        """  # noqa: E501
 
     @classmethod
     @abstractmethod
@@ -36,7 +44,13 @@ class RichResponse(metaclass=ABCMeta):
         Raises:
             TypeError: If the response message object doesn't have exactly one
                 field for a supported type of message.
-        """
+
+        See Also:
+            For more information about the fields for the different types of
+            messages, see the Message_ section in Dialogflow's documentation.
+
+        .. _Message: https://cloud.google.com/dialogflow/es/docs/reference/rest/v2/projects.agent.intents#message
+        """  # noqa: E501
         message_fields_to_classes = {
             cls._upper_camel_to_lower_camel(subclass.__name__): subclass
             for subclass in cls.__subclasses__()
