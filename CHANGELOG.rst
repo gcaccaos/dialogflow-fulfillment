@@ -9,6 +9,15 @@ The format is based on `Keep a Changelog`_ and this project adheres to
 .. _Keep a Changelog: https://keepachangelog.com/en/1.0.0
 .. _Semantic Versioning: https://semver.org/spec/v2.0.0.html
 
+Unreleased
+----------
+
+Removed
+~~~~~~~
+
+* RichResponse's set_* methods (use property attributes instead).
+* WebhookClient's set_followup_event method (use property attribute instead).
+
 0.4.0_ - 2020-09-12
 -------------------
 
