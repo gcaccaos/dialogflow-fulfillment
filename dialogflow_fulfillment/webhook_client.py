@@ -43,16 +43,16 @@ class WebhookClient:
     .. _WebhookRequest: https://cloud.google.com/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#webhookrequest
     """  # noqa: E501
 
-    def __init__(self, request: Dict) -> None:
+    def __init__(self, request: Dict[str, Any]) -> None:
         if not isinstance(request, dict):
             raise TypeError('request argument must be a dictionary')
 
         self._response_messages: List[RichResponse] = []
-        self._followup_event: Optional[Dict] = None
+        self._followup_event: Optional[Dict[str, Any]] = None
 
         self._process_request(request)
 
-    def _process_request(self, request: Dict) -> None:
+    def _process_request(self, request: Dict[str, Any]) -> None:
         """
         Set instance attributes from the webhook request.
 
@@ -74,7 +74,7 @@ class WebhookClient:
         self.console_messages = self._process_console_messages(request)
 
     @property
-    def followup_event(self) -> Optional[Dict]:
+    def followup_event(self) -> Optional[Dict[str, Any]]:
         """
         dict, optional: The followup event to be triggered by the response.
 
@@ -103,7 +103,7 @@ class WebhookClient:
         return self._followup_event
 
     @followup_event.setter
-    def followup_event(self, event: Union[str, Dict]) -> None:
+    def followup_event(self, event: Union[str, Dict[str, Any]]) -> None:
         if isinstance(event, str):
             event = {'name': event}
 
@@ -115,7 +115,10 @@ class WebhookClient:
         self._followup_event = event
 
     @classmethod
-    def _process_console_messages(cls, request: Dict) -> List[RichResponse]:
+    def _process_console_messages(
+        cls,
+        request: Dict[str, Any]
+    ) -> List[RichResponse]:
         """Get messages defined in Dialogflow's console for matched intent."""
         fulfillment_messages = request['queryResult'].get(
             'fulfillmentMessages',
@@ -172,7 +175,7 @@ class WebhookClient:
 
         self._response_messages.append(response)
 
-    def set_followup_event(self, event: Union[str, Dict]) -> None:
+    def set_followup_event(self, event: Union[str, Dict[str, Any]]) -> None:
         """
         Set the followup event to be triggered by Dialogflow.
 
@@ -274,7 +277,7 @@ class WebhookClient:
         return [response._as_dict() for response in self._response_messages]
 
     @property
-    def response(self) -> Dict:
+    def response(self) -> Dict[str, Any]:
         """
         dict: The generated webhook response object (:obj:`WebhookResponse`).
 

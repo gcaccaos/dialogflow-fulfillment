@@ -1,4 +1,4 @@
-from typing import Dict, List, Optional
+from typing import Any, Dict, List, Optional
 
 
 class Context:
@@ -21,15 +21,19 @@ class Context:
             objects (dictionaries).
     """
 
-    def __init__(self, input_contexts: List[Dict], session: str) -> None:
+    def __init__(
+        self,
+        input_contexts: List[Dict[str, Any]],
+        session: str
+    ) -> None:
         self.input_contexts = self._process_input_contexts(input_contexts)
         self.session = session
         self.contexts = {**self.input_contexts}
 
     @staticmethod
     def _process_input_contexts(
-        input_contexts: List[Dict]
-    ) -> Dict[str, Dict]:
+        input_contexts: List[Dict[str, Any]]
+    ) -> Dict[str, Dict[str, Any]]:
         """Process a list of input contexts."""
         contexts = {}
 
@@ -44,7 +48,7 @@ class Context:
         self,
         name: str,
         lifespan_count: Optional[int] = None,
-        parameters: Optional[Dict] = None
+        parameters: Optional[Dict[str, Any]] = None
     ) -> None:
         """
         Set a new context or update an existing context.
@@ -73,7 +77,7 @@ class Context:
         if parameters is not None:
             self.contexts[name]['parameters'] = parameters
 
-    def get(self, name: str) -> Optional[Dict]:
+    def get(self, name: str) -> Optional[Dict[str, Any]]:
         """
         Finds a context object (dictionary) if exists.
 
@@ -94,7 +98,7 @@ class Context:
         """
         self.set(name, lifespan_count=0)
 
-    def get_output_contexts_array(self) -> List[Dict]:
+    def get_output_contexts_array(self) -> List[Dict[str, Any]]:
         """
         Returns the output contexts as an array.
 
@@ -115,7 +119,7 @@ class Context:
 
         return self
 
-    def __next__(self) -> Dict:
+    def __next__(self) -> Dict[str, Any]:
         """Implement next(self)."""
         if self._index >= len(self._context_array):
             raise StopIteration

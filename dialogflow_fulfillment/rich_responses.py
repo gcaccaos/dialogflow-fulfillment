@@ -1,5 +1,5 @@
 from abc import ABCMeta, abstractmethod
-from typing import Dict, List, Optional, Tuple, Union
+from typing import Any, Dict, List, Optional, Tuple, Union
 from warnings import warn
 
 
@@ -15,12 +15,12 @@ class RichResponse(metaclass=ABCMeta):
     """  # noqa: E501
 
     @abstractmethod
-    def _as_dict(self) -> Dict:
+    def _as_dict(self) -> Dict[str, Any]:
         """Convert the rich response object to a dictionary."""
 
     @classmethod
     @abstractmethod
-    def _from_dict(cls, message: Dict) -> 'RichResponse':
+    def _from_dict(cls, message: Dict[str, Any]) -> 'RichResponse':
         """
         Convert a response message object to a type of :class:`RichResponse`.
 
@@ -353,7 +353,7 @@ class Card(RichResponse):
         return validated_button
 
     @classmethod
-    def _from_dict(cls, message: Dict) -> 'Card':
+    def _from_dict(cls, message: Dict[str, Any]) -> 'Card':
         title = message['card'].get('title')
         subtitle = message['card'].get('subtitle')
         image_url = message['card'].get('imageUri')
@@ -366,7 +366,7 @@ class Card(RichResponse):
             buttons=buttons
         )
 
-    def _as_dict(self) -> Dict:
+    def _as_dict(self) -> Dict[str, Any]:
         fields = {}
 
         if self.title is not None:
@@ -461,12 +461,12 @@ class Image(RichResponse):
         self.image_url = image_url
 
     @classmethod
-    def _from_dict(cls, message: Dict) -> 'Image':
+    def _from_dict(cls, message: Dict[str, Any]) -> 'Image':
         image_url = message['image'].get('imageUri')
 
         return cls(image_url=image_url)
 
-    def _as_dict(self) -> Dict:
+    def _as_dict(self) -> Dict[str, Any]:
         fields = {}
 
         if self.image_url is not None:
@@ -500,13 +500,13 @@ class Payload(RichResponse):
     .. _Custom payload responses: https://cloud.google.com/dialogflow/docs/intents-rich-messages#custom
     """  # noqa: E501
 
-    def __init__(self, payload: Optional[Dict] = None) -> None:
+    def __init__(self, payload: Optional[Dict[Any, Any]] = None) -> None:
         super().__init__()
 
         self.payload = payload
 
     @property
-    def payload(self) -> Optional[Dict]:
+    def payload(self) -> Optional[Dict[Any, Any]]:
         """
         dict, optional: The content of the custom payload response.
 
@@ -531,13 +531,13 @@ class Payload(RichResponse):
         return self._payload
 
     @payload.setter
-    def payload(self, payload: Optional[Dict]) -> None:
+    def payload(self, payload: Optional[Dict[Any, Any]]) -> None:
         if payload is not None and not isinstance(payload, dict):
             raise TypeError('payload argument must be a dictionary')
 
         self._payload = payload
 
-    def set_payload(self, payload: Optional[Dict] = None) -> None:
+    def set_payload(self, payload: Optional[Dict[Any, Any]] = None) -> None:
         """
         Set the content of the custom payload response.
 
@@ -562,12 +562,12 @@ class Payload(RichResponse):
         self.payload = payload
 
     @classmethod
-    def _from_dict(cls, message: Dict) -> 'Payload':
+    def _from_dict(cls, message: Dict[str, Any]) -> 'Payload':
         payload = message['payload']
 
         return cls(payload=payload)
 
-    def _as_dict(self) -> Dict:
+    def _as_dict(self) -> Dict[str, Any]:
         fields = {}
 
         if self.payload is not None:
@@ -724,13 +724,13 @@ class QuickReplies(RichResponse):
         self.quick_replies = quick_replies
 
     @classmethod
-    def _from_dict(cls, message: Dict) -> 'QuickReplies':
+    def _from_dict(cls, message: Dict[str, Any]) -> 'QuickReplies':
         title = message['quickReplies'].get('title')
         quick_replies = message['quickReplies'].get('quickReplies')
 
         return cls(title=title, quick_replies=quick_replies)
 
-    def _as_dict(self) -> Dict:
+    def _as_dict(self) -> Dict[str, Any]:
         fields = {}
 
         if self.title is not None:
@@ -819,13 +819,13 @@ class Text(RichResponse):
         self.text = text
 
     @classmethod
-    def _from_dict(cls, message: Dict) -> 'Text':
+    def _from_dict(cls, message: Dict[str, Any]) -> 'Text':
         texts = message['text'].get('text', [])
         text = texts[0] if texts else None
 
         return cls(text=text)
 
-    def _as_dict(self) -> Dict:
+    def _as_dict(self) -> Dict[str, Any]:
         text = self.text
 
         return {'text': {'text': [text if text is not None else '']}}
