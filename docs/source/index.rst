@@ -52,21 +52,22 @@ output contexts and follow-up events in conversations.
 A simple example
 ----------------
 
-Working with *dialogflow-fulfillment* is as simple as passing a request object
-from Dialogflow (a.k.a. `WebhookRequest`) to a :class:`~.WebhookClient` and
-calling it's :meth:`~.WebhookClient.handle_request` method on a handler
-function (or a mapping of functions for each intent):
+Working with *dialogflow-fulfillment* is as simple as passing a webhook request
+object from Dialogflow (a.k.a. :obj:`WebhookRequest`) to an instance of a
+:class:`~.WebhookClient` and using a handler function (or a mapping of
+functions for each intent) via the :meth:`~.WebhookClient.handle_request`
+method:
 
 .. literalinclude:: ../../examples/simple_example.py
    :language: python
    :caption: simple_example.py
 
 The above code produces the resulting response object (a.k.a.
-`WebhookResponse`):
+:obj:`WebhookResponse`), which can be accessed via the
+:attr:`~.WebhookClient.response` attribute:
 
 .. code-block:: python
 
-   >>> agent.response
    {
       'fulfillmentMessages': [
          {
