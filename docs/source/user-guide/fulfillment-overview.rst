@@ -45,8 +45,8 @@ In this example, the user's intent is fulfilled by the agent with the help of
 a webhook service, allowing to handle more dynamic responses, like calling an
 external API to fetch some information.
 
-Generally, the flow of data in a conversation with fulfillment can be described
-(in a simplified way) as follows:
+The flow of data in a conversation with fulfillment enabled can be described as
+follows:
 
 1. The user types a text into the application's front-end in order to send a
    query to the agent.
