@@ -40,7 +40,7 @@ Improved
 * Typing annotations coverage.
 
 0.3.0_ - 2020-07-29
-------------------
+-------------------
 
 Added
 ~~~~~
@@ -69,7 +69,7 @@ Changed
 * Docs: Change theme to Read the Docs' theme.
 
 0.2.0_ - 2020-07-17
-------------------
+-------------------
 
 Added
 ~~~~~
@@ -82,7 +82,7 @@ Changed
 * Rewrite tests using pytest.
 
 0.1.5_ - 2020-07-17
-------------------
+-------------------
 
 Fixed
 ~~~~~
@@ -90,7 +90,7 @@ Fixed
 * Fix a key access error in WebhookClient's request processing.
 
 0.1.4_ - 2020-07-17
-------------------
+-------------------
 
 Added
 ~~~~~
@@ -100,7 +100,7 @@ Added
 * Type hints for RichResponse methods.
 
 0.1.3_ - 2020-07-17
-------------------
+-------------------
 
 Added
 ~~~~~
@@ -108,7 +108,7 @@ Added
 * Public API of the package.
 
 0.1.2_ - 2020-03-27
-------------------
+-------------------
 
 * Initial release.
 
