@@ -9,6 +9,27 @@ The format is based on `Keep a Changelog`_ and this project adheres to
 .. _Keep a Changelog: https://keepachangelog.com/en/1.0.0
 .. _Semantic Versioning: https://semver.org/spec/v2.0.0.html
 
+0.4.0_ - 2020-09-12
+-------------------
+
+Added
+~~~~~
+
+* Getters and setters for RichResponse's attributes (and deprecation warnings
+  to set_*() methods).
+* Getter and setter for WebhookClient's followup_event attribute (and
+  deprecation warning to set_followup_event() method).
+* Docs: Examples to WebhookClient's methods docstrings.
+* Docs: Examples to RichResponse's attributes docstrings.
+* Docs: "See also" sections in RichResponse's docstrings.
+* Docs: Type hints to WebhookClient's handle_request() method's docstring.
+* Docs: "Detailed example" section in "Fulfillment overview" page.
+
+Improved
+~~~~~~~~
+
+* Typing annotations coverage.
+
 0.3.0_ - 2020-07-29
 ------------------
 
@@ -82,6 +103,7 @@ Added
 
 * Initial release.
 
+.. _0.4.0: https://github.com/gcaccaos/dialogflow-fulfillment/compare/v0.3.0...v0.4.0
 .. _0.3.0: https://github.com/gcaccaos/dialogflow-fulfillment/compare/v0.2.0...v0.3.0
 .. _0.2.0: https://github.com/gcaccaos/dialogflow-fulfillment/compare/v0.1.5...v0.2.0
 .. _0.1.5: https://github.com/gcaccaos/dialogflow-fulfillment/compare/v0.1.4...v0.1.5
