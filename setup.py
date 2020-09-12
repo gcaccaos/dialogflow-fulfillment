@@ -16,7 +16,9 @@ setup(
     python_requires='>=3',
     extras_require={
         'dev': [
-            'tox>=3.14'
+            'tox>=3.14',
+            'flake8>=3.8',
+            'isort>=4.3'
         ],
         'docs': [
             'sphinx>=3.1',
@@ -25,9 +27,7 @@ setup(
         ],
         'tests': [
             'pytest>=5.4',
-            'coverage>=5.1',
-            'flake8>=3.8',
-            'isort>=4.3'
+            'coverage>=5.1'
         ]
     },
     keywords=[
