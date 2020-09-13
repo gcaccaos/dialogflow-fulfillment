@@ -35,7 +35,7 @@ Overview
 .. toctree::
    :hidden:
    :caption: Release notes
-   
+
    change-log/index
 
 *dialogflow-fulfillment* is a package for Python that helps developers to
