@@ -16,9 +16,11 @@ setup(
     python_requires='>=3',
     extras_require={
         'dev': [
-            'tox>=3.14',
+            'tox>=3.14'
+        ],
+        'lint': [
             'flake8>=3.8',
-            'isort>=4.3'
+            'flake8-isort>=4.0.0'
         ],
         'docs': [
             'sphinx>=3.1',
