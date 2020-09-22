@@ -79,7 +79,7 @@ class Context:
 
     def get(self, name: str) -> Optional[Dict[str, Any]]:
         """
-        Finds a context object (dictionary) if exists.
+        Get the context object (if exists).
 
         Parameters:
             name (str): The name of the context.
@@ -100,7 +100,7 @@ class Context:
 
     def get_output_contexts_array(self) -> List[Dict[str, Any]]:
         """
-        Returns the output contexts as an array.
+        Get the output contexts as an array.
 
         Returns:
             list(dict): The output contexts (dictionaries).

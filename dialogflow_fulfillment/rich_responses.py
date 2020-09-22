@@ -295,7 +295,7 @@ class Card(RichResponse):
 
         Raises:
             TypeError: If the value to be assigned is not a list of buttons.
-        """
+        """  # noqa: D403
         return self._buttons
 
     @buttons.setter
@@ -541,7 +541,7 @@ class Payload(RichResponse):
 
         Raises:
             TypeError: If the value to be assigned is not a dictionary.
-        """  # noqa: E501
+        """  # noqa: D401, E501
         return self._payload
 
     @payload.setter
@@ -696,7 +696,7 @@ class QuickReplies(RichResponse):
         Raises:
             TypeError: if the value to be assigned is not a list or tuple of
                 strings.
-        """
+        """  # noqa: D403
         return self._quick_replies
 
     @quick_replies.setter

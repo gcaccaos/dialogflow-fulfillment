@@ -99,7 +99,7 @@ class WebhookClient:
 
         Raises:
             TypeError: If the event is not a string or a dictionary.
-        """  # noqa: E501
+        """  # noqa: D401, E501
         return self._followup_event
 
     @followup_event.setter
@@ -273,7 +273,7 @@ class WebhookClient:
 
     @property
     def _response_messages_as_dicts(self) -> List[Dict[str, Any]]:
-        """list of dict: The list of outgoing response message dictionaries."""
+        """list of dict: The list of response messages."""  # noqa: D403
         return [response._as_dict() for response in self._response_messages]
 
     @property
@@ -286,7 +286,7 @@ class WebhookClient:
             WebhookResponse_ section in Dialogflow's API reference.
 
         .. _WebhookResponse: https://cloud.google.com/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#webhookresponse
-        """  # noqa: E501
+        """  # noqa: D401, E501
         response = {}
 
         if self._response_messages:

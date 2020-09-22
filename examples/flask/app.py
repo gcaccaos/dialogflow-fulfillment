@@ -13,7 +13,7 @@ logger.setLevel(DEBUG)
 
 
 def handler(agent: WebhookClient) -> None:
-    """A basic handler function."""
+    """Handle the webhook request.."""
 
 
 @app.route('/', methods=['POST'])
