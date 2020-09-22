@@ -20,7 +20,8 @@ setup(
         ],
         'lint': [
             'flake8>=3.8',
-            'flake8-isort>=4.0.0'
+            'flake8-isort>=4.0',
+            'flake8-docstrings>=1.5'
         ],
         'docs': [
             'sphinx>=3.1',
