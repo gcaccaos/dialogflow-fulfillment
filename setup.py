@@ -16,21 +16,21 @@ setup(
     python_requires='>=3',
     extras_require={
         'dev': [
-            'tox>=3.14'
+            'tox>=3.14',
         ],
         'lint': [
             'flake8>=3.8',
             'flake8-isort>=4.0',
-            'flake8-docstrings>=1.5'
+            'flake8-docstrings>=1.5',
         ],
         'docs': [
             'sphinx>=3.1',
             'sphinx-autobuild>=0.7',
-            'sphinx-rtd-theme>=0.5'
+            'sphinx-rtd-theme>=0.5',
         ],
         'tests': [
             'pytest>=5.4',
-            'coverage>=5.1'
+            'coverage>=5.1',
         ]
     },
     keywords=[
