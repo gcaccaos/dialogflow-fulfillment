@@ -124,10 +124,6 @@ Features
   * Quick Replies
   * Payload
 
-.. note::
-
-   For more information, see :ref:`user-guide` and :ref:`api-reference`.
-
 Limitations
 -----------
 
