@@ -22,9 +22,9 @@ Overview
    :hidden:
    :caption: API reference
 
-   api/webhook_client
+   api/webhook-client
    api/contexts
-   api/rich_responses
+   api/rich-responses
 
 .. toctree::
    :hidden:
