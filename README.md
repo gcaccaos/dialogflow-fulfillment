@@ -1,6 +1,7 @@
 # dialogflow-fulfillment
 
 ![PyPI](https://img.shields.io/pypi/v/dialogflow-fulfillment)
+[![Actions Status](https://github.com/gcaccaos/dialogflow-fulfillment/workflows/Tests/badge.svg)](https://github.com/gcaccaos/dialogflow-fulfillment/actions)
 [![Documentation Status](https://readthedocs.org/projects/dialogflow-fulfillment/badge/?version=latest)](https://dialogflow-fulfillment.readthedocs.io/en/latest/?badge=latest)
 [![GitHub license](https://img.shields.io/github/license/gcaccaos/dialogflow-fulfillment)](https://github.com/gcaccaos/dialogflow-fulfillment/blob/master/LICENSE)
 
