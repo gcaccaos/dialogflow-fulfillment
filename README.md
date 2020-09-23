@@ -6,7 +6,7 @@
 [![GitHub license](https://img.shields.io/github/license/gcaccaos/dialogflow-fulfillment)](https://github.com/gcaccaos/dialogflow-fulfillment/blob/master/LICENSE)
 
 *dialogflow-fulfillment* is a package for Python that helps developers to
-create fulfillment webhook services for Dialogflow.
+create webhook services for Dialogflow.
 
 The package provides an API for creating and manipulating response messages,
 output contexts and follow-up events in conversations.

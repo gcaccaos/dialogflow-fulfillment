@@ -1,6 +1,6 @@
 from setuptools import setup
 
-description = 'Create fulfillment webhook services for Dialogflow using Python'
+description = 'Create webhook services for Dialogflow using Python'
 
 setup(
     name='dialogflow-fulfillment',

@@ -42,7 +42,7 @@ Overview
    change-log/index
 
 *dialogflow-fulfillment* is a package for Python that helps developers to
-create fulfillment webhook services for Dialogflow.
+create webhook services for Dialogflow.
 
 The package provides an API for creating and manipulating response messages,
 output contexts and follow-up events in conversations.
