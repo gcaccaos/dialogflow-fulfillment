@@ -1,7 +1,7 @@
 .. meta::
    :description: Create webhook services for Dialogflow using Python.
-   :keywords: Dialogflow, webhook, Python, fulfillment, client, context,
-      rich response, WebhookClient, payload
+   :keywords: Dialogflow, webhook, Python, fulfillment, package, library,
+      WebhookClient, client, context, rich response, payload
    :author: Gabriel Farias Caccáos
 
 Overview
