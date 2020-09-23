@@ -1,19 +1,18 @@
-name: Run tox with multiple Python versions
-
+name: Tests
 on: [push, pull_request]
 
 jobs:
   tox:
-    name: Run tox
+    name: Run tests with tox
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
         python-version: [3.8, 3.7, 3.6]
     steps:
-      - name: Checkout dialogflow-fulfillment
+      - name: Check-out the repository
         uses: actions/checkout@v2
-      - name: Setup Python
+      - name: Setup Python environment
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
