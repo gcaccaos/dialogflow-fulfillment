@@ -10,6 +10,9 @@ setup(
     packages=find_packages('src'),
     package_dir={'': 'src'},
     url='https://github.com/gcaccaos/dialogflow-fulfillment',
+    project_urls={
+        'Documentation': 'https://dialogflow-fulfillment.readthedocs.io',
+    },
     license='Apache License 2.0',
     description=description,
     long_description_content_type='text/markdown',
