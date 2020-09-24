@@ -102,7 +102,7 @@ The preferred way to install *dialogflow-fulfillment* is from
 
 .. code-block:: console
 
-   pip install dialogflow-fulfillment
+   $ pip install dialogflow-fulfillment
 
 .. _PyPI: https://pypi.org/project/dialogflow-fulfillment/
 .. _pip: https://pip.pypa.io/

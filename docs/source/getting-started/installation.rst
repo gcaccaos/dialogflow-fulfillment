@@ -26,7 +26,7 @@ To download *dialogflow-fulfillment* from `PyPI`_ with `pip`_, simply run
 
 .. code-block:: console
 
-   pip install dialogflow-fulfillment
+   $ pip install dialogflow-fulfillment
 
 From source
 ~~~~~~~~~~~
@@ -36,12 +36,12 @@ clone the repository from GitHub:
 
 .. code-block:: console
 
-    git clone https://github.com/gcaccaos/dialogflow-fulfillment.git
+   $ git clone https://github.com/gcaccaos/dialogflow-fulfillment.git
 
 
 Then, install *dialogflow-fulfillment* in :code:`editable (-e)` mode with `pip`_:
 
 .. code-block:: console
 
-    cd dialogflow-fulfillment
-    pip install -e .[dev]
+   $ cd dialogflow-fulfillment
+   $ pip install -e .[dev]
