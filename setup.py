@@ -14,6 +14,7 @@ setup(
     description=description,
     long_description_content_type='text/markdown',
     long_description=open('README.md').read(),
+    include_package_data=True,
     python_requires='>=3',
     extras_require={
         'dev': [
