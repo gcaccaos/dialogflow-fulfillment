@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import find_packages, setup
 
 description = 'Create webhook services for Dialogflow using Python'
 
@@ -7,7 +7,8 @@ setup(
     version='0.4.0',
     author='Gabriel Farias Caccáos',
     author_email='gabriel.caccaos@gmail.com',
-    packages=['dialogflow_fulfillment'],
+    packages=find_packages('src'),
+    package_dir={'': 'src'},
     url='https://github.com/gcaccaos/dialogflow-fulfillment',
     license='Apache License 2.0',
     description=description,
