@@ -4,232 +4,204 @@ from dialogflow_fulfillment import (Card, Image, Payload, QuickReplies,
                                     RichResponse, Text)
 
 
-# Tests for Text response
-def test_text_non_string(text):
-    with pytest.raises(TypeError):
-        Text({'this': ['is not a text']})
+class TestText:
+    def test_non_string(self, text):
+        with pytest.raises(TypeError):
+            Text({'this': ['is not a text']})
+
+    def test_set_text_with_deprecation_warning(self, text):
+        text_obj = Text()
+
+        with pytest.warns(DeprecationWarning):
+            text_obj.set_text(text)
+
+        assert text_obj.text == text
+
+    def test_as_dict(self, text):
+        text_obj = Text(text)
+
+        assert text_obj._as_dict() == {'text': {'text': [text]}}
 
 
-def test_text_set_text_with_deprecation_warning(text):
-    text_obj = Text()
+class TestQuickReplies:
+    def test_empty_params(self):
+        quick_replies_obj = QuickReplies()
 
-    with pytest.warns(DeprecationWarning):
-        text_obj.set_text(text)
+        assert quick_replies_obj._as_dict() == {'quickReplies': {}}
 
-    assert text_obj.text == text
+    def test_non_string_title(self):
+        with pytest.raises(TypeError):
+            QuickReplies(title={'this': ['is not a string']})
 
+    def test_set_title_with_deprecation_warning(self, title):
+        quick_replies_obj = QuickReplies()
 
-def test_text_as_dict(text):
-    text_obj = Text(text)
+        with pytest.warns(DeprecationWarning):
+            quick_replies_obj.set_title(title)
 
-    assert text_obj._as_dict() == {'text': {'text': [text]}}
+        assert quick_replies_obj.title == title
 
+    def test_non_sequence_replies(self):
+        with pytest.raises(TypeError):
+            QuickReplies(quick_replies='this is not a sequence')
 
-# Tests for QuickReplies response
-def test_quick_replies_empty_params():
-    quick_replies_obj = QuickReplies()
+    def test_set_quick_replies_with_deprecation_warning(self, quick_replies):
+        quick_replies_obj = QuickReplies()
 
-    assert quick_replies_obj._as_dict() == {'quickReplies': {}}
+        with pytest.warns(DeprecationWarning):
+            quick_replies_obj.set_quick_replies(quick_replies)
 
+        assert quick_replies_obj.quick_replies == quick_replies
 
-def test_quick_replies_non_string_title():
-    with pytest.raises(TypeError):
-        QuickReplies(title={'this': ['is not a string']})
+    def test_as_dict(self, title, quick_replies):
+        quick_replies_obj = QuickReplies(title, quick_replies)
 
-
-def test_quick_replies_set_title_with_deprecation_warning(title):
-    quick_replies_obj = QuickReplies()
-
-    with pytest.warns(DeprecationWarning):
-        quick_replies_obj.set_title(title)
-
-    assert quick_replies_obj.title == title
-
-
-def test_quick_replies_non_sequence_replies():
-    with pytest.raises(TypeError):
-        QuickReplies(quick_replies='this is not a sequence')
-
-
-def test_quick_replies_set_quick_replies_with_deprecation_warning(
-    quick_replies
-):
-    quick_replies_obj = QuickReplies()
-
-    with pytest.warns(DeprecationWarning):
-        quick_replies_obj.set_quick_replies(quick_replies)
-
-    assert quick_replies_obj.quick_replies == quick_replies
-
-
-def test_quick_replies_as_dict(title, quick_replies):
-    quick_replies_obj = QuickReplies(title, quick_replies)
-
-    assert quick_replies_obj._as_dict() == {
-        'quickReplies': {
-            'title': title,
-            'quickReplies': quick_replies
+        assert quick_replies_obj._as_dict() == {
+            'quickReplies': {
+                'title': title,
+                'quickReplies': quick_replies
+            }
         }
-    }
 
 
-# Tests for Payload response
-def test_payload_empty_params():
-    payload_obj = Payload()
+class TestPayload:
+    def test_empty_params(self):
+        payload_obj = Payload()
 
-    assert payload_obj._as_dict() == {'payload': {}}
+        assert payload_obj._as_dict() == {'payload': {}}
 
+    def test_non_dict(self):
+        with pytest.raises(TypeError):
+            Payload('this is not a dict')
 
-def test_payload_non_dict():
-    with pytest.raises(TypeError):
-        Payload('this is not a dict')
+    def test_set_payload_with_deprecation_warning(self, payload):
+        payload_obj = Payload()
 
+        with pytest.warns(DeprecationWarning):
+            payload_obj.set_payload(payload)
 
-def test_payload_set_payload_with_deprecation_warning(payload):
-    payload_obj = Payload()
+        assert payload_obj.payload == payload
 
-    with pytest.warns(DeprecationWarning):
-        payload_obj.set_payload(payload)
+    def test_as_dict(self, payload):
+        payload_obj = Payload(payload)
 
-    assert payload_obj.payload == payload
-
-
-def test_payload_as_dict(payload):
-    payload_obj = Payload(payload)
-
-    assert payload_obj._as_dict() == {'payload': payload}
+        assert payload_obj._as_dict() == {'payload': payload}
 
 
-# Tests for Image response
-def test_image_empty_params():
-    image_obj = Image()
+class TestImage:
+    def test_empty_params(self):
+        image_obj = Image()
 
-    assert image_obj._as_dict() == {'image': {}}
+        assert image_obj._as_dict() == {'image': {}}
 
+    def test_non_string(self):
+        with pytest.raises(TypeError):
+            Image({'this': ['is not a string']})
 
-def test_image_url_non_string():
-    with pytest.raises(TypeError):
-        Image({'this': ['is not a string']})
+    def test_set_image_with_deprecation_warning(self, image_url):
+        image_obj = Image()
 
+        with pytest.warns(DeprecationWarning):
+            image_obj.set_image(image_url)
 
-def test_image_set_image_with_deprecation_warning(image_url):
-    image_obj = Image()
+        assert image_obj.image_url == image_url
 
-    with pytest.warns(DeprecationWarning):
-        image_obj.set_image(image_url)
+    def test_as_dict(self, image_url):
+        image_obj = Image(image_url)
 
-    assert image_obj.image_url == image_url
-
-
-def test_image_as_dict(image_url):
-    image_obj = Image(image_url)
-
-    assert image_obj._as_dict() == {'image': {'imageUri': image_url}}
+        assert image_obj._as_dict() == {'image': {'imageUri': image_url}}
 
 
-# Tests for Card response
-def test_card_empty_params():
-    card_obj = Card()
+class TestCard:
+    def test_empty_params(self):
+        card_obj = Card()
 
-    assert card_obj._as_dict() == {'card': {}}
+        assert card_obj._as_dict() == {'card': {}}
 
+    def test_title_non_string(self):
+        with pytest.raises(TypeError):
+            Card(title={'this': ['is not a string']})
 
-def test_title_non_string():
-    with pytest.raises(TypeError):
-        Card(title={'this': ['is not a string']})
+    def test_set_title_with_deprecation_warning(self, title):
+        card_obj = Card()
 
+        with pytest.warns(DeprecationWarning):
+            card_obj.set_title(title)
 
-def test_card_set_title_with_deprecation_warning(title):
-    card_obj = Card()
+        assert card_obj.title == title
 
-    with pytest.warns(DeprecationWarning):
-        card_obj.set_title(title)
+    def test_subtitle_non_string(self):
+        with pytest.raises(TypeError):
+            Card(subtitle={'this': ['is not a string']})
 
-    assert card_obj.title == title
+    def test_set_subtitle_with_deprecation_warning(self, subtitle):
+        card_obj = Card()
 
+        with pytest.warns(DeprecationWarning):
+            card_obj.set_subtitle(subtitle)
 
-def test_subtitle_non_string():
-    with pytest.raises(TypeError):
-        Card(subtitle={'this': ['is not a string']})
+        assert card_obj.subtitle == subtitle
 
+    def test_image_url_non_string(self):
+        with pytest.raises(TypeError):
+            Card(image_url={'this': ['is not a string']})
 
-def test_card_set_subtitle_with_deprecation_warning(subtitle):
-    card_obj = Card()
+    def test_set_image_with_deprecation_warning(self, image_url):
+        card_obj = Card()
 
-    with pytest.warns(DeprecationWarning):
-        card_obj.set_subtitle(subtitle)
+        with pytest.warns(DeprecationWarning):
+            card_obj.set_image(image_url)
 
-    assert card_obj.subtitle == subtitle
+        assert card_obj.image_url == image_url
 
+    def test_buttons_non_list(self):
+        with pytest.raises(TypeError):
+            Card(buttons='this is not a list of buttons')
 
-def test_card_image_url_non_string():
-    with pytest.raises(TypeError):
-        Card(image_url={'this': ['is not a string']})
+    def test_buttons_non_dict(self):
+        with pytest.raises(TypeError):
+            Card(buttons=['this is not a button'])
 
+    def test_button_text_non_string(self):
+        with pytest.raises(TypeError):
+            Card(buttons=[{'text': ['this is not a text']}])
 
-def test_card_set_image_with_deprecation_warning(image_url):
-    card_obj = Card()
+    def test_button_postback_non_string(self):
+        with pytest.raises(TypeError):
+            Card(buttons=[{'postback': ['this is not a text']}])
 
-    with pytest.warns(DeprecationWarning):
-        card_obj.set_image(image_url)
+    def test_set_buttons_with_deprecation_warning(self, buttons):
+        card_obj = Card()
 
-    assert card_obj.image_url == image_url
+        with pytest.warns(DeprecationWarning):
+            card_obj.set_buttons(buttons)
 
+        assert card_obj.buttons == buttons
 
-def test_card_buttons_non_list():
-    with pytest.raises(TypeError):
-        Card(buttons='this is not a list of buttons')
+    def test_button_empty_params(self):
+        card_obj = Card(buttons=[{}])
 
+        assert card_obj._as_dict() == {'card': {'buttons': [{}]}}
 
-def test_card_buttons_non_dict():
-    with pytest.raises(TypeError):
-        Card(buttons=['this is not a button'])
+    def test_as_dict(self, title, subtitle, image_url, buttons):
+        card_obj = Card(
+            title=title,
+            subtitle=subtitle,
+            image_url=image_url,
+            buttons=buttons
+        )
 
-
-def test_card_button_text_non_string():
-    with pytest.raises(TypeError):
-        Card(buttons=[{'text': ['this is not a text']}])
-
-
-def test_card_button_postback_non_string():
-    with pytest.raises(TypeError):
-        Card(buttons=[{'postback': ['this is not a text']}])
-
-
-def test_card_set_buttons_with_deprecation_warning(buttons):
-    card_obj = Card()
-
-    with pytest.warns(DeprecationWarning):
-        card_obj.set_buttons(buttons)
-
-    assert card_obj.buttons == buttons
-
-
-def test_card_button_empty_params():
-    card_obj = Card(buttons=[{}])
-
-    assert card_obj._as_dict() == {'card': {'buttons': [{}]}}
-
-
-def test_card_as_dict(title, subtitle, image_url, buttons):
-    card_obj = Card(
-        title=title,
-        subtitle=subtitle,
-        image_url=image_url,
-        buttons=buttons
-    )
-
-    assert card_obj._as_dict() == {
-        'card': {
-            'title': title,
-            'subtitle': subtitle,
-            'imageUri': image_url,
-            'buttons': buttons
+        assert card_obj._as_dict() == {
+            'card': {
+                'title': title,
+                'subtitle': subtitle,
+                'imageUri': image_url,
+                'buttons': buttons
+            }
         }
-    }
 
 
-# Tests for the base RichResponse class
-def test_base_rich_response_instantiation():
-    with pytest.raises(TypeError):
-        RichResponse()
+class TestRichResponse:
+    def test_instantiation(self):
+        with pytest.raises(TypeError):
+            RichResponse()
