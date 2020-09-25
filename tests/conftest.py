@@ -5,51 +5,61 @@ import pytest
 
 @pytest.fixture()
 def session():
+    """Generate a random session ID (UUID4)."""
     return str(uuid4())
 
 
 @pytest.fixture()
 def response_id():
+    """Generate a random response ID (UUID4)."""
     return str(uuid4())
 
 
 @pytest.fixture()
 def intent_id():
+    """Generate a random intent ID (UUID4)."""
     return str(uuid4())
 
 
 @pytest.fixture()
 def text():
+    """Return a sample text string."""
     return 'this is a text'
 
 
 @pytest.fixture()
 def quick_replies():
+    """Return a sample list of quick replies."""
     return ['reply 1', 'reply 2', 'reply 3']
 
 
 @pytest.fixture()
 def payload():
+    """Return a sample payload dictionary."""
     return {'test key 1': 'test value 1', 'test key 2': 'test value 2'}
 
 
 @pytest.fixture()
 def image_url():
+    """Return a sample image URL string."""
     return 'https://test.url/image.jpg'
 
 
 @pytest.fixture()
 def title():
+    """Return a sample title string."""
     return 'this is a title'
 
 
 @pytest.fixture()
 def subtitle():
+    """Return a sample subtitle string."""
     return 'this is a subtitle'
 
 
 @pytest.fixture()
 def buttons():
+    """Return a sample list of card button dictionaries."""
     return [
         {'text': 'text 1', 'postback': 'postback 1'},
         {'text': 'text 2', 'postback': 'postback 2'},
@@ -70,6 +80,7 @@ def webhook_request(
     payload,
     quick_replies
 ):
+    """Return a sample WebhookRequest dictionary."""
     project_id = 'PROJECT_ID'
 
     return {
