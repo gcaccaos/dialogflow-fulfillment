@@ -1,13 +1,6 @@
-from uuid import uuid4
-
 import pytest
 
 from dialogflow_fulfillment import Context
-
-
-@pytest.fixture()
-def session():
-    return str(uuid4())
 
 
 def test_context_get(session):

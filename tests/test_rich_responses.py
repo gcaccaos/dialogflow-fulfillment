@@ -5,11 +5,6 @@ from dialogflow_fulfillment import (Card, Image, Payload, QuickReplies,
 
 
 # Tests for Text response
-@pytest.fixture()
-def text():
-    return 'this is a text'
-
-
 def test_text_non_string(text):
     with pytest.raises(TypeError):
         Text({'this': ['is not a text']})
@@ -31,16 +26,6 @@ def test_text_as_dict(text):
 
 
 # Tests for QuickReplies response
-@pytest.fixture()
-def quick_replies_title():
-    return 'this is a title'
-
-
-@pytest.fixture()
-def quick_replies():
-    return ['reply 1', 'reply 2', 'reply 3']
-
-
 def test_quick_replies_empty_params():
     quick_replies_obj = QuickReplies()
 
@@ -52,13 +37,13 @@ def test_quick_replies_non_string_title():
         QuickReplies(title={'this': ['is not a string']})
 
 
-def test_quick_replies_set_title_with_deprecation_warning(quick_replies_title):
+def test_quick_replies_set_title_with_deprecation_warning(title):
     quick_replies_obj = QuickReplies()
 
     with pytest.warns(DeprecationWarning):
-        quick_replies_obj.set_title(quick_replies_title)
+        quick_replies_obj.set_title(title)
 
-    assert quick_replies_obj.title == quick_replies_title
+    assert quick_replies_obj.title == title
 
 
 def test_quick_replies_non_sequence_replies():
@@ -77,23 +62,18 @@ def test_quick_replies_set_quick_replies_with_deprecation_warning(
     assert quick_replies_obj.quick_replies == quick_replies
 
 
-def test_quick_replies_as_dict(quick_replies_title, quick_replies):
-    quick_replies_obj = QuickReplies(quick_replies_title, quick_replies)
+def test_quick_replies_as_dict(title, quick_replies):
+    quick_replies_obj = QuickReplies(title, quick_replies)
 
     assert quick_replies_obj._as_dict() == {
         'quickReplies': {
-            'title': quick_replies_title,
+            'title': title,
             'quickReplies': quick_replies
         }
     }
 
 
 # Tests for Payload response
-@pytest.fixture()
-def payload():
-    return {'test key 1': 'test value 1', 'test key 2': 'test value 2'}
-
-
 def test_payload_empty_params():
     payload_obj = Payload()
 
@@ -121,11 +101,6 @@ def test_payload_as_dict(payload):
 
 
 # Tests for Image response
-@pytest.fixture()
-def image_url():
-    return 'https://test.url/image.jpg'
-
-
 def test_image_empty_params():
     image_obj = Image()
 
@@ -153,25 +128,6 @@ def test_image_as_dict(image_url):
 
 
 # Tests for Card response
-@pytest.fixture()
-def title():
-    return 'this is a title'
-
-
-@pytest.fixture()
-def subtitle():
-    return 'this is a subtitle'
-
-
-@pytest.fixture()
-def buttons():
-    return [
-        {'text': 'text 1', 'postback': 'postback 1'},
-        {'text': 'text 2', 'postback': 'postback 2'},
-        {'text': 'text 3', 'postback': 'postback 3'}
-    ]
-
-
 def test_card_empty_params():
     card_obj = Card()
 
