@@ -3,7 +3,7 @@ import pytest
 from dialogflow_fulfillment import Context
 
 
-def test_context_get(session):
+def test_get(session):
     contexts = [
         {
             'name': f'projects/PROJECT_ID/agent/sessions/{session}/contexts/__system_counters__',  # noqa: E501
@@ -19,7 +19,7 @@ def test_context_get(session):
     assert context_api.get('a undefined context') is None
 
 
-def test_context_delete(session):
+def test_delete(session):
     contexts = [
         {
             'name': f'projects/PROJECT_ID/agent/sessions/{session}/contexts/__system_counters__',  # noqa: E501
@@ -45,14 +45,14 @@ def test_context_delete(session):
     assert context_api.get('another_context')['lifespanCount'] == 0
 
 
-def test_context_set_non_string(session):
+def test_set_non_string(session):
     context_api = Context([], session)
 
     with pytest.raises(TypeError):
         context_api.set({'this': 'is not a string'})
 
 
-def test_context_set_new_context(session):
+def test_set_new_context(session):
     context_api = Context([], session)
 
     context_api.set('new_context')
@@ -60,7 +60,7 @@ def test_context_set_new_context(session):
     assert 'new_context' in context_api.contexts
 
 
-def test_context_set_parameters(session):
+def test_set_parameters(session):
     contexts = [
         {
             'name': f'projects/PROJECT_ID/agent/sessions/{session}/contexts/__system_counters__',  # noqa: E501

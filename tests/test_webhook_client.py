@@ -3,12 +3,12 @@ import pytest
 from dialogflow_fulfillment import WebhookClient
 
 
-def test_webhook_client_non_dict():
+def test_non_dict():
     with pytest.raises(TypeError):
         WebhookClient('this is not a dict')
 
 
-def test_webhook_client_add_text(webhook_request):
+def test_add_text(webhook_request):
     agent = WebhookClient(webhook_request)
 
     def handler(agent):
@@ -21,7 +21,7 @@ def test_webhook_client_add_text(webhook_request):
     ]
 
 
-def test_webhook_client_add_list_of_texts(webhook_request):
+def test_add_list_of_texts(webhook_request):
     agent = WebhookClient(webhook_request)
 
     def handler(agent):
@@ -39,7 +39,7 @@ def test_webhook_client_add_list_of_texts(webhook_request):
     ]
 
 
-def test_webhook_client_add_non_richresponse(webhook_request):
+def test_add_non_richresponse(webhook_request):
     agent = WebhookClient(webhook_request)
 
     def handler(agent):
@@ -49,7 +49,7 @@ def test_webhook_client_add_non_richresponse(webhook_request):
         agent.handle_request(handler)
 
 
-def test_webhook_client_set_followup_event(webhook_request):
+def test_set_followup_event(webhook_request):
     agent = WebhookClient(webhook_request)
 
     def handler(agent):
@@ -64,7 +64,7 @@ def test_webhook_client_set_followup_event(webhook_request):
     }
 
 
-def test_webhook_client_set_followup_event_by_dict(webhook_request):
+def test_set_followup_event_by_dict(webhook_request):
     agent = WebhookClient(webhook_request)
 
     def handler(agent):
@@ -79,7 +79,7 @@ def test_webhook_client_set_followup_event_by_dict(webhook_request):
     }
 
 
-def test_webhook_client_assign_followup_event(webhook_request):
+def test_assign_followup_event(webhook_request):
     agent = WebhookClient(webhook_request)
 
     def handler(agent):
@@ -93,7 +93,7 @@ def test_webhook_client_assign_followup_event(webhook_request):
     }
 
 
-def test_webhook_client_assign_followup_event_by_dict(webhook_request):
+def test_assign_followup_event_by_dict(webhook_request):
     agent = WebhookClient(webhook_request)
 
     def handler(agent):
@@ -107,7 +107,7 @@ def test_webhook_client_assign_followup_event_by_dict(webhook_request):
     }
 
 
-def test_webhook_client_handler_intent_map(webhook_request):
+def test_handler_intent_map(webhook_request):
     agent = WebhookClient(webhook_request)
 
     handler = {
@@ -122,7 +122,7 @@ def test_webhook_client_handler_intent_map(webhook_request):
     ]
 
 
-def test_webhook_client_non_callable_handler(webhook_request):
+def test_non_callable_handler(webhook_request):
     agent = WebhookClient(webhook_request)
 
     handler = 'this is not a callable'
@@ -131,7 +131,7 @@ def test_webhook_client_non_callable_handler(webhook_request):
         agent.handle_request(handler)
 
 
-def test_webhook_client_no_contexts(webhook_request):
+def test_no_contexts(webhook_request):
     modified_webhook_request = webhook_request
     modified_webhook_request['queryResult']['outputContexts'] = []
 
@@ -145,7 +145,7 @@ def test_webhook_client_no_contexts(webhook_request):
     assert 'outputContexts' not in agent.response
 
 
-def test_webhook_client_with_request_source(webhook_request):
+def test_with_request_source(webhook_request):
     modified_webhook_request = webhook_request
     modified_webhook_request['originalDetectIntentRequest']['source'] = \
         'PLATFORM_UNSPECIFIED'
@@ -160,7 +160,7 @@ def test_webhook_client_with_request_source(webhook_request):
     assert agent.response['source'] == 'PLATFORM_UNSPECIFIED'
 
 
-def test_webhook_client_with_unknown_message(webhook_request):
+def test_with_unknown_message(webhook_request):
     modified_webhook_request = webhook_request
     modified_webhook_request['queryResult']['fulfillmentMessages'] = [
         {
@@ -174,7 +174,7 @@ def test_webhook_client_with_unknown_message(webhook_request):
         WebhookClient(modified_webhook_request)
 
 
-def test_webhook_client_set_followup_event_non_string_or_dict(webhook_request):
+def test_set_followup_event_non_string_or_dict(webhook_request):
     agent = WebhookClient(webhook_request)
 
     with pytest.raises(TypeError):
