@@ -31,10 +31,7 @@ def test_delete(session):
         {
             'name': f'projects/PROJECT_ID/agent/sessions/{session}/contexts/another_context',  # noqa: E501
             'lifespanCount': 1,
-            'parameters': {
-                'no-input': 0,
-                'no-match': 0
-            }
+            'parameters': {}
         }
     ]
 

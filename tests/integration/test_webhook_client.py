@@ -3,11 +3,6 @@ import pytest
 from dialogflow_fulfillment import WebhookClient
 
 
-def test_non_dict():
-    with pytest.raises(TypeError):
-        WebhookClient('this is not a dict')
-
-
 def test_add_text(webhook_request):
     agent = WebhookClient(webhook_request)
 
@@ -120,15 +115,6 @@ def test_handler_intent_map(webhook_request):
     assert agent.response['fulfillmentMessages'] == [
         {'text': {'text': ['Hello!']}}
     ]
-
-
-def test_non_callable_handler(webhook_request):
-    agent = WebhookClient(webhook_request)
-
-    handler = 'this is not a callable'
-
-    with pytest.raises(TypeError):
-        agent.handle_request(handler)
 
 
 def test_no_contexts(webhook_request):
