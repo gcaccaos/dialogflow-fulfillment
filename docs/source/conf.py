@@ -31,6 +31,7 @@ author = 'Gabriel Farias Caccáos'
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
+    'sphinx.ext.intersphinx',
     'sphinx.ext.napoleon',
     'sphinx.ext.viewcode',
     'sphinx_rtd_theme',
@@ -53,7 +54,6 @@ exclude_patterns = []
 #
 html_theme = 'sphinx_rtd_theme'
 html_theme_options = {
-    'style_external_links': True,
     'sticky_navigation': True,
 }
 
@@ -76,3 +76,7 @@ autodoc_default_options = {
 }
 
 master_doc = 'index'
+
+intersphinx_mapping = {
+    'python': ('https://docs.python.org/3', None),
+}
