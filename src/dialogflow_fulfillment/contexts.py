@@ -6,7 +6,7 @@ class Context:
     A client class for accessing and manipulating input and output contexts.
 
     This class provides an API that allows to create, edit or delete contexts
-        during conversations.
+    during conversations.
 
     Parameters:
         input_contexts (list of dict): The contexts that were active in the
