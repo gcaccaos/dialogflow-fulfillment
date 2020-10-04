@@ -80,3 +80,10 @@ master_doc = 'index'
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3', None),
 }
+
+nitpicky = True
+nitpick_ignore = [
+    ('py:class', 'any'),
+    ('py:class', 'callable'),
+    ('py:class', 'optional'),
+]
