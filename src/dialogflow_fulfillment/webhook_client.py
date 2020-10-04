@@ -28,12 +28,11 @@ class WebhookClient:
         query (str): The original query sent by the end-user.
         intent (str): The intent triggered by Dialogflow.
         action (str): The action defined for the intent.
-        context (:class:`.Context`): An API class for handling input and output
-            contexts.
-        contexts (list of dict): The array of input contexts.
+        context (Context): An API class for handling input and output contexts.
+        contexts (list(dict)): The array of input contexts.
         parameters (dict): The intent parameters extracted by Dialogflow.
-        console_messages (list of :class:`.RichResponse`): The response
-            messages defined for the intent.
+        console_messages (list(RichResponse)): The response messages defined
+            for the intent.
         original_request (str): The original request object from
             `detectIntent/query`.
         request_source (str): The source of the request.
@@ -154,7 +153,7 @@ class WebhookClient:
                 >>> agent.add(responses)
 
         Parameters:
-            responses (str, RichResponse or list of str or RichResponse):
+            responses (str, RichResponse, list(str, RichResponse)):
                 A single response message or a list of response messages.
         """  # noqa: E501
         if not isinstance(responses, list):
@@ -184,7 +183,7 @@ class WebhookClient:
             :attr:`followup_event` attribute instead.
 
         Parameters:
-            event (str or dict): The event to be triggered by Dialogflow.
+            event (str, dict): The event to be triggered by Dialogflow.
 
         Warns:
             DeprecationWarning: Assign value to the :attr:`followup_event`
@@ -250,7 +249,7 @@ class WebhookClient:
                 ... }
 
         Parameters:
-            handler (callable or dict(str, callable)): The handler function or
+            handler (callable, dict(str, callable)): The handler function or
                 a mapping of intents to handler functions.
 
         Raises:

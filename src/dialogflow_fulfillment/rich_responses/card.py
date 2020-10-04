@@ -21,7 +21,7 @@ class Card(RichResponse):
         title (str, optional): The title of the card response.
         subtitle (str, optional): The subtitle of the card response. Defaults
         image_url (str, optional): The URL of the card response's image.
-        buttons (list of dict(str, str), optional): The buttons of the card
+        buttons (list(dict(str, str)), optional): The buttons of the card
             response.
 
     See Also:
@@ -204,7 +204,7 @@ class Card(RichResponse):
     @property
     def buttons(self) -> Optional[List[Dict[str, str]]]:
         """
-        list of dict(str, str), optional: The buttons of the card response.
+        list(dict(str, str)), optional: The buttons of the card response.
 
         Examples:
             Accessing the :attr:`buttons` attribute:
@@ -242,7 +242,7 @@ class Card(RichResponse):
             :attr:`buttons` attribute instead
 
         Parameters:
-            buttons (list of dict(str, str), optional): The buttons of the card
+            buttons (list(dict(str, str), optional): The buttons of the card
                 response.
 
         Warns:

@@ -18,7 +18,7 @@ class QuickReplies(RichResponse):
 
     Parameters:
         title (str, optional): The title of the quick reply buttons.
-        quick_replies (list or tuple of str, optional): The texts for the quick
+        quick_replies (list, tuple(str), optional): The texts for the quick
             reply buttons.
 
     See Also:
@@ -93,7 +93,7 @@ class QuickReplies(RichResponse):
     @property
     def quick_replies(self) -> Optional[Union[List[str], Tuple[str]]]:
         """
-        list or tuple of str, optional: The texts for the quick reply buttons.
+        list, tuple(str), optional: The texts for the quick reply buttons.
 
         Examples:
             Accessing the :attr:`quick_replies` attribute:
