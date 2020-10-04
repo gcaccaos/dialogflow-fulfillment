@@ -59,7 +59,7 @@ A simple example
 ----------------
 
 Working with *dialogflow-fulfillment* is as simple as passing a webhook request
-object from Dialogflow (a.k.a. :obj:`WebhookRequest`) to an instance of a
+object from Dialogflow (a.k.a. ``WebhookRequest``) to an instance of a
 :class:`~.WebhookClient` and using a handler function (or a mapping of
 functions for each intent) via the :meth:`~.WebhookClient.handle_request`
 method:
@@ -69,7 +69,7 @@ method:
    :caption: simple_example.py
 
 The above code produces the resulting response object (a.k.a.
-:obj:`WebhookResponse`), which can be accessed via the
+``WebhookResponse``), which can be accessed via the
 :attr:`~.WebhookClient.response` attribute:
 
 .. code-block:: python

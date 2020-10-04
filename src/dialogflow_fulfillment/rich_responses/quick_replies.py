@@ -136,7 +136,7 @@ class QuickReplies(RichResponse):
             :attr:`quick_replies` attribute instead.
 
         Parameters:
-            quick_replies (list or tuple of str, optional): The texts for the
+            quick_replies (list, tuple(str), optional): The texts for the
                 quick reply buttons.
 
         Warns:

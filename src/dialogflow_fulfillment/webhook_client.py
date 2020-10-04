@@ -14,7 +14,7 @@ class WebhookClient:
     back to the end-user).
 
     Parameters:
-        request (dict): The webhook request object (:obj:`WebhookRequest`) from
+        request (dict): The webhook request object (``WebhookRequest``) from
             Dialogflow.
 
     Raises:
@@ -278,7 +278,7 @@ class WebhookClient:
     @property
     def response(self) -> Dict[str, Any]:
         """
-        dict: The generated webhook response object (:obj:`WebhookResponse`).
+        dict: The generated webhook response object (``WebhookResponse``).
 
         See Also:
             For more information about the webhook response object, see the
