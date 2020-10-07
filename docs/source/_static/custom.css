@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+
+html {
+    font-size: 1rem;
+}
+
+body, a.btn, input[type="text"] {
+    font-family: Roboto;
+}
+
+code, pre {
+    font-family: Roboto Mono !important;
+}
