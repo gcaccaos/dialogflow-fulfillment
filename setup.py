@@ -22,6 +22,9 @@ setup(
     extras_require={
         'dev': [
             'tox>=3.14',
+            'setuptools>=49.6',
+            'wheel>=0.35',
+            'twine>=3.2',
         ],
         'lint': [
             'flake8>=3.8',
