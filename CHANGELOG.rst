@@ -18,6 +18,15 @@ Removed
 * RichResponse's set_* methods (use property attributes instead).
 * WebhookClient's set_followup_event method (use property attribute instead).
 
+0.4.2_ - 2020-11-29
+-------------------
+
+Fixed
+~~~~~
+
+* Bug when parsing `WebhookRequest` object in Django example (#1).
+* Bug when calling `response` in `WebhookClient` multiple times (#2).
+
 0.4.1_ - 2020-10-11
 -------------------
 
@@ -126,6 +135,7 @@ Added
 
 * Initial release.
 
+.. _0.4.2: https://github.com/gcaccaos/dialogflow-fulfillment/compare/v0.4.1...v0.4.2
 .. _0.4.1: https://github.com/gcaccaos/dialogflow-fulfillment/compare/v0.4.0...v0.4.1
 .. _0.4.0: https://github.com/gcaccaos/dialogflow-fulfillment/compare/v0.3.0...v0.4.0
 .. _0.3.0: https://github.com/gcaccaos/dialogflow-fulfillment/compare/v0.2.0...v0.3.0
