@@ -1,14 +1,12 @@
-from logging import DEBUG, getLogger
-from typing import Dict
+from json import loads
+from logging import getLogger
 
-from django.http import JsonResponse
+from django.http import HttpRequest, HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
 from dialogflow_fulfillment import WebhookClient
 
-# Create logger and enable info level logging
-logger = getLogger(__name__)
-logger.setLevel(DEBUG)
+logger = getLogger('django.server.webhook')
 
 
 def handler(agent: WebhookClient) -> None:
@@ -16,11 +14,11 @@ def handler(agent: WebhookClient) -> None:
 
 
 @csrf_exempt
-def webhook(request: Dict) -> Dict:
+def webhook(request: HttpRequest) -> HttpResponse:
     """Handle webhook requests from Dialogflow."""
     if request.method == 'POST':
-        # Get request body
-        request_ = request.POST.dict()
+        # Get WebhookRequest object
+        request_ = loads(request.body)
 
         # Log request headers and body
         logger.info(f'Request headers: {dict(request.headers)}')
@@ -30,7 +28,9 @@ def webhook(request: Dict) -> Dict:
         agent = WebhookClient(request_)
         agent.handle_request(handler)
 
-        # Log response body
+        # Log WebhookResponse object
         logger.info(f'Response body: {agent.response}')
 
         return JsonResponse(agent.response)
+
+    return HttpResponse()
