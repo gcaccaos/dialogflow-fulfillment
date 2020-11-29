@@ -24,13 +24,13 @@ Removed
 Added
 ~~~~~
 
-* Continuous integration and continuous deployment with Github Actions
+* Continuous integration and continuous deployment with Github Actions.
 
 Improved
 ~~~~~~~~
 
-* Health of the source code
-* Documentation
+* Health of the source code.
+* Documentation.
 
 0.4.0_ - 2020-09-12
 -------------------
