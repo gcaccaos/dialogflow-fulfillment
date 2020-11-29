@@ -58,16 +58,16 @@ class WebhookClient:
         Parameters:
             request (dict): The webhook request object from Dialogflow.
         """
-        self.intent = request['queryResult']['intent']['displayName']
-        self.action = request['queryResult'].get('action')
-        self.parameters = request['queryResult'].get('parameters', {})
-        self.contexts = request['queryResult'].get('outputContexts', [])
-        self.original_request = request['originalDetectIntentRequest']
-        self.request_source = request['originalDetectIntentRequest'].get(
-            'source'
-        )
-        self.query = request['queryResult']['queryText']
-        self.locale = request['queryResult']['languageCode']
+        query_result = request['queryResult']
+
+        self.intent = query_result['intent']['displayName']
+        self.action = query_result.get('action')
+        self.parameters = query_result.get('parameters', {})
+        self.contexts = query_result.get('outputContexts', [])
+        self.original_request = request.get('originalDetectIntentRequest', {})
+        self.request_source = self.original_request.get('source')
+        self.query = query_result['queryText']
+        self.locale = query_result['languageCode']
         self.session = request['session']
         self.context = Context(self.contexts, self.session)
         self.console_messages = self._process_console_messages(request)

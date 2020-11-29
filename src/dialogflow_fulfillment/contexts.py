@@ -38,8 +38,7 @@ class Context:
         contexts = {}
 
         for context in input_contexts:
-            name = context['name'].rsplit('/', 1)[-1]
-            context['name'] = name
+            name = context.get('name', '').rsplit('/', 1).pop()
             contexts[name] = context
 
         return contexts
@@ -105,12 +104,7 @@ class Context:
         Returns:
             list(dict): The output contexts (dictionaries).
         """
-        output_contexts = [*self]
-
-        for context in output_contexts:
-            context['name'] = f"{self.session}/contexts/{context['name']}"
-
-        return output_contexts
+        return [*self]
 
     def __iter__(self) -> 'Context':
         """Implement iter(self)."""

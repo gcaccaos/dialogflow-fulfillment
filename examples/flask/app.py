@@ -1,4 +1,4 @@
-from logging import DEBUG
+from logging import INFO
 from typing import Dict
 
 from flask import Flask, request
@@ -9,7 +9,7 @@ from dialogflow_fulfillment import WebhookClient
 # Create Flask app and enable info level logging
 app = Flask(__name__)
 logger = create_logger(app)
-logger.setLevel(DEBUG)
+logger.setLevel(INFO)
 
 
 def handler(agent: WebhookClient) -> None:
@@ -19,7 +19,7 @@ def handler(agent: WebhookClient) -> None:
 @app.route('/', methods=['POST'])
 def webhook() -> Dict:
     """Handle webhook requests from Dialogflow."""
-    # Get request body
+    # Get WebhookRequest object
     request_ = request.get_json(force=True)
 
     # Log request headers and body
@@ -30,7 +30,7 @@ def webhook() -> Dict:
     agent = WebhookClient(request_)
     agent.handle_request(handler)
 
-    # Log response body
+    # Log WebhookResponse object
     logger.info(f'Response body: {agent.response}')
 
     return agent.response
