@@ -27,9 +27,7 @@ setup(
             'twine>=3.2',
         ],
         'lint': [
-            'flake8>=3.8',
-            'flake8-isort>=4.0',
-            'flake8-docstrings>=1.5',
+            'pre-commit>=2.9',
         ],
         'docs': [
             'sphinx>=3.1',
