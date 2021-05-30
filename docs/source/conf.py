@@ -12,6 +12,11 @@
 #
 import os
 import sys
+from errno import ENOENT
+
+import sphinx.util.osutil
+
+sphinx.util.osutil.ENOENT = ENOENT
 
 sys.path.insert(0, os.path.abspath('../..'))
 
