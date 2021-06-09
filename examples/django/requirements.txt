@@ -1,2 +1,2 @@
-Django==3.1.8
+Django==3.1.10
 dialogflow-fulfillment==0.4.1
