@@ -1,4 +1,5 @@
-tox>=3.14
-setuptools>=49.6
-wheel>=0.35
-twine>=3.2
+-r lint.txt
+setuptools==52.0.0
+tox==3.23.0
+twine==3.3.0
+wheel==0.36.2

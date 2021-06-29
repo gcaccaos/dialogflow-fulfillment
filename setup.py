@@ -21,24 +21,23 @@ setup(
     python_requires='>=3',
     extras_require={
         'dev': [
-            'tox>=3.14',
-            'setuptools>=49.6',
-            'wheel>=0.35',
-            'twine>=3.2',
+            'tox==3.23.0',
+            'setuptools==52.0.0',
+            'wheel==0.36.2',
+            'twine==3.3.0',
         ],
         'lint': [
-            'flake8>=3.8',
-            'flake8-isort>=4.0',
-            'flake8-docstrings>=1.5',
+            'pre-commit==2.10.1',
         ],
         'docs': [
-            'sphinx>=3.1',
-            'sphinx-autobuild>=0.7',
-            'sphinx-rtd-theme>=0.5',
+            'sphinx==3.5.2',
+            'sphinx-autobuild==2020.9.1',
+            'sphinx-rtd-theme==0.5.1',
+            'sphinxcontrib-mermaid==0.6.3'
         ],
         'tests': [
-            'pytest>=5.4',
-            'coverage>=5.1',
+            'pytest==6.2.2',
+            'coverage==5.5',
         ]
     },
     keywords=[
