@@ -1,6 +1,7 @@
 # Hidden directories
 .vscode/
 .tox/
+.venv/
 .pytest_cache/
 
 # Artifact directories
