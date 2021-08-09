@@ -13,7 +13,7 @@ logger.setLevel(INFO)
 
 
 def handler(agent: WebhookClient) -> None:
-    """Handle the webhook request.."""
+    """Handle the webhook request."""
 
 
 @app.route('/', methods=['POST'])
