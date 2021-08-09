@@ -4,7 +4,7 @@ description = 'Create webhook services for Dialogflow using Python'
 
 setup(
     name='dialogflow-fulfillment',
-    version='0.4.3',
+    version='0.4.4',
     author='Gabriel Farias Caccáos',
     author_email='gabriel.caccaos@gmail.com',
     packages=find_packages('src'),
