@@ -1,2 +1,2 @@
 dialogflow-fulfillment==0.4.2
-Flask==1.1.2
+Flask==2.0.1
