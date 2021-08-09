@@ -21,22 +21,25 @@ setup(
     python_requires='>=3',
     extras_require={
         'dev': [
-            'tox==3.23.0',
-            'setuptools==52.0.0',
+            'tox==3.24.1',
+            'setuptools==57.4.0',
             'wheel==0.36.2',
-            'twine==3.3.0',
+            'twine==3.4.2',
         ],
         'lint': [
-            'pre-commit==2.10.1',
+            'flake8==3.9.2',
+            'flake8-docstrings==1.6.0',
+            'flake8-isort==4.0.0',
+            'pre-commit==2.13.0',
         ],
         'docs': [
-            'sphinx==3.5.2',
-            'sphinx-autobuild==2020.9.1',
-            'sphinx-rtd-theme==0.5.1',
-            'sphinxcontrib-mermaid==0.6.3'
+            'sphinx==4.1.2',
+            'sphinx-autobuild==2021.3.14',
+            'sphinx-rtd-theme==0.5.2',
+            'sphinxcontrib-mermaid==0.7.1'
         ],
         'tests': [
-            'pytest==6.2.2',
+            'pytest==6.2.4',
             'coverage==5.5',
         ]
     },
