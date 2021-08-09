@@ -58,17 +58,17 @@ class WebhookClient:
         Parameters:
             request (dict): The webhook request object from Dialogflow.
         """
-        query_result = request['queryResult']
+        query_result = request.get('queryResult', {})
 
-        self.intent = query_result['intent']['displayName']
+        self.intent = query_result.get('intent', {}).get('displayName')
         self.action = query_result.get('action')
         self.parameters = query_result.get('parameters', {})
         self.contexts = query_result.get('outputContexts', [])
         self.original_request = request.get('originalDetectIntentRequest', {})
         self.request_source = self.original_request.get('source')
-        self.query = query_result['queryText']
-        self.locale = query_result['languageCode']
-        self.session = request['session']
+        self.query = query_result.get('queryText')
+        self.locale = query_result.get('languageCode')
+        self.session = request.get('session', '')
         self.context = Context(self.contexts, self.session)
         self.console_messages = self._process_console_messages(request)
 
@@ -119,7 +119,7 @@ class WebhookClient:
         request: Dict[str, Any]
     ) -> List[RichResponse]:
         """Get messages defined in Dialogflow's console for matched intent."""
-        fulfillment_messages = request['queryResult'].get(
+        fulfillment_messages = request.get('queryResult', {}).get(
             'fulfillmentMessages',
             []
         )
