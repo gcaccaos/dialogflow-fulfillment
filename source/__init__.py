@@ -1,5 +1,5 @@
-from .contexts import Context
-from .rich_responses import (
+from dialogflow_fulfillment.contexts import Context
+from dialogflow_fulfillment.rich_responses import (
     Card,
     Image,
     Payload,
@@ -7,7 +7,7 @@ from .rich_responses import (
     RichResponse,
     Text,
 )
-from .webhook_client import WebhookClient
+from dialogflow_fulfillment.webhook_client import WebhookClient
 
 __all__ = [
     'Context',

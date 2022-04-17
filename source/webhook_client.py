@@ -1,8 +1,8 @@
 from typing import Any, Callable, Dict, List, Optional, Union
 from warnings import warn
 
-from .contexts import Context
-from .rich_responses import RichResponse, Text
+from dialogflow_fulfillment.contexts import Context
+from dialogflow_fulfillment.rich_responses import RichResponse, Text
 
 
 class WebhookClient:

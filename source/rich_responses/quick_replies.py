@@ -1,7 +1,7 @@
 from typing import Any, Dict, List, Optional, Tuple, Union
 from warnings import warn
 
-from .base import RichResponse
+from dialogflow_fulfillment.rich_responses.base import RichResponse
 
 
 class QuickReplies(RichResponse):
