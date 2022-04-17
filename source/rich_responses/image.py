@@ -1,5 +1,4 @@
 from typing import Any, Dict, Optional
-from warnings import warn
 
 from dialogflow_fulfillment.rich_responses.base import RichResponse
 
@@ -56,29 +55,6 @@ class Image(RichResponse):
             raise TypeError('image_url argument must be a string')
 
         self._image_url = image_url
-
-    def set_image(self, image_url: Optional[str] = None) -> None:
-        """
-        Set the URL of the image response.
-
-        Warning:
-            This method is deprecated and will be removed. Assign value to the
-            :attr:`image_url` attribute instead
-
-        Parameters:
-            image_url (str, optional): The URL of the image response.
-
-        Warns:
-            DeprecationWarning: Assign value to the :attr:`image_url` attribute
-                instead.
-        """
-        warn(
-            'set_image() is deprecated; '
-            'assign value to the image_url attribute instead',
-            DeprecationWarning
-        )
-
-        self.image_url = image_url
 
     @classmethod
     def _from_dict(cls, message: Dict[str, Any]) -> 'Image':
