@@ -1,6 +1,12 @@
 import pytest
-from dialogflow_fulfillment import (Card, Image, Payload, QuickReplies,
-                                    RichResponse, Text)
+from dialogflow_fulfillment import (
+    Card,
+    Image,
+    Payload,
+    QuickReplies,
+    RichResponse,
+    Text,
+)
 
 
 class TestText:
