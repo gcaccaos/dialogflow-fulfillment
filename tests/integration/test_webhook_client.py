@@ -1,5 +1,4 @@
 import pytest
-
 from dialogflow_fulfillment import WebhookClient
 
 

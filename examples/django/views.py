@@ -1,10 +1,9 @@
 from json import loads
 from logging import getLogger
 
+from dialogflow_fulfillment import WebhookClient
 from django.http import HttpRequest, HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-
-from dialogflow_fulfillment import WebhookClient
 
 logger = getLogger('django.server.webhook')
 
