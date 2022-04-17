@@ -1,5 +1,6 @@
+-r ci.txt
 -r lint.txt
+-r tests.txt
 setuptools==57.4.0
-tox==3.25.0
 twine==3.4.2
 wheel==0.37.1
