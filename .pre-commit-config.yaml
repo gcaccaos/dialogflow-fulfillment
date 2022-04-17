@@ -14,11 +14,3 @@ repos:
       - id: debug-statements
       - id: name-tests-test
         args: ['--django']
-
-  - repo: https://gitlab.com/pycqa/flake8
-    rev: 3.9.2
-    hooks:
-      - id: flake8
-        additional_dependencies:
-          - flake8-isort==4.0.0
-          - flake8-docstrings==1.6.0
