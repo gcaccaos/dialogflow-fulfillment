@@ -1,7 +1,5 @@
 from setuptools import find_packages, setup
 
-description = 'Create webhook services for Dialogflow using Python'
-
 setup(
     name='dialogflow-fulfillment',
     version='0.4.4',
@@ -14,7 +12,7 @@ setup(
         'Documentation': 'https://dialogflow-fulfillment.readthedocs.io',
     },
     license='Apache License 2.0',
-    description=description,
+    description='Create webhook services for Dialogflow using Python',
     long_description_content_type='text/markdown',
     long_description=open('README.md').read(),
     include_package_data=True,
