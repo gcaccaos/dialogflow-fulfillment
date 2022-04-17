@@ -1,12 +1,11 @@
-from setuptools import find_packages, setup
+from setuptools import setup
 
 setup(
     name='dialogflow-fulfillment',
     version='0.4.4',
     author='Gabriel Farias Caccáos',
     author_email='gabriel.caccaos@gmail.com',
-    packages=find_packages('source'),
-    package_dir={'': 'source'},
+    package_dir={'dialogflow_fulfillment': 'source'},
     url='https://github.com/gcaccaos/dialogflow-fulfillment',
     project_urls={
         'Documentation': 'https://dialogflow-fulfillment.readthedocs.io',
