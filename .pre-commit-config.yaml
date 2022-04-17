@@ -15,3 +15,5 @@ repos:
       - id: debug-statements
       - id: name-tests-test
         args: ['--django']
+      - id: no-commit-to-branch
+        args: ['--branch', 'main']
