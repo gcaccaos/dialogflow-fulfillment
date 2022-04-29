@@ -1,7 +1,7 @@
 [run]
 branch = true
 omit = tests
-source = dialogflow_fulfillment
+source = source
 
 [report]
 fail_under = 100
