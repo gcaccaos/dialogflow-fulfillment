@@ -1,5 +1,5 @@
 import pytest
-from dialogflow_fulfillment import WebhookClient
+from dialogflow_fulfillment.webhook_client import WebhookClient
 
 
 def test_non_dict():

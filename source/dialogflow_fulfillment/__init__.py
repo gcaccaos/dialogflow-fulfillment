@@ -1,5 +1,5 @@
-from dialogflow_fulfillment.contexts import Context
-from dialogflow_fulfillment.rich_responses import (
+from .contexts import Context
+from .rich_responses import (
     Card,
     Image,
     Payload,
@@ -7,9 +7,9 @@ from dialogflow_fulfillment.rich_responses import (
     RichResponse,
     Text,
 )
-from dialogflow_fulfillment.webhook_client import WebhookClient
+from .webhook_client import WebhookClient
 
-__all__ = [
+__all__ = (
     'Context',
     'Card',
     'Image',
@@ -18,4 +18,4 @@ __all__ = [
     'RichResponse',
     'Text',
     'WebhookClient',
-]
+)

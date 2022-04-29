@@ -1,6 +1,6 @@
 from typing import Any, Dict, Optional
 
-from dialogflow_fulfillment.rich_responses.base import RichResponse
+from .base import RichResponse
 
 
 class Image(RichResponse):

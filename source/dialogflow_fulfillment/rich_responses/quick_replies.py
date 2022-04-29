@@ -1,6 +1,6 @@
 from typing import Any, Dict, List, Optional, Tuple, Union
 
-from dialogflow_fulfillment.rich_responses.base import RichResponse
+from .base import RichResponse
 
 
 class QuickReplies(RichResponse):

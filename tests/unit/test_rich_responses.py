@@ -1,5 +1,5 @@
 import pytest
-from dialogflow_fulfillment import (
+from dialogflow_fulfillment.rich_responses import (
     Card,
     Image,
     Payload,

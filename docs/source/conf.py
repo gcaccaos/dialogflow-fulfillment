@@ -18,7 +18,7 @@ import sphinx.util.osutil
 
 sphinx.util.osutil.ENOENT = ENOENT
 
-sys.path.insert(0, os.path.abspath('../..'))
+sys.path.insert(0, os.path.abspath('../../source'))
 
 
 # -- Project information -----------------------------------------------------
