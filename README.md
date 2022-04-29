@@ -2,7 +2,7 @@
 
 ![PyPI version](https://img.shields.io/pypi/v/dialogflow-fulfillment)
 [![Tests status](https://github.com/gcaccaos/dialogflow-fulfillment/workflows/Tests/badge.svg?&branch=main)](https://github.com/gcaccaos/dialogflow-fulfillment/actions)
-[![Documentation status](https://readthedocs.org/projects/dialogflow-fulfillment/badge/?version=main)](https://dialogflow-fulfillment.readthedocs.io/en/latest/?badge=latest)
+[![Documentation status](https://readthedocs.org/projects/dialogflow-fulfillment/badge/?version=stable)](https://dialogflow-fulfillment.readthedocs.io/en/stable/?badge=stable)
 [![Maintainability](https://api.codeclimate.com/v1/badges/c666df0add06a523e65b/maintainability)](https://codeclimate.com/github/gcaccaos/dialogflow-fulfillment/maintainability)
 [![GitHub license](https://img.shields.io/github/license/gcaccaos/dialogflow-fulfillment)](https://github.com/gcaccaos/dialogflow-fulfillment/blob/main/LICENSE)
 
