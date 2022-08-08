@@ -2,6 +2,6 @@
 -r lint.txt
 -r tests.txt
 pre-commit==2.19.0
-setuptools==62.1.0
+setuptools==63.4.2
 twine==4.0.0
 wheel==0.37.1
