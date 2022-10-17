@@ -1,4 +1,4 @@
 furo==2022.4.7
-sphinx==4.5.0
+sphinx==5.3.0
 sphinx-autobuild==2021.3.14
 sphinxcontrib-mermaid==0.7.1
