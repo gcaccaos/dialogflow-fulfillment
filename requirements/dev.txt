@@ -3,6 +3,6 @@
 -r tests.txt
 pre-commit==2.19.0
 setuptools==65.6.3
-twine==4.0.0
+twine==4.0.2
 twine==4.0.2
 wheel==0.38.4
