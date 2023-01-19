@@ -1,6 +1,7 @@
 # dialogflow-fulfillment
 
 ![PyPI version](https://img.shields.io/pypi/v/dialogflow-fulfillment)
+[![Downloads](https://static.pepy.tech/badge/dialogflow-fulfillment)](https://pepy.tech/project/dialogflow-fulfillment)
 [![Tests status](https://github.com/gcaccaos/dialogflow-fulfillment/workflows/Tests/badge.svg?&branch=master)](https://github.com/gcaccaos/dialogflow-fulfillment/actions)
 [![Documentation status](https://readthedocs.org/projects/dialogflow-fulfillment/badge/?version=latest)](https://dialogflow-fulfillment.readthedocs.io/en/latest/?badge=latest)
 [![Maintainability](https://api.codeclimate.com/v1/badges/c666df0add06a523e65b/maintainability)](https://codeclimate.com/github/gcaccaos/dialogflow-fulfillment/maintainability)
