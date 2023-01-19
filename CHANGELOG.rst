@@ -18,11 +18,16 @@ Removed
 * RichResponse's set_* methods (use property attributes instead).
 * WebhookClient's set_followup_event method (use property attribute instead).
 
+Dependencies
+~~~~~~~~~~~~
+
+* Change sphinx's template to `furo`.
+* Upgrade many development dependencies.
+
 0.4.5_ - 2023-01-19
 -------------------
 
 Disaster recovery.
-
 
 0.4.4_ - 2021-08-09
 -------------------
@@ -36,7 +41,6 @@ Dependencies
 ~~~~~~~~~~~~
 
 * Bump dependencies in requirements and setup files
-
 
 0.4.3_ - 2021-06-29
 -------------------

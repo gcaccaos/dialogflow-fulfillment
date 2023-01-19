@@ -1,5 +1,4 @@
 from typing import Any, Callable, Dict, List, Optional, Union
-from warnings import warn
 
 from .contexts import Context
 from .rich_responses import RichResponse, Text
@@ -173,29 +172,6 @@ class WebhookClient:
             )
 
         self._response_messages.append(response)
-
-    def set_followup_event(self, event: Union[str, Dict[str, Any]]) -> None:
-        """
-        Set the followup event to be triggered by Dialogflow.
-
-        Warning:
-            This method is deprecated and will be removed. Assign value to the
-            :attr:`followup_event` attribute instead.
-
-        Parameters:
-            event (str, dict): The event to be triggered by Dialogflow.
-
-        Warns:
-            DeprecationWarning: Assign value to the :attr:`followup_event`
-                attribute instead.
-        """
-        warn(
-            'set_followup_event() is deprecated; '
-            'assign value to the followup_event attribute instead',
-            DeprecationWarning
-        )
-
-        self.followup_event = event
 
     def handle_request(
         self,

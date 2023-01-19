@@ -1,6 +1,5 @@
 import pytest
-
-from dialogflow_fulfillment import WebhookClient
+from dialogflow_fulfillment.webhook_client import WebhookClient
 
 
 def test_add_text(webhook_request):
@@ -42,36 +41,6 @@ def test_add_non_richresponse(webhook_request):
 
     with pytest.raises(TypeError):
         agent.handle_request(handler)
-
-
-def test_set_followup_event(webhook_request):
-    agent = WebhookClient(webhook_request)
-
-    def handler(agent):
-        with pytest.warns(DeprecationWarning):
-            agent.set_followup_event('test_event')
-
-    agent.handle_request(handler)
-
-    assert agent.response['followupEventInput'] == {
-        'name': 'test_event',
-        'languageCode': webhook_request['queryResult']['languageCode']
-    }
-
-
-def test_set_followup_event_by_dict(webhook_request):
-    agent = WebhookClient(webhook_request)
-
-    def handler(agent):
-        with pytest.warns(DeprecationWarning):
-            agent.set_followup_event({'name': 'test_event'})
-
-    agent.handle_request(handler)
-
-    assert agent.response['followupEventInput'] == {
-        'name': 'test_event',
-        'languageCode': webhook_request['queryResult']['languageCode']
-    }
 
 
 def test_assign_followup_event(webhook_request):

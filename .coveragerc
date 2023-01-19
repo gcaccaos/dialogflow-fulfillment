@@ -1,7 +1,10 @@
 [run]
 branch = true
-source = dialogflow_fulfillment
+omit = tests
+source = source
 
 [report]
 fail_under = 100
 show_missing = true
+skip_covered = true
+skip_empty = true

@@ -5,11 +5,11 @@ from .payload import Payload
 from .quick_replies import QuickReplies
 from .text import Text
 
-__all__ = [
+__all__ = (
     'Card',
     'Image',
     'Payload',
     'QuickReplies',
     'RichResponse',
     'Text',
-]
+)

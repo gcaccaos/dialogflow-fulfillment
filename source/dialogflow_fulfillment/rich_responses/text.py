@@ -1,5 +1,4 @@
 from typing import Any, Dict, Optional
-from warnings import warn
 
 from .base import RichResponse
 
@@ -56,29 +55,6 @@ class Text(RichResponse):
             raise TypeError('text argument must be a string')
 
         self._text = text
-
-    def set_text(self, text: Optional[str] = None) -> None:
-        """
-        Set the content of the text response.
-
-        Warning:
-            This method is deprecated and will be removed. Assign value to the
-            :attr:`text` attribute instead.
-
-        Parameters:
-            text (str, optional): The content of the text response.
-
-        Warns:
-            DeprecationWarning: Assign value to the :attr:`text` attribute
-                instead.
-        """
-        warn(
-            'set_text() is deprecated; '
-            'assign value to the text attribute instead',
-            DeprecationWarning
-        )
-
-        self.text = text
 
     @classmethod
     def _from_dict(cls, message: Dict[str, Any]) -> 'Text':

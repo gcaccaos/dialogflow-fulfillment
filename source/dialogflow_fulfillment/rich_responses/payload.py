@@ -1,5 +1,4 @@
 from typing import Any, Dict, Optional
-from warnings import warn
 
 from .base import RichResponse
 
@@ -65,30 +64,6 @@ class Payload(RichResponse):
             raise TypeError('payload argument must be a dictionary')
 
         self._payload = payload
-
-    def set_payload(self, payload: Optional[Dict[Any, Any]] = None) -> None:
-        """
-        Set the content of the custom payload response.
-
-        Warning:
-            This method is deprecated and will be removed. Assign value to the
-            :attr:`payload` attribute instead.
-
-        Parameters:
-            payload (dict, optional): The content of the custom payload
-                response.
-
-        Warns:
-            DeprecationWarning: Assign value to the :attr:`payload` attribute
-                instead.
-        """
-        warn(
-            'set_payload() is deprecated; '
-            'assign value to the payload attribute instead',
-            DeprecationWarning
-        )
-
-        self.payload = payload
 
     @classmethod
     def _from_dict(cls, message: Dict[str, Any]) -> 'Payload':

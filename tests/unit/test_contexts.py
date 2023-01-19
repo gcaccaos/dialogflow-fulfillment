@@ -1,6 +1,5 @@
 import pytest
-
-from dialogflow_fulfillment import Context
+from dialogflow_fulfillment.contexts import Context
 
 
 def test_get(session):

@@ -1,5 +1,4 @@
 from typing import Any, Dict, List, Optional
-from warnings import warn
 
 from .base import RichResponse
 
@@ -74,29 +73,6 @@ class Card(RichResponse):
 
         self._title = title
 
-    def set_title(self, title: Optional[str] = None) -> None:
-        """
-        Set the title of the card response.
-
-        Warning:
-            This method is deprecated and will be removed. Assign value to the
-            :attr:`title` attribute instead
-
-        Parameters:
-            title (str, optional): The title of the card response.
-
-        Warns:
-            DeprecationWarning: Assign value to the :attr:`title` attribute
-                instead.
-        """
-        warn(
-            'set_title() is deprecated; '
-            'assign value to the title attribute instead',
-            DeprecationWarning
-        )
-
-        self.title = title
-
     @property
     def subtitle(self) -> Optional[str]:
         """
@@ -125,29 +101,6 @@ class Card(RichResponse):
             raise TypeError('subtitle argument must be a string')
 
         self._subtitle = subtitle
-
-    def set_subtitle(self, subtitle: Optional[str] = None) -> None:
-        """
-        Set the subtitle of the card response.
-
-        Warning:
-            This method is deprecated and will be removed. Assign value to the
-            :attr:`subtitle` attribute instead
-
-        Parameters:
-            subtitle (str, optional): The subtitle of the card response.
-
-        Warns:
-            DeprecationWarning: Assign value to the :attr:`subtitle` attribute
-                instead.
-        """
-        warn(
-            'set_subtitle() is deprecated; '
-            'assign value to the subtitle attribute instead',
-            DeprecationWarning
-        )
-
-        self.subtitle = subtitle
 
     @property
     def image_url(self) -> Optional[str]:
@@ -178,29 +131,6 @@ class Card(RichResponse):
 
         self._image_url = image_url
 
-    def set_image(self, image_url: Optional[str] = None) -> None:
-        """
-        Set the URL of the card response's image.
-
-        Warning:
-            This method is deprecated and will be removed. Assign value to the
-            :attr:`image_url` attribute instead
-
-        Parameters:
-            image_url (str, optional): The URL of the card response's image.
-
-        Warns:
-            DeprecationWarning: Assign value to the :attr:`image_url` attribute
-                instead.
-        """
-        warn(
-            'set_image() is deprecated; '
-            'assign value to the image_url attribute instead',
-            DeprecationWarning
-        )
-
-        self.image_url = image_url
-
     @property
     def buttons(self) -> Optional[List[Dict[str, str]]]:
         """
@@ -229,33 +159,6 @@ class Card(RichResponse):
             raise TypeError('buttons argument must be a list of buttons')
 
         self._buttons = self._validate_buttons(buttons)
-
-    def set_buttons(
-        self,
-        buttons: Optional[List[Dict[str, str]]] = None
-    ) -> None:
-        """
-        Set the buttons of the card response.
-
-        Warning:
-            This method is deprecated and will be removed. Assign value to the
-            :attr:`buttons` attribute instead
-
-        Parameters:
-            buttons (list(dict(str, str), optional): The buttons of the card
-                response.
-
-        Warns:
-            DeprecationWarning: Assign value to the :attr:`buttons` attribute
-                instead.
-        """
-        warn(
-            'set_buttons() is deprecated; '
-            'assign value to the buttons attribute instead',
-            DeprecationWarning
-        )
-
-        self.buttons = buttons
 
     @classmethod
     def _validate_buttons(

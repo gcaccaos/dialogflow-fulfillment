@@ -39,9 +39,9 @@ clone the repository from GitHub:
    $ git clone https://github.com/gcaccaos/dialogflow-fulfillment.git
 
 
-Then, install *dialogflow-fulfillment* in :code:`editable (-e)` mode with `pip`_:
+Then, install *dialogflow-fulfillment* in editable (:code:`-e`) mode with `pip`_:
 
 .. code-block:: console
 
    $ cd dialogflow-fulfillment
-   $ pip install -e .[dev]
+   $ pip install -e .

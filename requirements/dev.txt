@@ -1,5 +1,8 @@
+-r ci.txt
 -r lint.txt
-setuptools==57.4.0
-tox==3.24.1
-twine==3.4.2
-wheel==0.36.2
+-r tests.txt
+pre-commit==2.19.0
+setuptools==65.6.3
+twine==4.0.0
+twine==4.0.2
+wheel==0.38.4

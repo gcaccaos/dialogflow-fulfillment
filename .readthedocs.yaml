@@ -7,13 +7,11 @@ formats: all
 
 # Python environment settings
 python:
-  version: 3.8
+  version: "3.7"
   install:
     - requirements: requirements/docs.txt
     - method: pip
       path: .
-      extra_requirements:
-        - docs
 
 # Sphinx settings
 sphinx:
