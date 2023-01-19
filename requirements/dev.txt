@@ -1,4 +1,5 @@
 -r ci.txt
+-r docs.txt
 -r lint.txt
 -r tests.txt
 pre-commit==2.19.0
