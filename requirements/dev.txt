@@ -1,7 +1,7 @@
 -r ci.txt
 -r lint.txt
 -r tests.txt
-pre-commit==2.19.0
+pre-commit==3.0.4
 setuptools==66.0.0
 twine==4.0.2
 twine==4.0.2
