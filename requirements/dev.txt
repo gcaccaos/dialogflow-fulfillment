@@ -2,7 +2,7 @@
 -r docs.txt
 -r lint.txt
 -r tests.txt
-pre-commit==2.19.0
+pre-commit==3.2.0
 setuptools==67.6.0
 twine==4.0.2
 twine==4.0.2
