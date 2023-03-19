@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='dialogflow-fulfillment',
-    version='0.4.4',
+    version='0.4.5',
     author='Gabriel Farias Caccáos',
     author_email='gabriel.caccaos@gmail.com',
     package_dir={'dialogflow_fulfillment': 'source'},

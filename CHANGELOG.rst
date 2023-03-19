@@ -9,9 +9,8 @@ The format is based on `Keep a Changelog`_ and this project adheres to
 .. _Keep a Changelog: https://keepachangelog.com/en/1.0.0
 .. _Semantic Versioning: https://semver.org/spec/v2.0.0.html
 
-
-1.0.0_ - 2022-04-17
--------------------
+Unreleased
+----------
 
 Removed
 ~~~~~~~
@@ -25,6 +24,11 @@ Dependencies
 * Change sphinx's template to `furo`.
 * Upgrade many development dependencies.
 
+0.4.5_ - 2023-01-19
+-------------------
+
+Disaster recovery.
+
 0.4.4_ - 2021-08-09
 -------------------
 
@@ -37,7 +41,6 @@ Dependencies
 ~~~~~~~~~~~~
 
 * Bump dependencies in requirements and setup files
-
 
 0.4.3_ - 2021-06-29
 -------------------
@@ -169,7 +172,7 @@ Added
 
 * Initial release.
 
-.. _1.0.0: https://github.com/gcaccaos/dialogflow-fulfillment/compare/v0.4.4...v1.0.0
+.. _0.4.5: https://github.com/gcaccaos/dialogflow-fulfillment/compare/v0.4.4...v0.4.5
 .. _0.4.4: https://github.com/gcaccaos/dialogflow-fulfillment/compare/v0.4.3...v0.4.4
 .. _0.4.3: https://github.com/gcaccaos/dialogflow-fulfillment/compare/v0.4.2...v0.4.3
 .. _0.4.2: https://github.com/gcaccaos/dialogflow-fulfillment/compare/v0.4.1...v0.4.2
